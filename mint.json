@@ -1,78 +1,89 @@
 {
-  "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
-  "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
-  },
-  "favicon": "/favicon.svg",
-  "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
-    "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
-    }
-  },
-  "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
-    }
-  ],
-  "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
-  },
-  "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
-  ],
-  "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
+    "name": "Finch",
+    "logo": {
+      "light": "/logo/light.png",
+      "dark": "/logo/dark.png"
     },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
+    "favicon": "/favicon.png",
+    "colors": {
+      "primary": "#0E0E0E",
+      "light": "#FAFAFA",
+      "dark": "#0E0E0E"
     },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
-    }
-  ],
-  "navigation": [
-    {
-      "group": "Get Started",
-      "pages": ["introduction", "quickstart", "development"]
+    "topbarCtaButton": {
+      "name": "Sign In",
+      "url": "https://login.tryfinch.com/u/login?state=hKFo2SBmakdGQlE4STYwYzhmRkYzc0ZOTVV3c1VkX2F4UGhuTKFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIENuZ0NHU283dXV5YzlzczQtZFZxUmJQRElJUmt6UGpmo2NpZNkgTlZsT1hZN3N2R25xSlNHYkFSdE1Ga2tnMGJqMkJmbEk"
     },
+    "topbarLinks": [
+      {
+        "name": "Sign Up",
+        "url": "https://dashboard.tryfinch.com/signup"
+      }
+    ],
+    "tabs": [
+        {
+            "name": "API Reference",
+            "url": "api-reference"
+        }
+    ],
+    "anchors": [
     {
-      "group": "Essentials",
-      "pages": ["essentials/markdown", "essentials/code", "essentials/images", "essentials/settings", "essentials/navigation"]
-    },
-    {
-      "group": "API Documentation",
-      "pages": ["api-reference/introduction"]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
-      ]
-    }
-  ],
-  "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+        "name": "Status",
+        "icon": "signal-bars",
+        "url": "https://status.tryfinch.com/"
+      },
+      {
+        "name": "Changelog",
+        "icon": "megaphone",
+        "url": "https://changelog.tryfinch.com/"
+      },
+      {
+        "name": "Blog",
+        "icon": "newspaper",
+        "url": "https://www.tryfinch.com/blog"
+      }
+    ],
+    "navigation": [
+        {
+            "group": "Guides",
+            "pages": [
+              "quickstart"
+            ]
+        },
+        {
+            "group": "Organization",
+            "pages": [
+              "api-reference/1-organization/company",
+              "api-reference/1-organization/directory",
+              "api-reference/1-organization/individual",
+              "api-reference/1-organization/employment"
+            ]
+          },
+          {
+            "group": "Payroll",
+            "pages": [
+              "api-reference/2-payroll/payment",
+              "api-reference/2-payroll/pay-statement"
+            ]
+          },
+          {
+            "group": "Benefits",
+            "pages": [
+              "api-reference/3-benefits/get-all-benefits",
+              "api-reference/3-benefits/create-benefit",
+              "api-reference/3-benefits/[deprecated]-get-benefits-metadata",
+              "api-reference/3-benefits/get-benefit",
+              "api-reference/3-benefits/update-benefit",
+              "api-reference/3-benefits/get-enrolled-individuals",
+              "api-reference/3-benefits/get-benefits-for-individuals",
+              "api-reference/3-benefits/enroll-individuals-in-benefits",
+              "api-reference/3-benefits/unenroll-individuals-from-benefits"
+            ]
+          }
+    ],
+    "footerSocials":
+      {
+          "twitter": "https://twitter.com/tryfinch?lang=en",
+          "linkedin": "https://www.linkedin.com/company/finchapi/"
+      }
   }
-}
