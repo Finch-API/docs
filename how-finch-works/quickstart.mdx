@@ -1,0 +1,100 @@
+---
+title: "Quickstart"
+description: "To get started, sign up for a free account at https://dashboard.tryfinch.com/signup. After registration, you will have access to a sandbox application `client_id` and `client_secret` to build and test how Finch works using simulated data."
+---
+
+<Note>This `client_id` and `client_secret` will only work for the sandbox provider. If you would like to test real providers with live data, you must request developer keys from developers@tryfinch.com.</Note>
+
+This guide will help you send your first request to Finch's API while the following guides dive deeper into the concepts and help you integrate Finch into your production application.
+
+<iframe width="700" height="400" src="https://www.youtube.com/embed/WU0iKDSpA0Q?si=rod0uy_FvxNqmc6T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+## Open Finch Connect in sandbox mode
+
+Finch Connect provides a secure and elegant authorization flow for your users to grant your application access to their systems.
+
+<Warning >Note: this quickstart guide is a simplified, but manual way of generating an authorization `code` and exchanging it for an `access_token`, which can be used to subsequently call our APIs. In a true production environment, you will want to automate this process completely inside your application's code.</Warning>
+
+Since this quickstart assumes you have not built an application yet, we must make sure that a proper `redirect_uri` is set up before continuing or our authorization code generation will fail. In your [Finch Dashboard](https://dashboard.tryfinch.com/signup), go to the "Redirect URIs" section and select `+ Add Redirect URI`. We are going to use https://example.com for testing purposes. In production, you will want to use your own application's urls for the Redirect Uris (and remove all mentions of https://example.com or http://localhost).
+
+Redirect URIs are only needed if you are redirecting to Finch Connect. If you decide to use our embedded Finch Connect flow, you do not need to specify a redirect_uri; the SDK does this for you.
+
+We will launch Finch Connect - our secure and elegant authorization flow for your users to grant your application access to their systems - by constructing and navigating to the following URL on your browser. Copy the url below, open up your favorite text editor (Notes, TextEdit, VS Code, etc), paste, and replace `<your_client_id>` with the client id found in your [Finch Dashboard](https://dashboard.tryfinch.com/signup). Remove the angle brackets when replacing `<your_client_id>`.
+
+```cs
+https://connect.tryfinch.com/authorize?
+&client_id=<your_client_id>
+&products=company directory individual employment payment pay_statement
+&redirect_uri=https://example.com
+&sandbox=true
+```
+
+<Note>Note that we have `sandbox=true`. This is required only when calling our sandbox environment for testing purposes.</Note>
+
+## Log in to the Finch sandbox account
+
+Click on the Finch Sandbox mock provider on the selector page and log in with the username `largeco` and password `letmein`. Visit Finch Sandbox for more information on the various types of mock payroll providers you can test.https://developer.tryfinch.com/docs/documentation/cmlh3anpgti5n-quickstart#exchange-the-authorization-code-for-an-access-token
+
+## Exchange the authorization code for an access token
+
+After successfully logging in via Finch Connect, your browser will be redirected to `https://example.com` with the query parameter `code` in the browser URL. Copy the `code` from the url and save it in your text editor. In a production system, however, the browser will redirect to your url and your application will automatically copy the `code` and perform the remaining steps programmatically.
+
+To exchange the `code` for a token, we use the `curl` command below. Copy the code below, paste into your text editor, replace the `<your_authorization_code>` in the command with the one you saved above (making sure to not include the angle brackets).
+
+<Tabs>
+  <Tab title="Request">
+    ```bash
+    curl https://api.tryfinch.com/auth/token \
+    -X POST \
+    -H "Content-Type: application/json" \
+    --data-raw '{
+        "client_id": "<your_client_id>",
+        "client_secret": "<your_client_secret>",
+        "code": "<your_authorization_code>",
+        "redirect_uri": "https://example.com"
+    }'
+    ```
+  </Tab>
+  <Tab title="Response">
+    ```json
+    {
+    "paging": {
+        "count": 2,
+        "offset": 0
+    },
+    "individuals": [
+        {
+        "id": "5d0b10a1-a09a-430f-81f1-20be735dc5e9",
+        "first_name": "Jane",
+        "middle_name": null,
+        "last_name": "Doe",
+        "manager": null,
+        "department": {
+            "name": "Product"
+        },
+        "is_active": true
+        },
+        {
+        "id": "c205b3fa-b626-4346-bf0f-ca065ab88d31",
+        "first_name": "John",
+        "middle_name": null,
+        "last_name": "Doe",
+        "manager": {
+            "id": "5d0b10a1-a09a-430f-81f1-20be735dc5e9"
+        },
+        "department": {
+            "name": "Product"
+        },
+        "is_active": true
+        }
+    ]
+    }
+    ```
+  </Tab>
+</Tabs>
+
+<Check>
+    **Congratulations!**
+
+    You have sent your first request to Finch's API. The next step is to integrate Finch Connect onto your application.
+</Check>

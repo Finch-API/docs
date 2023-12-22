@@ -1,0 +1,75 @@
+---
+title: "Unified Employment API Glossary"
+sidebarTitle: "Glossary"
+---
+
+Use this glossary to familiarize yourself with employment terminology used throughout our documentation and APIs.
+
+### Provider
+A *provider* is an employer’s HRIS, Payroll, or other employment system. The provider is the system of record for the data connected to the Finch APIs. Providers can be referenced within the Finch APIs by their `payroll_provider_id`. 
+
+### Employer
+An *employer* is an organization, company, or entity that hires and pays employees. An employer may consist of [one or many sub-entities](/docs/Implementation-Guide/Connect/Manage-Connections.md) and use one or many systems of record (i.e. [payroll providers](/docs/Integrations/Providers.md)) to manage and pay employees. Employers (or any sub-entities) can be referenced within the Finch APIs by their finch-issued `company_id`.
+
+### Individual
+An *individual* is a unique person with distinctive attributes, represented as *fields*, who is currently or formerly employed at an *employer*. Individuals can be referenced within the Finch APIs by their finch-issued `individual_id`. Contractors are also considered individuals.
+
+### Field
+A *field* is a specific employment data element or attribute displayed within Finch's standardized data model pulled directly from an employment system.
+
+### Product
+A *product* is a subgroup of Finch's standardized data model related to a particular segment or workflow of an employment system. Finch currently has three products: [Organization](/docs/Products/Organization/Overview.md), [Payroll](/docs/Products/Pay/Overview.md), and [Benefits](/docs/Products/Benefits/Overview.md).
+
+### Connection
+A *connection* is the link created between your application and the employer's provider through Finch. A connection is established after an employer authenticates via [Finch Connect](/docs/Get-Started/Finch-Connect.md). A connection is defined by a unique `application_id` + `company_id` + `payroll_provider_id` pairing. Therefore, an *employer* may have [one or many connections](/docs/Implementation-Guide/Connect/Manage-Connections.md) depending on if the employer is made up of sub-entities. 
+
+### (Employer) Account
+An employer *account* is used to connect their company's data to Finch. Employers can connect with various *authentication methods* such as an HR admin's account, an API service account (i.e. API token), or a third-party administrator account.
+
+### Access Token
+An *access token* represents a single *connection* with an employer entity and allows the developer to query data from the associated employment system of the employer entity. You should treat access tokens with the same [level of security](/docs/Implementation-Guide/Secure/Store-Tokens.md) as you would passwords.
+
+### Product scope
+A *product scope* determines the specific data your *application* can access from the employer's provider. Each product scope refers directly to a Finch API endpoint. If a connection’s access token does not have the product included, the request will be blocked with a 401 Unauthorized error.
+
+### Application
+An *application* is a unique set of `client_id` and `client_secret` credentials that enable you to launch [Finch Connect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md) and [receive access tokens](/docs/Implementation-Guide/Connect/Retrieve-Access-Token.md). An application essentially groups your *connections* with your Finch "environment". Finch has three environments: sandbox, testing, and production. The sandbox application connects only mock providers. The testing application connects live providers, but in a limited capacity. The production application connects live providers without any limitations. 
+
+### Authentication Method
+An *authentication method* is the specific technique that an employer account uses to connect their provider. Finch supports OAuth 2.0, API token, user credentials, and assisted as authentication methods to allow you maximum flexibility in offering integrations to your end customer. Each method provides a distinct balance between reliability and data accessibility depending on the needs of your application and your customer. See the "Products" section in the [Provider Field Support](/docs/Integrations/Providers.md) for each provider's supported authentication methods. You can also use the `authentication_methods` field on the [Providers](https://developer.tryfinch.com/docs/reference/327c384190aeb-providers) endpoint of the API.
+
+### Integration Type
+An *integration type* refers to one of two ways that Finch organizes our provider integrations. *Automated integrations* are the primary integration type offered by Finch, and offer the highest level of data responsiveness. *Assisted integrations* enable Finch to offer the highest level of provider coverage, while maintaining an API-first experience for developers. See our [Integration Types](/docs/Integrations/Integration-Types.md) page for more details.
+
+### Automated Integration
+An *automated integration* syncs data automatically from the employment system once a connection is created. Finch will then proactively sync with the employment system on our periodic [Data Sync](https://developer.tryfinch.com/docs/reference/f7af2039f9a7b-data-syncs) cadence. A full list of Finch's automated integrations can be referenced on the [Providers](/docs/Integrations/Providers.md) overview.
+
+### Assisted Integration
+An *assisted integration* syncs data through a manual service model powered by Finch's Product Operations team. The data is synced on a slower cadence compared to automated integrations. Assisted integrations help expand coverage to the long tail of providers not otherwise covered by automated integrations. Finch is continuously updating assisted integrations to automated integrations based on customer demand and provider availability. A full list of Finch's assisted integrations can be referenced on the [Providers](/docs/Integrations/Providers.md) overview.
+
+### Data Sync
+A *data sync* is the cadence that Finch synchronizes our system with the employer's provider system to ensure consistent, up-to-date data. Finch's API responses will return employer data from the most recent successful data sync to increase performance and reduce latency.
+
+### Payment
+A *payment* is the summary of the monetary transactions an employer provides to employees in return for their work during a specified period of time. Types of payments can include regular payments (salary, wages, etc.) or off-cycle payments (bonuses, commissions, etc.). Payments can be referenced by their Finch-issued `payment_id`.
+
+### Pay Statement
+A *pay statement* is a detailed breakdown of the *payment* by employee. Pay statements, also known in the industry as "paystub" or "payslip" provide comprehensive information on an individual's gross pay, net pay, earnings, taxes, employee deductions, and employer contributions for a specified pay period. Pay statements can be referenced by their Finch-issued `payment_id`.
+
+### Earning
+An *earning* refers to the various types of compensation an employee receives in exchange for their services during a specific pay period. Some examples of earnings are salary, wage, bonus, commissions, tips, and allowances. Earnings are the detailed breakdown of an employee's `gross_pay` found on the *pay statement*.
+
+### Tax
+A *tax* refers to the mandatory financial charges imposed by government entities that are withheld from an employee's earnings based on several factors like earnings amount, the employee's tax bracket, and more. These amounts are deducted from the employee's gross earnings and are remitted directly to the relevant tax authorities by the employer on behalf of the employee. Several types of taxes commonly found on a pay statement include federal income tax, state income tax, and social security tax.
+
+### Deduction
+An employee *deduction* refers to withholdings that are subtracted from an employee's gross earnings in return for benefits or services rendered by the employer on behalf of the employee. Common employee deductions include health insurance premiums, retirement contributions, voluntary benefits, and any type of custom benefit. 
+
+### Contribution
+An employer *contribution* refers to amounts that the employer pays on behalf of the employee, typically towards benefits or specific programs. Unlike deductions, which are taken from the employee's gross earnings, employer contributions represent additional amounts that the employer is contributing over and above the employee's salary or wages (but not included in the employee's gross earnings).
+
+### Benefit 
+A *benefit* is a non-wage form of compensation available to employees often aimed at enhancing the overall well-being, financial security, or work-life balance of the employee. Some benefits can be available company-wide or individual only.  
+
+### Job
+A *job* is a reference object to an API request submitted to Finch which is scheduled to be asynchronously completed. Jobs can be completed automatically (such as data syncs or automated benefit tasks) or asynchronously (such as assisted benefit tasks). A job can be referenced within the Finch APIs by its Finch-issued `job_id`.

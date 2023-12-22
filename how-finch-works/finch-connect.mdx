@@ -1,0 +1,42 @@
+---
+title: "Connect an Employer"
+---
+
+In order to recieve data from any employment system, you'll first need to connect an employer. Finch Connect is an embedded onboarding flow that enables employers to connect their data in 30 seconds through the following steps:
+1. [Open Finch Connect](#1-open-finch-connect)
+1. [Connect a provider](#2-connect-a-provider)
+1. [Receive data](#3-receive-data)
+
+See our [Implementation Guide]() for more detailed instructions on how to [set up Finch Connect]().
+
+
+
+## 1. Open Finch Connect
+
+![Open Finch Connect]()
+
+
+Employers access Finch Connect from within your application. We suggest launching Finch Connect during the employer onboarding process. There are many ways to [Increase Employer Adoption]() of Finch Connect. 
+
+## 2. Connect a provider
+
+![Finch Connect Screens]()
+
+
+- **Read privacy disclosures** - Finch Connect discloses data privacy practices right from the start, so your customers know where and how their data is used.
+- **Confirm permissions** - Finch Connect displays the granular permissions needed to access the requested data. Finch only shares data that has been approved.
+- **Select a provider** - Your customer can then select their employment system from Finch's list of 200+ integrations.
+- **Authenticate access** - Finch Connect prompts your customer to log in to their employment system, and grant you access to requested data. Finch Connect will only succeed if the user is an employer admin with permissions to view the full employee director and view the full company payroll.
+
+## 3. Receive Data
+
+![Finch Connect Screens]()
+
+That's it! Upon successful authentication, Finch Connect closes and redirects back to your application. 
+
+Once the connection is established, you will recieve a Finch access token and can call the Finch API. At this point you can assure your users that the connection has been set up successfully, and redirect them to other tasks.
+
+
+## Learn More
+
+More information about how Finch Connect works and how to implement it into your application can be found in the  [Set Up Finch Connect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md) of the Finch Implementation Guide.
