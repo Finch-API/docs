@@ -1,0 +1,117 @@
+---
+title: [Integration Types]
+---
+
+## Automated Integrations
+
+Automated integrations are the primary integration type offered by Finch. With automated integrations, your user can simply authenticate via Finch Connect using either credentials or an API token, and Finch will begin automatically syncing data with their system according to our [data syncs](https://developer.tryfinch.com/docs/reference/f7af2039f9a7b-data-syncs) cadences. 
+
+We're continuously building out new automated integrations — view the full list in our [Providers Overview]().
+
+### Data Syncs
+Automated integrations continuously sync with providers to provide you with updated data. After your user authenticates through Finch Connect, Finch kicks off an initial data sync, which populates data for all requested products. After that, Finch will sync data with the provider on a 24 hour refresh cadence. If you need data more frequently, you can use our [refresh endpoint](https://developer.tryfinch.com/docs/reference/8f0f469d5aab2-enqueue-a-new-automated-job) to kick off a new ad-hoc data sync.
+
+
+## Assisted Integrations
+
+Finch assisted integrations are a second type of integration available to customers on our [Scale](https://www.tryfinch.com/pricing) plan. Assisted Integrations operate through a services model, and are powered by Finch’s product operations team.
+
+Assisted integrations enable Finch to offer industry-leading coverage and depth of data, while maintaining an API-first experience for developers. Automated and assisted integrations may also differ in [field support](docs/Integrations/Providers.md) based on the product and provider. 
+
+Aside from coverage, the key difference for assisted integrations is refresh cadence. Unlike automated integrations that refresh data every 24 hours, assisted integrations refresh data every 7 days.
+
+The table below outlines key differences between the automated and assisted experience:
+
+|  | **Automated** | **Assisted** |
+| --- | --- | --- |
+| **Coverage (Read)** | 25+ Providers | 180+ Providers |
+| **Coverage (Write)** | 2 Providers | 15+ Providers |
+| **Default data syncs** | 24 hours | 7 days |
+| **On-demand data syncs** | Yes | No |
+| **Configuration period** | None | 1-2 weeks |
+| **Custom fields** | Yes | No |
+| **Authentication Method(s)** | OAuth, API token, or Admin Credentials | 3rd-Party Admin Credentials |
+| **Connection Monitoring** | Yes | Yes |
+| **Pricing** | All plans | Scale plans only |
+
+Finch is continuously working to convert assisted integrations into automated integrations. If you’re curious about our integrations roadmap, please reach out to your Developer Success Manager or developers@tryfinch.com. 
+
+## Assisted Connect Flow
+### For your user
+
+As with our automated integrations, your user will need to go through [Finch Connect](). However, instead of our standard login flow, the user will need to follow a set of instructions to add Finch as a 3rd party administrator in their employment system.
+
+### For you
+
+Once your user connects their employment system, there is a configuration period where you  will be unable to pull data or push changes to your users' system. During this time, Finch’s product operations team will pull in the requested data, and set up the weekly sync. After the initial pull, the data will be refreshed every 7 days.
+
+### Configuration Periods
+
+All assisted integrations require a one-time configuration period before data can be retrieved. See the configuration periods for each product below.
+
+| Product | Integration Type | Configuration Period |
+| --- | --- | --- |
+| **Organization** | Assisted | 2 weeks |
+| **Payroll** | Assisted | 2 weeks |
+| **Deductions** | Assisted | 1 week |
+
+### Integrate the Assisted Connect Flow Into Your App
+
+Reach out to **`developers@tryfinch.com`** to enable the Assisted Connect Flow. Then follow the instructions below.
+
+#### 1. Launch Finch Connect with the `manual` flag
+
+<Note>For assisted integrations, your users will see instructions on how to manually connect each employment system in Finch Connect.</Note>
+
+Launch [Finch Connect](docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md) with **`manual=true`** so your user can see all providers that support assisted integrations. After granting your application access, you can retrieve an authorization **`code`** and exchange it for an **`access_token`** as usual.
+
+```bash
+https://connect.tryfinch.com/authorize?
+&client_id=<your_client_id>
+&products=company directory individual employment payment pay_statement
+&redirect_uri=https://example.com
+&manual=true
+```
+
+#### 2. Handle API Responses
+
+**202 status code response**
+
+With automated integrations, you can create an **`access_token`** and begin making pull and push requests immediately. However, with assisted integrations, there is a delay from when the **`access_token`** is created to when you can use it to make data requests.
+
+Until the **`access_token`** is ready for use, Finch will return an empty response from data endpoints with the HTTP status code **`202`** indicating the request is valid but data is still pending. When the **`access_token`** is ready, data endpoints will return data with the HTTP status code **`200`** as usual.
+
+**Finch Data Retrieved Header**
+
+Since the data is retrieved and refreshed on a periodic cadence, you may want to know the freshness of the data returned by an API call. You can use the **`Finch-Data-Retrieved`** [header](https://developer.tryfinch.com/docs/reference/8182e8be8dd31-headers) to get the date and time in ISO-8601 format the data was retrieved.
+
+#### 3. Monitor the status of your assisted connections
+
+To view the status of your connected employers, you can use the [Finch Developer Dashboard](https://dashboard.tryfinch.com/) and navigate to the connection details page for a given employer. The status of the connection will be one of the following:
+
+| STATUS | DESCRIPTION |
+| --- | --- |
+| Pending | The employer has created a token, and we are waiting for access to its provider. |
+| Processing | We have received an invitation from the employer's provider with the correct permissions and are in the process of pulling their data for the first time. |
+| No Account Set Up | The employer has created a token, but we have not received an invitation to its system. Please instruct the employer to follow the instructions in Finch Connect to add Finch as a third-party admin. |
+| Improper Permissions | The employer has added Finch successfully, but with improper permissions. Please instruct the employer to re-add Finch following the instructions in Finch Connect. |
+| Connected | The connection is set up and Finch is able to access the required data. |
+| Disconnected | All accounts for this employer have been disconnected. |
+
+You can also use the `connection_status` on the [`/introspect`](https://developer.tryfinch.com/docs/reference/eee6e798b0f93-introspect) endpoint to see the connection status of the assisted account.
+```json
+{
+  ...
+  "authentication_methods": [
+    {
+      "type": "assisted",
+      "connection_status": {
+        "status": "pending",
+        "message": "The employer has created a token, and we are waiting for access to its provider."
+      }
+    },
+    ...
+  ],
+  ...
+}
+```
