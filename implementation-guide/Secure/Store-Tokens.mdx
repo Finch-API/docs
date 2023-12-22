@@ -1,0 +1,51 @@
+---
+stoplight-id: 20ab9vex9ff0v
+---
+
+# Store Access Tokens
+
+It's important to focus on securely storing the access tokens to ensure the security and privacy of your employer's data by reducing the likelihood of unitentional exposure of their access tokens.
+
+<!-- theme: danger -->
+> Finch access tokens are "keys" to sensitive information. You should treat access tokens with the same level of security as you would passwords.
+
+## Secure storage best practices
+
+Storing tokens securely should be done on the backend (server-side) of your application, not on the frontend (client-side). A frontend application is more susceptible to potential security threats such as Cross-Site Scripting (XSS) attacks or unauthorized access if the client is compromised. 
+
+Therefore, **Finch requires developers to store tokens securely on the backend server** where you have better control over access and security.
+
+No application is 100% secure, but there are ways to reduce the potential of an exposure (and its impact) by following a few best practices:
+
+1. Store tokens on the backend of your application.
+1. Encrypt the access token before storing it.
+1. Use environment variables or a secure configuration management system to store static sensitive information that needs to be referenced like `client_secret`.
+1. Never store access tokens in code files or easily accessible directories with human access.
+1. Ensure that tokens are not exposed in URLs, logs, or error messages.
+1. Keep all server-side components, libraries, and frameworks up-to-date with security patches to mitigate potential vulnerabilities.
+
+Determine the best method for securely storing access tokens in your application's backend. Reference the sections below if you need additional help.
+
+## Encryption
+
+To add an extra layer of security, you can encrypt the access token before storing it. Select a strong symmetric encryption algorithm, such as AES-256. Avoid using weak algorithms like DES, as they are susceptible to brute-force attacks due to its small key size (56 bits).
+
+## Never expose access tokens
+
+Ensure that tokens are not exposed in URLs, log files, or error messages. Regularly review logs for any exposure.
+
+Ensure your frontend application never receives the access token to avoid incidental exposure. Your frontend, client-side application should only receive employment data, never the token itself.
+
+## Stay compliant with data privacy regulations
+
+Familiarize yourself with any applicable data privacy regulations, such as GDPR, CCPA, or other regional laws. Implement necessary measures to stay compliant with these regulations when handling, storing, and processing data obtained from the Finch APIs. This includes obtaining user consent when necessary (handled by [Finch Connect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md)), [managing data deletion requests](/docs/Implementation-Guide/Secure/Disconnect-Tokens.md), and providing users with the ability to [control their data](/docs/Implementation-Guide/Secure/Control-Access.md).
+
+---
+
+## Checkpoint + Next Step
+<!-- theme: success -->
+> After completing this step, you should know how to store access tokens on the backend server, reduce the impact of their exposure, and comply with any data privacy regulations. When a connection is no longer needed, it is best practice to [disconnect the token](/docs/Implementation-Guide/Secure/Disconnect-Tokens.md) from Finch then delete it from your system. 
+
+## Learn more
+- [Disconnect Tokens](/docs/Implementation-Guide/Secure/Disconnect-Tokens.md)
+- [Control Access](/docs/Implementation-Guide/Secure/Control-Access.md)

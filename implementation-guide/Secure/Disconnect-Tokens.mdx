@@ -1,0 +1,68 @@
+---
+stoplight-id: onn9fhj6mn8mw
+---
+
+# Disconnect Tokens
+
+A connection exists once an access token is obtained and [stored securely](/docs/Implementation-Guide/Secure/Store-Tokens.md). Once a connection is no longer needed or requested to be deleted by the customer, calling the [/disconnect](https://developer.tryfinch.com/docs/reference/c65ecbd512332-disconnect) endpoint will disconnect all associated access tokens for that particular connection. It is important to know how Finch defines a connection to understand what happens when a connection is disconnected. 
+
+## Disconnect scenarios
+
+Finch defines a connection as an association between a unique `provider_id` (an employment provider) and a unique `company_id` (an employer). 
+
+Let's evalute three different scenarios...
+
+### 1. Different user credentials
+
+|                  |           |
+|------------------|-----------|
+| <span style="color:darkgreen">Company</span>          | <span style="color:darkgreen">Same</span>      |
+| <span style="color:darkgreen">Provider</span>         | <span style="color:darkgreen">Same</span>      |
+| <span style="color:goldenrod">User Credentials</span> | <span style="color:goldenrod">Different</span> |
+
+In this case, even though different user credentials might be used to login (i.e. different accounts), as long as the same employer is using the same provider to login, it only counts as one connection because the `company_id` and `provider_id` are the same. Thus, [disconnecting](https://developer.tryfinch.com/docs/reference/c65ecbd512332-disconnect) one access token will disconnect all the others for that same connection.
+
+
+### 2. Different companies
+
+|                  |           |
+|------------------|-----------|
+| <span style="color:goldenrod">Company</span>          | <span style="color:goldenrod">Different</span> |
+| <span style="color:darkgreen">Provider</span>         | <span style="color:darkgreen">Same</span>      |
+| <span style="color:darkgreen">User Credentials</span> | <span style="color:darkgreen">Same</span>      |
+
+Alternatively, if a customer had two different companies using the same provider, it would count as two different connections since the `company_id`s are different. Thus, [disconnecting](https://developer.tryfinch.com/docs/reference/c65ecbd512332-disconnect) one won’t disconnect the other.
+
+### 3. Different providers 
+
+|                  |               |
+|------------------|---------------|
+| <span style="color:darkgreen">Company</span>          | <span style="color:darkgreen">Same</span>      |
+| <span style="color:goldenrod">Provider</span>         | <span style="color:goldenrod">Different</span> |
+| <span style="color:darkgreen">User Credentials</span> | <span style="color:darkgreen">Same</span>      |
+
+Finally, if a customer had the same company using different providers, it would also count as two different connections since the `provider_id`s are different. Thus, [disconnecting](https://developer.tryfinch.com/docs/reference/c65ecbd512332-disconnect) one won’t disconnect the other.
+
+### Example
+
+- **[1]** User `A` authenticates to the provider Gusto via Finch Connect using Credentials `X` which exist in the Gusto provider for Company `C`. This creates a Connection `1` in Finch and issues an access token.
+
+- **[2]** User `A` authenticates to Gusto again using Credentials `X` for Company `C` (maybe with different product permissions). Another access token is created, but there is still only a single Connection `1` to Company `C`.
+
+- **[3]** User `B` authenticates to Gusto via Finch Connect as well but with credentials `Y` which also exists in the Gusto provider for Company `C`. A new access token is created, but single Connection `1` still exists in Finch, since both User `A` and User `B` are connecting to Company `C` via the Gusto provider.
+
+- **[4]** User `A` sets up Company `C` using another provider called JustWorks. User `A` then uses Finch Connect to authenticate using Credentials `Z` which exists in the new JustWorks provider for Company `C`.  This creates a new Connection `2` in Finch and issues an access token.
+
+If any access tokens issued in steps 1, 2, or 3 are disconnected, all tokens issued for Company `C` using the provider Gusto will be revoked. These tokens still exist technically, but they can no longer be used to call the Finch API; an `Unauthorized` error will be returned. 
+
+However, even though the access token issued in step 4 was still set up by User `A` for Company `C`, the token is treated as a separate connection since it uses a different provider.
+
+---
+
+## Checkpoint + Next Step
+<!-- theme: success -->
+> After completing this step, you should know what will happen to a connection if an access token is disconnected. Your application should give your customers the ability to disconnect their connection, which subsequently calls the Finch Disconnect endpoint from the backend. By storing tokens securely and disconnecting connections when necessary, your application is more secure. If you plan on presenting the data back to the employer via a User Interface, it is crucial to [control user access properly](/docs/Implementation-Guide/Secure/Control-Access.md) to ensure employment data is only viewable to the correct customer account. 
+
+## Learn more
+- [Disconnect Endpoint](https://developer.tryfinch.com/docs/reference/c65ecbd512332-disconnect)
+- [Manage Connections](docs/Implementation-Guide/Connect/Manage-Connections.md)

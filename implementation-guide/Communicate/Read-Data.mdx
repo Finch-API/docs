@@ -1,0 +1,188 @@
+---
+stoplight-id: bafkwf6gawr6f
+---
+
+# Read Organization and Payroll Data
+
+After [isolating each connection](/docs/Implementation-Guide/Connect/Manage-Connections.md) to an employer, you can now make API requests to Finch's various endpoints, such as `/company`, `/directory`, `/individual`, `/employment`, `/payment`, and `/pay-statement`. These endpoints only allow the reading of data from employment providers; they do not permit the writing of data back to the system. Writing deductions and contributions back to the provider is covered in [Write Data](docs/Implementation-Guide/Communicate/Write-Data.md) step.
+
+In this step, you will learn how to make API requests, handle responses, and manage request rate limits.
+
+1. **Choose the appropriate Finch API endpoints**: Depending on the data you need for your application, choose the appropriate Finch API endpoints. 
+    1. Here's a brief overview of Finch's endpoints again:
+        - `/company`: Retrieve company information, such as name, address, and Federal Employer Identification Number (EIN).
+        - `/directory`: List all the employees at the company, both active and inactive.
+        - `/individual`: Obtain individual information, such as name, date of birth, and contact details.
+        - `/employment`: Access employment-related data, like job title, department, and start and end dates, and income.
+        - `/payment`: Get payroll information, including pay frequency and last payment date.
+        - `/pay-statement`: Fetch detailed individual paycheck data, including earnings, taxes, employee deductions, and employer contributions.
+        - `/benefits`: Create and enroll employees in various types of benefits directly in the employer’s provider. The “benefits” are applied directly to the employee’s next paycheck in the deductions or contributions section. This endpoint is covered more in [Write Data](docs/Implementation-Guide/Communicate/Write-Data.md).
+
+1. **Set up the HTTP request**: Use an HTTP library such as [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) or [Axios](https://axios-http.com/docs/intro) (or another suitable package) to create an HTTP request. Include the access token in the `Authorization` header using the format `Bearer <your_access_token>`. Make sure the HTTP request uses the appropriate method (GET, POST, etc.) and includes any required parameters.
+    
+    ```js
+    const url = 'https://api.tryfinch.com/employer/directory'; // Replace with the desired endpoint
+    const accessToken = '<your_access_token>';
+    
+    fetch(url, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+    ```
+
+    ```python
+    import requests
+
+    def fetch_data_from_endpoint():
+        url = 'https://api.tryfinch.com/employer/directory'
+        access_token = '<your_access_token>'
+        
+        headers = {
+            'Authorization': f'Bearer {access_token}',
+            'Content-Type': 'application/json',
+        }
+        
+        try:
+            response = requests.get(url, headers=headers)
+            response.raise_for_status()
+            data = response.json()
+            print(data)
+        except requests.RequestException as error:
+            print(f'Error: {error}')
+
+    # Call the function to test
+    # fetch_data_from_endpoint()
+    ```
+
+    ```java
+    import java.io.BufferedReader;
+    import java.io.InputStreamReader;
+    import java.net.HttpURLConnection;
+    import java.net.URL;
+
+    public class APIClient {
+
+        private static final String ENDPOINT_URL = "https://api.tryfinch.com/employer/directory";
+        private static final String ACCESS_TOKEN = "<your_access_token>";
+
+        public static void main(String[] args) {
+            fetchFromEndpoint();
+        }
+
+        public static void fetchFromEndpoint() {
+            try {
+                URL url = new URL(ENDPOINT_URL);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.setRequestProperty("Authorization", "Bearer " + ACCESS_TOKEN);
+                connection.setRequestProperty("Content-Type", "application/json");
+
+                int responseCode = connection.getResponseCode();
+                if (responseCode == HttpURLConnection.HTTP_OK) { // success
+                    BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                    String inputLine;
+                    StringBuilder response = new StringBuilder();
+
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    System.out.println(response.toString());
+                } else {
+                    System.out.println("GET request failed. Response code: " + responseCode);
+                }
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        }
+    }
+    ```
+    
+1. **Handle API responses**: When Finch returns a response, parse the JSON data and extract the relevant information needed for your application. Store or display the data as needed for your application.
+      <!--
+    title: "Example response"
+    --> 
+    ```json
+    {
+      "paging": {
+        "count": 15,
+        "offset": 0
+      },
+      "individuals": [
+        {
+          "id": "01220ee6-d32e-4973-8646-c5a197935535",
+          "first_name": "Adrian",
+          "middle_name": "Kylo",
+          "last_name": "Baumbach",
+          "manager": {
+            "id": "c0e619df-77b7-481c-8669-210ba2af97ad"
+          },
+          "department": {
+            "name": "Quality"
+          },
+          "is_active": true
+        },
+        ...
+        {
+          "id": "daac88bc-6ade-459b-9630-68ed7bac5ae9",
+          "first_name": "Glen",
+          "middle_name": "Beckham",
+          "last_name": "Blanda",
+          "manager": {
+            "id": "94917285-773f-4e9f-9018-d919af77c997"
+          },
+          "department": {
+            "name": "Quality"
+          },
+          "is_active": true
+        }
+      ]
+    }
+    ```
+    
+1. **Handle errors and edge cases**: Be prepared to [handle errors and edge cases](/docs/Implementation-Guide/Optimize/Mitigate-Errors.md) in the API response. For example, Finch may return `4XX` or `5XX` [error types](https://developer.tryfinch.com/docs/reference/1f80003f67f0d-error-types) due to unsupported responses from the underlying employment system. Retrying immediately may not resolve the issue, so consider implementing a retry strategy with a delay. If the error persists, submit a support ticket with the `Finch-Request-ID` present in the headers of the response.
+     <!--
+    title: "Error handling example"
+    --> 
+    ```jsx
+    function fetchDataWithRetry(url, options, retries = 3, delay = 2000) {
+      return fetch(url, options)
+        .then(response => {
+          if (response.status === 500 && retries > 0) {
+            return new Promise(resolve => setTimeout(resolve, delay))
+              .then(() => fetchDataWithRetry(url, options, retries - 1, delay));
+          } else {
+            return response;
+          }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+    
+    fetchDataWithRetry(url, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
+    })
+    .then(response => response.json())
+    .then(data => console.log(data));
+    ```
+    
+1. **Handle 401 re-authentication errors**: If Finch returns a `401` HTTP status code and a `finch_code` of   `reauthenticate_user`, it indicates Finch has lost access to the employer’s provider. If this happens, display a prompt on your frontend to have the end-user [go through Finch Connect again](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md) to reconnect the provider. Upon successful re-authentication, [obtain a new access token](/docs/Implementation-Guide/Connect/Retrieve-Access-Token.md) and continue making API requests with the new token. The old token can be discarded.  
+
+2. **Manage rate limits**: Finch enforces [rate limits](/docs/Developer-Resources/Rate-Limits.md) on a per-product basis for both applications and access tokens. Rate limits are counted on a per-minute basis for each product. Each product has its own "bucket" with a 60-second Time-To-Live (TTL). The first request for a product starts the 60-second TTL for that product's bucket, and rate limits reset after the 60-second period. If Finch returns a `429` HTTP status code, your application has exceeded the rate limit for a product. To [reduce rate limit errors](/docs/Implementation-Guide/Optimize/Mitigate-Errors.md#rate-limit-errors), you can implement a backoff strategy to retry requests when encountering rate limit errors. 
+---
+<!-- theme: success -->
+> ### Checkpoint + Next Step
+> After completing this step, your application will be able to interact with the Finch API endpoints, read the necessary data, and handle various error scenarios. This will enable you to provide a seamless experience to your users while leveraging Finch's powerful API infrastructure. If all you need is to read data, the next step is to [test your application](/docs/Implementation-Guide/Test/Testing-Plan.md). If you need the ability to write data back to the provider, follow the [Write Data](/docs/Implementation-Guide/Communicate/Write-Data.md) step.
+
+## Learn more
+- [Mitigate Errors](/docs/Implementation-Guide/Optimize/Mitigate-Errors.md)
+- [Monitor Usage](/docs/Implementation-Guide/Optimize/Monitor-Usage.md)

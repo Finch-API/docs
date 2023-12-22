@@ -1,0 +1,118 @@
+---
+stoplight-id: bvr8dijau43z1
+---
+
+# Manage Connections
+
+Every [access token obtained](/docs/Implementation-Guide/Connect/Retrieve-Access-Token.md) is associated with a connection. Therefore, to prevent mixing up data across different users or employers, it is important to make sure you associate each access token with the correct connections in your application. Implementing a system to track the relationship between your customers and their corresponding access tokens is recommended. 
+
+## Define connections
+
+Finch defines a connection as an association between a unique `provider_id` (an employment provider) and a unique `company_id` (an employer or entity). A connection exists once an access token is obtained.
+
+There are three types of scenarios to keep in mind when thinking about connections:
+
+1. **Multi-Account**
+    - _Different Logins_ - When two employees at the same company connect to the same provider using different user credentials (or API tokens).
+    - _Permissions_ - When a company connects multiple times but with different API permissions (Organization, Payroll, Deductions, etc.).  
+1. **Multi-Provider**
+    - _Migration_ — When a company migrates from one provider to another and partial data is stored in each.
+    - _Foreign workers_ — When a company has foreign contractors or employees and utilizes a separate provider to manage those individuals. 
+1. **Multi-Entity**
+    - _Pay Groups_ — When a company has a separate entity per payroll group to pay each group on different cadences.
+    - _Legal Entities_ — When a company has separate legal entities usually in the form of divisions (corporations & LLCs), franchises (LLCs), or business units (corporations & LLCs).
+    - _Professional Employer Organizations (PEO)_ - When a company is partnered with a PEO that performs various administrative tasks on behalf of multiple companies. 
+
+In the **1) Multi-Account** scenario, a single connection is created, even though multiple accounts were used to log in. There is a single connection because the `company_id` and `provider_id` are the same.
+
+In the **2) Multi-Provider** scenario, a new connection is created for every new provider connected. Even though it is the same company, there are multiple connections because the `provider_id` is different for each access token. 
+
+In the **3) Multi-Entity** scenario, a new connection is created for every company "entity" connected. Even though it may technically be the same employer, there are multiple connections because the `company_id` is different for each entity. 
+
+## Isolate connections
+
+Given these scenarios, your application must be able to manage multiple connections per customer and keep each connection and its corresponding access tokens isolated from the rest. 
+
+Since Finch defines a connection based on a unique `provider_id` and `company_id` pair, you can store access tokens in your system accordingly by creating a unique connection identifier that (at a minimum) combines `provider_id` + `company_id` with a `customer_id` that you define. It might be helpful to store the `account_id` as well in order to handle Multi-Account scenarios.
+
+- `provider_id` = the payroll provider associated with the access token.
+- `company_id` = the Finch UUID of the company associated with the access token.
+- `customer_id` = a unique identifier that you create to manage your customers internally
+
+> You define the `customer_id`; Finch defines the `provider_id` and the `company_id` (more on this below). 
+
+
+### Introspect endpoint
+
+The best way to retrieve the `provider_id` and `company_id` (or `account_id`) of an access token is by calling the [Introspect](https://developer.tryfinch.com/docs/reference/eee6e798b0f93-introspect) endpoint. It will return a JSON body containing account information associated with the `access_token`.  
+
+<!--
+title: "Example /introspect response"
+-->
+```json
+{
+  "account_id": "d8ef1814-5913-492f-b5c0-a16e2d6432c9",
+  "client_id": "25ea8bd8-f76b-41f9-96e3-1e6162021c50",
+  "company_id": "87eb4bc3-f76b-35e7-78d2-8f7822021d73",
+  "payroll_provider_id": "gusto",
+  "products": [...],
+  ...
+}
+```
+
+### Example
+
+A simple example is a `1:1` connection association. It can be represented by a single database table with columns for `customer_id` and the associated `access_token`. You can use a unique constraint on the `customer_id` column to ensure that each user can have only one associated `access_token`.
+
+<!-- focus: false -->
+![1-To-1 Database Schema](../../../assets/images/manage-connections/single-connection-database.jpg)
+
+However, in production, you will want to handle the more [complex connection scenarios](#define-connections) above which have a `1:Many` relationship.
+
+This can be represented by two database tables: the *Customers* table one stores the `customer_id` and the *Connections* table stores the `company_id` + `provider_id` + `access_token` which references back to a `customer_id`.
+
+<!-- focus: false -->
+![1-To-Many Database Schema](../../../assets/images/manage-connections/multiple-connection-database.jpg)
+
+In this realistic example:
+
+- `provider_id` and `company_id` represent the unique finch variables that define a connection.
+- A "composite unique constraint" can be set on `provider_id` and `company_id` values which means that while each of these connections can contain the same values individually, the combination of these values must be unique (hence a unique connection).
+- (optional) You could add `account_id` to the composite unique constraint as well to handle Multi-Account scenarios.
+
+Now, when you insert data into the *Connections* table, you'll need to ensure that the combination of `provider_id` and `company_id` is unique for each row, while the `access_token` inherently remains unique for each row as well. The `company_id` (when combined with data from the Finch [/company](https://developer.tryfinch.com/docs/reference/33162be1eed72-company) endpoint) is going to be able to tell you which employers are attached to each customer.
+
+## Enabling multiple connections with Finch Connect
+
+To have your customer create multiple connections in your application, your "onboarding" flow or "connections" page must allow them to go through [Finch Connect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md) multiple times.
+
+
+Below is an example User Interface. You can present your customers with a page showing all of their current connections and provide the option to connect more accounts, providers, or company entities.
+
+<!-- focus: false -->
+![](../../../assets/images/manage-connections/multiple-connections-UI.png)
+
+## Edge cases
+
+### Reauthentication
+
+In [reauthentication](docs/Developer-Resources/Reauthentication.md) situations, your customer should be prompted to reconnect their provider again before continuing to use the application. When the Finch Connect flow is completed, a new access token will be generated. Simply replace the old token with the new token and start making Finch API requests with the updated token like before.
+
+### Repeating employees
+
+In the [multi-provider or multi-company](#define-connections) scenarios, if your application is combining data across multiple access tokens, you may need to [reconcile employees](docs/Developer-Resources/Reconcile-employees.md) between responses in order to merge employee data properly.
+
+---
+
+## Checkpoint + Next Step
+<!-- theme: success -->
+> After completing this step, you should know how to associate access tokens with multiple accounts for each new connection. With proper connection organization, you are ready to use the access token to [make API requests](/docs/Implementation-Guide/Communicate/Read-Data.md) to Finch's various endpoints.
+
+
+## Learn more
+
+- [Control User Access](/docs/Implementation-Guide/Secure/Control-Access.md)
+- [Set Up Finch Connect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md)
+- [Reauthenticating Connections](/docs/Developer-Resources/Reauthentication.md)
+- [Reconcile Employees](/docs/Developer-Resources/Reconcile-employees.md)
+- [Integration Types: Automated](/docs/Integrations/Integration-Types.md#automated)

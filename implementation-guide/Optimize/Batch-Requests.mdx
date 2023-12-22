@@ -1,0 +1,69 @@
+---
+stoplight-id: alzum4cgfy90f
+---
+
+# Batch Requests
+
+It is important to learn how to monitor your application's usage of Finch APIs, optimize your requests, and handle rate limits and errors effectively. Consequently, this will help you maintain a smooth user (and developer) experience by productively managing your application's API requests.
+
+Several of Finch’s endpoints are “batch” endpoints ([`/individual`](https://developer.tryfinch.com/docs/reference/9d6c83b09e205-individual), [`/employment`](https://developer.tryfinch.com/docs/reference/1ba5cdec4c979-employment), [`/pay-statement`](https://developer.tryfinch.com/docs/reference/d5fd02c41e83a-pay-statement)). This means that several IDs can be sent in a single request. Finch will correspondingly return a single response with an array of objects equal to the IDs sent.
+
+Determine your optimal batch size for your use case when making batch requests to Finch APIs. If you send 1000 IDs in the request, you will receive a single response containing an array of 1000 responses for each ID sent. Pass all the required IDs in a single batch request to optimize API usage and minimize the risk of hitting [rate limits](https://developer.tryfinch.com/docs/reference/64f780582a5a2-rate-limits).
+
+```json
+{
+  "requests": [
+    {
+      "individual_id": "772b3c4f-d764-433d-bd69-ff8bbac33ffe"
+    },
+    {
+      "individual_id": "a7a77065-0f68-418d-a85a-da24fb2139b7"
+    },
+    ...
+    {
+      "individual_id": "84364585-c2ce-40aa-bcc0-666ac9577315"
+    }
+  ]
+}
+```
+
+## Batch Errors 
+
+When calling the Finch "batch" API endpoints, ensure your application can handle errors returned in the batch format.
+
+Finch can return errors in two ways. Both errors will be the same format described in the [Error Types](https://developer.tryfinch.com/docs/reference/1f80003f67f0d-error-types) API Reference guide.
+
+1. A possible error per batch request item within the response body.
+1. A possible error at the HTTP status code level.
+
+Don't assume that if the HTTP status code is OK that the batch response was OK as well
+
+```json
+// HTTP 200 status code
+{
+  "responses": [
+    {
+      "individual_id": "4f66ec6e-f73c-41e6-bc14-bb2ae53288a0",
+      "code": 404,
+      "body" {
+        "code": 404,
+        "name": "not_found_error",
+        "finch_code": "individual_not_found",
+        "message": "No individual with id 4f66ec6e-f73c-41e6-bc14-bb2ae53288a0 found"
+
+      }
+    }
+  ]
+}
+```
+
+---
+
+## Checkpoint + Next Step
+<!-- theme: success -->
+> After completing this step, you should be able to efficiently send thousands of IDs in a single HTTP request and managing each individual batched message in the main response body. Batch errors are just one type of error that can be experienced. Next, we will learn how to [mitigate other error types](/docs/Implementation-Guide/Optimize/Mitigate-Errors.md) that may be experience when calling the Finch APIs.
+
+## Learn more
+- [Error Types](https://developer.tryfinch.com/docs/reference/1f80003f67f0d-error-types)
+- [Error Handling](https://developer.tryfinch.com/docs/reference/7e03b7d6dec4a-error-handling)
+- [Rate Limits](https://developer.tryfinch.com/docs/reference/64f780582a5a2-rate-limits)

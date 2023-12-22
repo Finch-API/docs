@@ -1,0 +1,77 @@
+---
+stoplight-id: wc83h1mxua6b6
+---
+
+# Develop Your Test Plan
+
+[Reading](/docs/Implementation-Guide/Communicate/Read-Data.md) and [writing](/docs/Implementation-Guide/Communicate/Write-Data.md) data back to the underlying provider systems are important, but a robust testing, validation, and maintenance plan for your Finch API integration ensures its continued reliability, accuracy, and performance after the initial launch. Following a structured testing and validation approach will help you identify potential issues early and ensure that your application is using Finch APIs effectively.
+
+---
+
+### 1. Develop a comprehensive test plan
+
+Create a test plan that outlines various scenarios, edge cases, and expected outcomes for your Finch API integration. Include both successful and unsuccessful cases, such as proper [handling of errors types](https://developer.tryfinch.com/docs/reference/1f80003f67f0d-error-types) or [rate limit](https://developer.tryfinch.com/docs/reference/64f780582a5a2-rate-limits) constraints. Ensure that your test plan covers all relevant aspects of your Finch API integration, including authorization, API requests, data processing, and data storage.
+
+### 2. Simulate test scenarios in a safe environment
+
+
+
+Finch has two types of sandboxes:
+- [Provider Sandboxes](docs/Implementation-Guide/Test/Provider-Test-Environments.md) allow you to set up a test environment in an external provider system and connect to that system via Finch. This allows you to test Finch's ability to connect to an external system, modify data directly in that system, and see those changes reflected in API calls to Finch.
+![Provider Test Environment.png](<../../../assets/images/sandbox/Provider Test Environment.png> 'Provider Sandbox')
+
+- The [Finch Sandbox](Finch-Sandbox.md) lets you generate data to simulate scenarios you might encounter from a live provider without requiring an external connection. This sandbox environment allows for rapid and repetitive testing.
+![Finch Sandbox.png](<../../../assets/images/sandbox/Finch Sandbox.png> 'Finch Sandbox')
+
+Typically, provider test environments are useful during the early stages of testing with Finch or when testing a new integration, as they allow you to gain confidence in Finch's connection to that system. The Finch sandbox is useful for ongoing testing where repetitive, programmatic simulations are needed.
+
+>You may only use your Sandbox application to initiate a provider test connection. If you do not have a Sandbox application yet, please [sign up](https://dashboard.tryfinch.com/signup) or [reach out to us](https://www.tryfinch.com/sales).
+
+
+### 3. Write automated tests
+
+Leverage automated testing tools and frameworks to run your test cases and validate common and uncommon API responses. Automated testing will help you identify any issues or inconsistencies (like `null` data fields) in your integration, and allow you to quickly address them before deploying your application to production. Regularly update your test cases as your integration evolves to ensure comprehensive coverage:
+
+- How does your application respond when a connection needs to be reauthenticated?
+- Does your application fail gracefully if a `null` data field is encountered unexpectedly?
+- How is an employer properly disconnected?
+- What happens if an employee enrollment is sent after the payroll close date?
+  
+### 4. Perform manual testing of Finch Connect
+
+In addition to automated tests, perform manual testing of the frontend Finch Connect flow to validate its proper functionality and desired user experience. This may include end-to-end testing, where you simulate a user's interaction with your application and verify that Finch Connect launches correctly and subsequent API calls are initiated.
+
+- What happens after Finch Connect closes after a successful connection? Where does the customer go next?
+- What happens after Finch Connect closes unsuccessfully (like invalid user credentials)?
+- What is expected when an existing connection is reconnected? What happens to the existing access token? 
+
+### 5. Monitor API performance
+
+Continuously monitor the performance of your Finch API integration, including response times, error rates, and other relevant metrics. Log every `Finch-Request-Id` header for **successful** *and* **unsuccessful** requests to help with debugging in case any issues occur.  Use monitoring tools or services to help you track these metrics and identify any potential bottlenecks or connection issues. 
+
+### 6. Request developer credentials
+
+Once you have vigorously tested against the sandbox with enough test coverage and you feel your application is ready to handle live data, you can request developer credentials to begin testing live providers with real data by reaching out to developers@tryfinch.com.
+
+### 7. Keep your integration up-to-date
+
+Stay informed about any updates or changes to Finch APIs and SDKs, which include new features, bug fixes, and deprecations. Update your integration as necessary to ensure your application remains compatible with the latest version of the Finch APIs and continues to provide accurate and reliable data to your application.
+
+### 8. Maintain clear documentation
+
+Keep clear and concise documentation of your Finch API integration, including its architecture, implementation details, and any customizations you've made. This documentation will be invaluable when troubleshooting issues with the Finch support team, making product updates, or onboarding new team members.
+
+### 9. Conduct regular reviews
+
+Periodically review your Finch API integration to ensure it continues to meet your application's needs and performance requirements. Look for opportunities to optimize your integration, such as refining your request patterns, improving error handling, or exploring new Finch API features.
+
+---
+
+## Checkpoint + Next Step
+<!-- theme: success -->
+> After completing this step, you will have a robust, reliable, and well-maintained Finch API integration that meets the needs of your application and users. Now, use the [Finch Sandbox](/docs/Implementation-Guide/Test/Finch-Sandbox.md) to create automated tests for any type of employment scenario you may encounter.
+
+## Learn more
+- [Mitigate Errors](/docs/Implementation-Guide/Optimize/Mitigate-Errors.md)
+- [Monitor Usage](/docs/Implementation-Guide/Optimize/Monitor-Usage.md)
+- [Disconnect Tokens](/docs/Implementation-Guide/Secure/Disconnect-Tokens.md)

@@ -1,0 +1,249 @@
+---
+stoplight-id: cp8k09to4q3rz
+---
+
+# How to increase employer adoption
+
+Finch Connect is our embeddable User Interface (UI) that enables employers to connect their employment system to your application. Employers use Finch Connect to approve permissions, select their provider, and authorize access.
+
+> New to Finch Connect or looking for help getting started? Read the [Finch Overview](docs/Get-Started/Finch-Overview.md)
+
+If you’ve [implemented Finch Connect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md), but are seeing drop-off from employers or low connection completion rates, try the following suggestions below to optimize conversion. Before implementing these best practices, make sure you have a mechanism to track conversion rates so you can measure any improvements.
+
+The suggestions below are listed in priority order.
+
+- [How to increase employer adoption](#how-to-increase-employer-adoption)
+  - [1. Set Finch Connect as the default integration option](#1-set-finch-connect-as-the-default-integration-option)
+  - [2. Include extra messaging for context](#2-include-extra-messaging-for-context)
+    - [Explain the value of connecting](#explain-the-value-of-connecting)
+    - [Tell the user what to expect](#tell-the-user-what-to-expect)
+    - [Emphasize data security](#emphasize-data-security)
+  - [3. Create multiple opportunities to connect](#3-create-multiple-opportunities-to-connect)
+  - [4. Deploy Finch early in the onboarding process](#4-deploy-finch-early-in-the-onboarding-process)
+  - [5. Remove unnecessary points of friction](#5-remove-unnecessary-points-of-friction)
+    - [Bypass the provider selection screen](#bypass-the-provider-selection-screen)
+      - [Custom integration page](#custom-integration-page)
+    - [Set up preferred Authentication Method(s)](#set-up-preferred-authentication-methods)
+    - [Set up authentication fallback](#set-up-authentication-fallback)
+    - [Notify users that need to reauthenticate](#notify-users-that-need-to-reauthenticate)
+  - [Checkpoint + Next Step](#checkpoint--next-step)
+  - [Learn more](#learn-more)
+
+## 1. Set Finch Connect as the default integration option
+
+Rather than presenting Finch Connect and other manual flows as equal alternatives, encourage your customers to use Finch as the default. You can always include an option to ‘skip this step’, and offer the manual flows as a back up. You can also play with the size, positioning, and color of your entry point to Finch Connect, or test out labels like "Recommended" or "Preferred" to encourage usage.
+
+<!--
+focus: false
+-->
+![Finch Connect Best Practices 1.jpg](../../../assets/images/increase-employer-adoption/finch-connect-best-practices-01.jpg)
+
+## 2. Include extra messaging for context
+
+Setting the right expectations is crucial for successful onboarding through Finch Connect. Your app should explain the value of connecting their employment system to your app, what to expect during setup, and how their data will be handled securely. 
+
+<!-- focus: false -->
+![Finch Connect Best Practices 4.jpg](../../../assets/images/increase-employer-adoption/finch-connect-best-practices-04.jpg)
+
+### Explain the value of connecting
+
+The value for employers will depend on your use case, but may include:
+
+- Eliminate security risks associated with sharing PII manually
+- Remove manual work required to onboard new employee cohorts to the system
+- Decrease data discrepancies between systems of record
+- Streamline the onboarding experience for employees
+- Ensure terminated employees are removed from the system in a timely manner
+
+The following are a few examples of how you might introduce Finch Connect in your onboarding flow.
+
+### Tell the user what to expect
+
+Before launching the Finch Connect module, explain to the user that they will be prompted to connect their payroll or HRIS system with Finch. Explain what data your app will collect, and why. If the user doesn’t have their credentials on hand, you can give them the option to ‘skip and come back later’ — but make sure to encourage them to [connect later](#3-create-multiple-opportunities-to-connect).
+
+### Emphasize data security
+
+Let users know that Finch is secure, and all data is encrypted in transit and at rest. Explain that your app does not have access to their credentials, and that they can choose to disconnect at any time. Feel free to share a link to [Finch’s Trust Center](https://finch.secureframetrust.com/#resources) for more information.
+
+## 3. Create multiple opportunities to connect
+
+If a user does not connect their employment system during the onboarding process, you can remind them to come back later. Try in-app messaging or email automations to remind them to connect, and why. You can also use these channels to notify users if re-authentication is needed.
+
+## 4. Deploy Finch early in the onboarding process
+
+While the employer authorization process takes only 30 seconds, a full syncing of the provider’s data can take some time. That’s why we recommend embedding Finch Connect as early as possible in the onboarding process. While data cannot be retrieved until the synchronization is complete, you can take advantage of this time to continue your core onboarding process, collecting additional information or showing your product tutorial.
+
+<!--
+focus: false
+-->
+![Finch Connect Best Practices 2.jpg](../../../assets/images/increase-employer-adoption/finch-connect-best-practices-02.jpg)
+
+You can programmatically add visual cues to show when the data import is complete. Finch provides a [List All Automated Jobs](https://developer.tryfinch.com/docs/reference/77c908ca898ba-list-all-automated-jobs) endpoint that provides a real-time status of the data syncing process. While the job’s `status` is still `pending`, the Finch endpoints will **return a HTTP 202 response** until the sync is complete. Continue to call the [List All Automated Jobs](https://developer.tryfinch.com/docs/reference/77c908ca898ba-list-all-automated-jobs) endpoint to monitor the status. Once the job’s `status` moves to `complete`, you can now call Finch’s various endpoints to read the data. A new job is created to sync the employer’s data 24 hours from the previous sync.
+
+```Pending
+{
+  "paging": {
+    "count": 1,
+    "offset": 0
+  },
+  "meta": {
+    "quotas": {
+      "data_sync_all": {
+        "allowed_refreshes": 1,
+        "remaining_refreshes": 1
+      }
+    }
+  },
+  "data": [
+    {
+      "job_id": "a3d1410c-864b-45ce-8d7f-a063914015a0",
+      "job_url": "https://api.tryfinch.com/jobs/automated/a3d1410c-864b-45ce-8d7f-a063914015a0",
+      "status": "pending",
+      "created_at": "2023-08-23T18:05:13.146Z",
+      "scheduled_at": "2023-08-24T18:05:23.282Z",
+      "started_at": "2023-08-24T18:05:27.329Z",
+      "completed_at": null,
+      "type": "data_sync_all"
+    },
+  ]
+}
+```
+```Complete
+{
+  "paging": {
+    "count": 1,
+    "offset": 0
+  },
+  "meta": {
+    "quotas": {
+      "data_sync_all": {
+        "allowed_refreshes": 1,
+        "remaining_refreshes": 1
+      }
+    }
+  },
+  "data": [
+    {
+      "job_id": "c6d96ca1-01b0-49dd-81af-d354fa7e9cf2",
+      "job_url": "https://api.tryfinch.com/jobs/automated/c6d96ca1-01b0-49dd-81af-d354fa7e9cf2",
+      "status": "pending",
+      "created_at": "2023-08-24T18:07:05.329Z",
+      "scheduled_at": "2023-08-25T18:02:23.282Z",
+      "started_at": null,
+      "completed_at": null,
+      "type": "data_sync_all"
+    },
+    {
+      "job_id": "a3d1410c-864b-45ce-8d7f-a063914015a0",
+      "job_url": "https://api.tryfinch.com/jobs/automated/a3d1410c-864b-45ce-8d7f-a063914015a0",
+      "status": "complete",
+      "created_at": "2023-08-24T18:05:13.146Z",
+      "scheduled_at": "2023-08-24T18:05:23.282Z",
+      "started_at": "2023-08-24T18:05:27.329Z",
+      "completed_at": 2023-08-24T18:07:05.329Z,
+      "type": "data_sync_all"
+    },
+  ]
+}
+```
+
+## 5. Remove unnecessary points of friction
+
+Each additional step in the employer onboarding journey is an opportunity for drop off. While the following suggestions will not work for every use case, we encourage developers to consider the following to remove any unnecessary points of friction in Finch Connect.
+
+1. [Bypass the provider selection screen](#bypass-the-provider-selection-screen)
+2. [Set up preferred Authentication Method(s)](#set-up-preferred-authentication-methods)
+3. [Set up authentication fallback](#set-up-authentication-fallback)
+4. [Notify users that they need to reauthenticate](#notify-users-that-need-to-reauthenticate)
+
+### Bypass the provider selection screen
+
+If you already know which provider(s) your customers use (or want to use), you can skip or limit the provider selection screen in Finch Connect. 
+
+This removes three possible friction points:
+
+1. If you already know which provider is being used by the customer, you can skip an extra step in the Finch Connect flow.
+1. If you want to avoid the customer choosing the wrong provider (e.g. many different [versions of ADP](/docs/Integrations/Providers.md)), then you can suggest the right version.
+1. If you want to better own the user experience, you can build your own provider selection page and launch Finch Connect with the right provider each time.
+
+The provider selection screen can be skipped by providing a valid [provider_id](docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md) in the `payroll_provider` option while opening Finch Connect.
+
+If you don't know the customer's payroll system upfront or you want to give the customer as many options to connect as possible, then leave the `payroll_provider` option empty while opening Finch Connect.
+
+
+<!--
+type: tab
+title: Bypass Enabled
+-->
+```bash
+https://connect.tryfinch.com/authorize?
+&client_id=<your_client_id>
+&products=company directory individual employment payment pay_statement
+&payroll_provider=gusto
+&redirect_uri=https://example.com
+```
+
+<!--
+type: tab
+title: Bypass Disabled 
+-->
+```bash
+https://connect.tryfinch.com/authorize?
+&client_id=<your_client_id>
+&products=company directory individual employment payment pay_statement
+&redirect_uri=https://example.com
+```
+<!-- type: tab-end -->
+
+
+#### Custom integration page
+If you want complete control over the user experience, you can also build your own provider selector screen and launch Finch Connect with the right provider each time.
+
+<!--
+focus: false
+-->
+![Finch Connect Best Practices 3.jpg](../../../assets/images/increase-employer-adoption/finch-connect-best-practices-03.jpg)
+
+In any case, bypassing the provider selector screen removes friction by eliminating the guesswork for customers during the set up process. 
+
+
+### Set up preferred Authentication Method(s)
+
+Finch often offers several authentication methods for employers, including OAuth, API Token, credentials, or adding a 3rd-party administrator. Authentication method(s) are dependent on provider. 
+
+As a developer, you have the flexibility to decide which authentication methods to make available for your end customers and their order of priority. You can set primary and secondary authentication methods for each provider, and even hide specific methods if desired. 
+
+For example, if you want to present only the OAuth method to BambooHR customers, Finch can conceal the credentials-based authentication method in Finch Connect. 
+
+To request a custom authentication configuration, please reach out to your Finch Account representative.
+
+### Set up authentication fallback
+
+Authentication fallback enables employers to authorize through Finch Connect even when Finch is experiencing intermittent issues with a provider. 
+
+Please note this feature applies only to credentials-based authentication methods, and not to other authentication methods like direct API token entry or OAuth.
+
+Learn more about how to set up authentication fallback [here](docs/Implementation-Guide/Deploy/Go-Live-Checklist.md#authentication-fallback-and-email-forwarding).
+
+### Notify users that need to reauthenticate
+
+Finch aims to ensure your application maintains long-lived access to your users' employment systems. However, when a user changes security settings on their account or an employment system makes changes to its infrastructure, Finch's connection can get disconnected. This will result in an error with the HTTP status code of `401` and `finch_code` of `reauthenticate_user`. When an access token returns this, your user will need to reauthenticate by going through the [Automated Connect Flow](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md) again.
+
+To increase conversion, we recommend either using in-app or email notifications to notify your user there is an issue with their connection, why re-connecting is beneficial, and the steps they need to follow to re-connect. To create a more seamless experience, you can bypass the employment system selection page by using the `payroll_provider` parameter. You can find the `payroll_provider` of your user by calling the [`/introspect`](https://developer.tryfinch.com/docs/reference/9d248a993cb53-introspect) endpoint with their `access_token`.
+
+Below are a couple of options to present the re-connection flow to your users—
+
+1. Prompt your user to log on to their application dashboard where you can present them the UI to go through Finch Connect again.
+2. Send your user an authorization URL with a `redirect_uri` that redirects them back to their application dashboard after a successful reconnection. Learn more about [redirecting your users to Finch Connect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md).
+
+Remember this will create a new `access_token` for your user that will be to be updated. Make sure to save this new token in your database.
+
+---
+
+## Checkpoint + Next Step
+<!-- theme: success -->
+> After completing this step, your application will have many opportunities to optimize Finch Connection increase the completion rate. Even subtle changes can increase employer adotpion of your application dramatically. Determine which recommendations apply to your application the most and start there. Then continue to optimize your application by [batching IDs in your requests](/docs/Implementation-Guide/Optimize/Batch-Requests.md) to reduce endpoint calls.
+
+## Learn more
+
+- [Mitigate Reauthentication Errors](/docs/Implementation-Guide/Optimize/Mitigate-Errors.md)

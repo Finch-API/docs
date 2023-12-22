@@ -1,0 +1,58 @@
+---
+stoplight-id: 3x7je96vjp2xq
+---
+
+# Finch Sandbox
+
+The best way to validate your [testing plan](/docs/Implementation-Guide/Test/Testing-Plan.md) is to actually connect employment providers. Since Finch standardizes the data model across every available provider into the same standard set of fields, our sandboxes essentially act like simulated employment providers allowing you to mock how various providers would respond with realistic-ish data without any of the risk.
+
+The Finch Sandbox consists of two parts: 
+- The [Frontend Sandbox](#frontend-sandbox) combines Finch Connect and static API responses into an end-to-end demo showing what an employer would experience creating a connection. 
+- The [Backend Sandbox](#backend-sandbox) allows you to create dynamic test environments for any automated provider and offers management endpoints to simulate test scenarios such as hiring or terminating an employee and even processing a future payroll.
+
+## Frontend Sandbox
+
+The Frontend Sandbox allows you to login to a fake payroll system and test your application against mock data.
+
+To use the sandbox environment, simply open [Finch Connect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md) with the `sandbox` query parameter set to `true`.
+
+The frontend sandbox allows for various scenarios based on your testing needs. The credentials you use while logging in determine the behavior of the API.
+
+**Small Company**
+
+Login             | Password
+---------------------|-------------
+ `smallco`           | `letmein` 
+
+The most basic example to develop against is the simple scenario - a company with a single employee.
+
+**Large Company**
+
+Login              | Password
+----------------------|-------------
+ `largeco`            | `letmein` 
+
+This larger scenario provides a much larger dataset to test against. Some attributes of this scenario are -
+* a single company with multiple employees,
+* employees with managers,
+* multiple departments and work locations, and
+* payments with various earning types, deductions, and employer contributions.
+
+
+## Backend Sandbox
+
+The Backend Sandbox is a [self-contained testing environment](https://sandbox.tryfinch.com) that simulates the live Finch production API. The backend sandbox assumes you have already connected an employer.
+
+The sandbox provides a shielded space where you can test your API integration with Finch by creating mock payroll and HRIS providers and watching how requests respond differently based on the provider's data field compatibility, all without touching any live provider accounts. 
+
+By using sandbox providers, you can test and debug your apps without referencing any real employees or live employers. The [backend sandbox](https://sandbox.tryfinch.com) lets you operate your application in a safe environment and provides a way to fine-tune your Finch processes before you move your product into production.
+
+---
+
+## Checkpoint + Next Step
+<!-- theme: success -->
+> After completing this step, you have the ability to simulate many types of employment scenarios that your application may encounter when connecting to live employers. Continuously testing, validating, and reviewing your integration will help you stay ahead of potential issues and ensure that your application is making the most of Finch's services. Once your application is ready, you can begin to [connect live providers](docs/Implementation-Guide/Test/Live-Providers.md). 
+
+## Learn more
+- [Quickstart](/docs/Get-Started/Quickstart.md)
+- [Set Up Finch Connect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md)

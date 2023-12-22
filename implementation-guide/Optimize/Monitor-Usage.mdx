@@ -1,0 +1,34 @@
+---
+stoplight-id: 13thlcki1xnc9
+---
+
+# Monitor Usage
+
+Implementing monitoring tools or processes to keep track of your application's usage of the Finch APIs will help you identify patterns and [potential issues](/docs/Implementation-Guide/Optimize/Mitigate-Errors.md). Events such as frequent rate limit overages or a sudden increases in error rates can be quickly identified and actioned if proper monitoring is in place. 
+
+## Log finch request id
+
+It is best practice to log the `finch-request-id` for every response, whether successful or unsuccessful. The `finch-request-id` can be found in every HTTP response Header. The `finch-request-id` is required by the Finch Support team for debugging request issues. 
+
+## Monitor API requests
+
+Track API response times to and from Finch. A spike in latency can indicate network problems or possible Finch performance degradations.
+
+Continuously check for increases in error rate responses from Finch. This can indicate problems with the Finch APIs or issues with how your application sends requests to the Finch APIs.
+
+<!-- theme: info -->
+> Finch reports all API outages and provider integration incidents. You can subscribe to receive email notifications from https://status.tryfinch.com whenever we create, update, or resolve an incident.
+
+## Optimize API usage
+
+Regularly review your application's usage of Finch APIs and identify opportunities to optimize and improve performance. This may include refining batch request sizes to improve latency, improving error handling, or adjusting request patterns to avoid rate limits.
+
+---
+
+## Checkpoint + Next Step
+<!-- theme: success -->
+> After completing this step, you should be equipped to preemptively identify and address potential issues in your application and your Finch integration, helping you get the most value from Finch's services. Now that you have an application that is connected, secure, and optimized, it is time to deploy your application. Our next guide will walk you through a comprehensive [go-live checklist](/docs/Implementation-Guide/Deploy/Go-Live-Checklist.md) to ensure a seamless launch.
+
+## Learn more
+
+- [Finch Status Updates](https://status.tryfinch.com)
