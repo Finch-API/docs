@@ -1,0 +1,120 @@
+---
+stoplight-id: dzz7ynlx2cpht
+---
+
+# Finch Developer FAQs
+
+### Products & Integrations
+
+- [Finch Developer FAQs](#finch-developer-faqs)
+    - [Products \& Integrations](#products--integrations)
+    - [API \& Data Model](#api--data-model)
+    - [Employers \& Connections](#employers--connections)
+    - [Security](#security)
+  - [Answers](#answers)
+    - [Can you describe Automated vs Assisted connections?](#can-you-describe-automated-vs-assisted-connections)
+    - [Why are some Finch API endpoints GET requests while others are POST requests?](#why-are-some-finch-api-endpoints-get-requests-while-others-are-post-requests)
+    - [Does Finch display payments to business/vendor subcontractors?](#does-finch-display-payments-to-businessvendor-subcontractors)
+    - [How can I determine the “Payroll Close Date”?](#how-can-i-determine-the-payroll-close-date)
+    - [How is the data returned by Finch validated for accuracy?](#how-is-the-data-returned-by-finch-validated-for-accuracy)
+    - [Can I bypass the provider selection screen in Finch Connect?](#can-i-bypass-the-provider-selection-screen-in-finch-connect)
+    - [How long is the access token lifetime?](#how-long-is-the-access-token-lifetime)
+    - [How does Finch encrypt data? What type of encryption is used?](#how-does-finch-encrypt-data-what-type-of-encryption-is-used)
+
+### API & Data Model
+
+- [How is the data returned by Finch validated for accuracy?](#how-is-the-data-returned-by-finch-validated-for-accuracy)
+
+### Employers & Connections
+
+- [Can I bypass the provider selection screen in Finch Connect?](#can-i-bypass-the-provider-selection-screen-in-finch-connect)
+
+### Security
+
+- [How long is the access token lifetime?](#how-long-is-the-access-token-lifetime)
+- [How does Finch encrypt data? What type of encryption is used?](#how-does-finch-encrypt-data-what-type-of-encryption-is-used)
+
+
+## Answers
+
+### Can you describe Automated vs Assisted connections?
+
+- Finch offers a Unified Employment API to any employment system meaning that the developer is only ever interacting with our single API to GET or POST data to any provider.
+- Depending on which provider is set up, Finch will do one of two things:
+- If the provider supplies an *automated* API, Finch will instantaneously access the data and return it.
+- If the provider has not built an API to access their data easily, a real Finch employee will *assist* in getting this data manually by contacting and retrieving the requested data on a scheduled basis (usually one week) and uploading it so it can be returned instantaneously on every subsequent call. The process of getting this set up for the first time is a few weeks. After the initial setup, new employee data will be refreshed every week without the need to be involved.
+- Our Assisted Connections are particularly powerful since they allow the developer to only interact with Finch APIs without having to deal with SFTP servers, report uploads, or other synchronous data updates for each provider supported. Therefore, your team does not need to build a product operations team that has to filter, map, or ingest data in system-specific formats; Finch does this for you. No other platform offers this level of service and allows for a high level of coverage that would take years to build in-house.
+
+---
+
+### Why are some Finch API endpoints GET requests while others are POST requests?
+
+- In the Finch API, some endpoints are GET requests (/company and /directory endpoints) while some are POST requests (/individual and /employment endpoints)
+- They are POSTs because a request body containing ids needs to be sent.
+- Additionally, the `/individual`, `/employment`, and `/pay-statement` endpoints are special because they are “batch” endpoints, meaning you can send as many ids as you want in the body, and get a single response back containing the information for as many individuals/pay-statements as you sent. Query parameters can’t handle 1000 ids in the URL, hence the need for POSTs using request bodies.
+
+---
+
+### Does Finch display payments to business/vendor subcontractors?
+
+- No, Finch only includes payments to persons who show up in the employee directory with an associated individual_id. This applies across all providers.
+
+---
+
+### How can I determine the “Payroll Close Date”?
+
+- It is usually 1-2 days after payroll end date between `end_date` and `debit_date`.
+
+---
+
+### How is the data returned by Finch validated for accuracy?
+
+Finch looks at two broad categories when defining data quality:
+
+  1. rate of `NULL` fields when values exist in the system and 
+  2. rate of incorrect fields. Measuring the rate at which we return value = `NULL` can be potentially indicative of 4 things: 
+      - The data is unavailable in the system — not a Finch error 
+      - The data is available in the system, but the format does not cleanly fit our endpoint — error
+      - We parsed the wrong field and the data we parsed does not fit the expected format — error
+      - We parsed information, but we did not know how to classify it — error
+
+- The goal is to decrease the rate of `NULL` over time; if the data is available in the provider’s system, Finch should be returning that data. Keep in mind that the status of an employee (full-time vs contractor) can also affect which fields return NULL.
+- Finch defines the “rate of incorrect data” as data that does not match what is reported in the provider’s system. This could either mean the field returns blank indicating a potential bug in our code (e.g.: a pay statement array returns empty), or the field returns a value that does not reflect what is reported in the system. We have an internal dashboard where we track data field coverage and correctness in real-time. We have alerts defined to notify us of any anomalies detected which we proactively investigate and fix.
+- There are several ways developers can validate data coming from Finch:
+    1. Implementing “quality checks” on all pay statements to make sure financial data is not missing, duplicated, or inaccurate.
+    2. Running a series of “blind” audits on a semi-regular schedule. The audits should focus on the two categories mentioned above: rate of nulls and the rate of incorrect data. Employee employment status, currency amounts, and field type categorizations are important data points to watch.
+- There are two ways to conduct an audit of Finch data:
+    1. The data returned from Finch is compared with previous Finch-connected employer data that have similar providers, use cases, and sizes. Any discrepancies are alerted to Finch. This method is beneficial if you have thorough historical data to pull from. 
+    2. If you do not have enough historical data to use, the data returned from Finch can be compared directly with the data in the provider’s system. This method requires contacting the employer and asking either pointed questions about possible data discrepancies or exchanging data extensively.
+- Similarly, if a customer notices a potential data discrepancy, building and including a way for customers to report errors to you is also beneficial. Any errors reported to you can be directly forwarded to Finch for internal investigation.
+- While we don’t ever want inaccurate data returned by our API, we are committed to fixing any errors rapidly and continue to proactively invest in automated tests, checks, and audits internally to catch any data quality errors proactively.
+- If there are any audits or data fields that are important to your business, we want to hear from you so that we can better support you.
+
+---
+
+### Can I bypass the provider selection screen in Finch Connect?
+
+- You can [bypass the provider screen](/docs/Implementation-Guide/Optimize/Increase-Employer-Adoption.md) if you already know the provider name by passing `payroll_provider=<your_provider_name>` into the `/authorize` url when opening Finch Connect.
+
+---
+
+### How long is the access token lifetime?
+
+- A Finch `access_token` lifetime is infinite; it does not expire⁠, unless you [disconnect](/docs/Implementation-Guide/Secure/Disconnect-Tokens.md) it. If a `401 Re-authentication` error is received (either by a user changing their security setting or an employment system makes an infrastructure change), Finch’s connection can get disconnected, which requires a user to [reauthenticate](/docs/Implementation-Guide/Optimize/Mitigate-Errors.md) and a new Finch access_token will be created and sent back to your app. 
+
+---
+
+### How does Finch encrypt data? What type of encryption is used?
+
+- Finch utilizes various encryption protocols to protect data at rest and in transit.
+  - **Encryption at rest** — All data in our datastores are encrypted using AES-256 with keys managed via AWS KMS.
+  - **Encryption in transit** — All data to or from the Finch infrastructure is encrypted in transit using TLS 1.2.
+  - **Application-level encryption** — Other Highly Restricted fields are additionally encrypted at the application level using AES-256.
+
+         ,MMM8&&&.
+    _...MMMMM88&&&&..._
+ .::'''MMMMM88&&&&&&'''::.
+::     MMMMM88&&&&&&     ::
+'::....MMMMM88&&&&&&....::'
+   `''''MMMMM88&&&&''''`
+   jgs   'MMM8&&&'

@@ -1,0 +1,134 @@
+---
+stoplight-id: x0h6mfmxddhll
+---
+
+# Enable Social Security Number (SSN) Field
+
+<!-- theme: danger -->
+> SSN is a secure field in the Finch API. Your use case needs to be approved by your Developer Success Representative before enabling. However, you can test SSN via the [Finch Sandbox](/docs/Implementation-Guide/Test/Finch-Sandbox.md) without any approval.
+
+Finch returns Social Security Number (SSN) as a field in the [/individual](https://developer.tryfinch.com/docs/reference/9d6c83b09e205-individual) endpoint. However, the SSN field is not returned by default; you must enable it first.
+
+To enable SSN, the `ssn` product scope (along with `individual`) must be included in the `/authorize` URL when launching Finch Connect. This ensures that the connection's access tokens that are generated are capable of accessing this field.
+
+
+## Authorization
+
+Make sure to include the `ssn` scope in your authorization URL.
+
+```bash
+https://connect.tryfinch.com/authorize?
+&client_id=<your_client_id>
+&products=company%20directory%20individual%20employment%20payment%20pay_statement%20ssn
+&redirect_uri=https://example.com
+&sandbox=true
+```
+
+## Request
+```bash
+curl https://api.tryfinch.com/employer/individual \
+-H "Authorization: Bearer {token}" \
+-H "Finch-API-Version: 2020-09-17" \
+-X "POST" \
+-H "Content-Type: application/json" \
+-d '{
+  "options": {
+    "include": ["ssn"]
+  },
+  "requests": [{ "individual_id": "f3ddb1f4-dfa4-4e1d-bfed-bdfd0645b613"}]
+}'
+```
+
+## Response
+
+SSN values returned from the Finch API can either be in raw or encrypted format, depending on the provider. Please refer to each provider's field support documentation for details on whether SSN is supported in raw or encrypted format, including how to decrypt encrypted values. If you require further assistance, reach out to your Finch Developer Success representative. 
+
+### Response with Raw SSN
+
+```json
+{
+  "responses": [
+    {
+      "individual_id": "f3ddb1f4-dfa4-4e1d-bfed-bdfd0645b613",
+      "code": 200,
+      "body": {
+        "id": "f3ddb1f4-dfa4-4e1d-bfed-bdfd0645b613",
+        "ssn": "143782004", // Don't worry, this value is not a real SSN
+        "encrypted_ssn": null,
+        "first_name": "Angelica",
+        "middle_name": "Aretha",
+        "last_name": "Flatley",
+        "preferred_name": null,
+        "dob": "1968-05-15",
+        "emails": [
+          {
+            "data": "Angelica.Flatley18@impressive-coinsurance-inc.com",
+            "type": "work"
+          }
+        ],
+        "phone_numbers": [
+          {
+            "data": "098-478-0472",
+            "type": "work"
+          }
+        ],
+        "gender": "female",
+        "ethnicity": "hispanic_or_latino",
+        "residence": {
+          "line1": "341 Kuphal Lodge",
+          "line2": "Suite 896",
+          "city": "Swiftshire",
+          "state": "AL",
+          "postal_code": "83712-2670",
+          "country": "US"
+        }
+      }
+    }
+  ]
+}
+```
+
+### Response with Encrypted SSN
+
+```bash
+{
+  "responses": [
+    {
+      "individual_id": "f3ddb1f4-dfa4-4e1d-bfed-bdfd0645b613",
+      "code": 200,
+      "body": {
+        "id": "f3ddb1f4-dfa4-4e1d-bfed-bdfd0645b613",
+        "ssn": null,
+        "encrypted_ssn": "vlIRzYJ5jk3TDanW3T0Fg2cVyHXPvBbtm.zymmLpbVlrnDUsaW0kbmNnkneTyYJRsJKozu", // This value will need to be decrypted to attain the raw SSN value
+        "first_name": "Angelica",
+        "middle_name": "Aretha",
+        "last_name": "Flatley",
+        "preferred_name": null,
+        "dob": "1968-05-15",
+        "emails": [
+          {
+            "data": "Angelica.Flatley18@impressive-coinsurance-inc.com",
+            "type": "work"
+          }
+        ],
+        "phone_numbers": [
+          {
+            "data": "098-478-0472",
+            "type": "work"
+          }
+        ],
+        "gender": "female",
+        "ethnicity": "hispanic_or_latino",
+        "residence": {
+          "line1": "341 Kuphal Lodge",
+          "line2": "Suite 896",
+          "city": "Swiftshire",
+          "state": "AL",
+          "postal_code": "83712-2670",
+          "country": "US"
+        }
+      }
+    }
+  ]
+}
+```

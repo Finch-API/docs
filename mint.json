@@ -93,6 +93,21 @@
           ]
         },
         {
+          "group": "Developer Resources",
+          "pages": [
+            "developer-resources/SDKs",
+            "developer-resources/Webhooks",
+            "developer-resources/Request-Forwarding",
+            "developer-resources/Data-Syncs",
+            "developer-resources/Rate-Limits",
+            "developer-resources/Reauthentication",
+            "developer-resources/Reconcile-Employees",
+            "developer-resources/Enable-SSN-Field",
+            "developer-resources/Calculating-YTD-Gross-Wages",
+            "developer-resources/Developer-FAQs"
+          ]
+        },
+        {
             "group": "Organization",
             "pages": [
               "api-reference/1-organization/company",
