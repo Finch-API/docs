@@ -1,0 +1,55 @@
+---
+title: "Deductions"
+description: "Manage the full lifecycle of deductions and contributions for employers"
+---
+
+## Deductions Product Overview
+
+Finch’s Deductions product helps you manage deductions and contributions for your clients seamlessly through our unified API. You can make adjustments to an employee’s payroll directly from Finch, simplifying the process for you, your employers, and their employees. You can also retrieve benefit deductions and contributions information for select payroll systems to provide administration services or surface the information in your own dashboards.
+
+Using Deductions, you don’t need to set up SFTP or file exchange processes with individual payroll systems. Finch manages the complexity of translating your data so you can integrate with and manage your deductions with one set of endpoints. As a result, you're able to save employers (ie. sponsors) time and resources by removing much of the manual processes required to manage data between systems of record.
+
+We suggest combining the Deductions product with [Organization](/docs/Products/Organization/Overview.md) and [Payroll](/docs/Products/Pay/Overview.md) for end-to-end control over the deductions process. The Organization and Payroll products offer visibility into changes in employment and pay data, while the Deductions product helps you control those pay changes.
+
+### Get deductions data
+
+Deductions information can be retrieved from the payroll system Finch to supplement your own products. Different types of data can be returned to help facilitate your exact use case:
+
+- Get information associated with a specific deduction you manage in the payroll system
+- Get all company-level benefits for that employer
+- Get employees enrolled in a particular benefits
+- Get deductions and contributions for a given employee
+
+Note that the availability of this data is subject to the payroll provider - reference the `/providers` endpoint for a full set of capabilities per provider.
+
+### Enroll individuals in deductions and contributions
+
+To enroll individuals into benefit deductions and contributions, you'll need to write to the payroll system. Depending on your use case, you can:
+
+- Create a company-level deduction category for an employer in the payroll system
+- Create an enrollment for an individual employee
+- Update an existing deduction category
+
+## Set up your first connection
+
+We suggest selecting an automated integration for your first connection, which does not require a [configuration period](docs/Integrations/Integration-Types.md#configuration-periods). Navigate to our [Providers](docs/Integrations/Providers.md) page to find an employment system that supports our Deductions product. Then, follow the steps below:
+
+1. Identify the payroll system’s capabilities via the `/providers` endpoint, such as the types of benefits supported, response times, and other details.
+2. Add the new payroll system(s) in the Finch Connect SDK to retrieve the necessary credentials or tokens from the employer.
+3. Surface Finch Connect to your relevant clients to grant Finch access to the necessary payroll system.
+4. Confirm the necessary permissions are obtained by Finch via the `/introspect` endpoints.
+5. Start sending Deductions requests for the new payroll system.
+6. Check connection statuses and updates on the dashboard.
+
+Learn more about [implementing Deductions](docs/Implementation-Guide/Communicate/Write-Data.md).
+
+## Deductions Use Cases
+The ability to write contributions and deductions back to payroll is a powerful tool for many different B2B use cases. Find a few examples of how Finch customers leverage our Deductions product below.
+
+* [**Retirement & 401K**](https://www.tryfinch.com/solutions/employee-benefits#use-cases) - Help customers quickly set up and update 401k contributions
+* [**Health Benefits**](https://www.tryfinch.com/solutions/employee-benefits#use-cases) - Write pre- and post-tax deductions directly to the payroll system
+* [**Emergency Savings Funds**](https://www.tryfinch.com/solutions/employee-benefits#use-cases) - Help employees create a safety blanket by contributing directly from their paychecks
+* [**Fringe Benefits**](https://www.tryfinch.com/solutions/employee-benefits#use-cases) - Offer and deploy custom benefits suited for your customers
+* [**Expense Management**](https://www.tryfinch.com/solutions/employee-benefits#use-cases) - Reimburse employees through payroll contributions
+
+Curious if Deductions is the right product for you? Reach out to developers@tryfinch.com or [contact us](https://www.tryfinch.com/sales). 

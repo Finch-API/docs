@@ -1,0 +1,200 @@
+---
+stoplight-id: z9ssyh7davpgw
+---
+
+# Write Benefits Data Using Async APIs
+
+The [Benefits](https://developer.tryfinch.com/docs/documentation/sk5k4fx5x9c7m-benefits) API allows developers to write [contributions](/docs/Get-Started/Employment-API-Glossary.md#contribution) and [deductions](/docs/Get-Started/Employment-API-Glossary.md#deduction) across payroll providers for retirement, medical, and fringe benefits using our unified API.
+
+The API allows you to:
+
+- Create, read, and update benefits at the company-level
+- Manage enrollment amounts for company benefits at the employee-level
+
+> Not every use case will require the ability to write benefits and enrollments back to the payroll provider. If you have any questions regarding your use case, please contact your Finch Developer Success representative.
+
+## Setup
+
+There are several steps you should take to ensure a smooth Benefits onboarding experience before beginning implementation.
+
+### Using benefits metadata
+
+The types and features of each benefit can vary between payroll systems. For this reason, we provide a `benefits_support` field on the  [`/providers`](https://developer.tryfinch.com/docs/reference/1e18fe9cc1c67-providers) endpoint, which will return the available benefit types and features for each payroll provider. If you try to make a request using an access token that does not allow a certain configuration or benefit type, our API will respond with a 400 or 422 status code (see [Errors](https://developer.tryfinch.com/docs/reference/1f80003f67f0d-error-types)), depending on the specific error. This endpoint can help you avoid those errors by understanding beforehand what types of requests you can make.
+
+This information is also available in [our provider documentation](/docs/Integrations/Providers.md).
+
+### Preparing for provider limitations
+
+Providers have varying limitations on which operations are available and which actions can be performed via the Finch Benefits API.
+
+For example, you should be prepared for providers which do not allow for automatic benefit creation (Paychex Flex, Paycom, Trinet, etc. ) and design your workflow to accommodate those cases. As Finch encounters new provider limitations, we add them to our [Provider Field Support](/docs/Integrations/Providers.md). For each of the limited providers, you should confirm with the employer that the correct benefits are set up in their system prior to enrolling individuals through Finch.
+
+If you try to enroll an employee in a benefit that is not set up, you may receive a `422` response code from Finch indicating that the benefit is not set up by the employer. In these cases, you should reach back out to the employer to ensure the benefits have been correctly set up.
+
+
+## Getting and Creating Company Benefits
+
+Our API allows you to both [create new benefits](https://developer.tryfinch.com/docs/reference/07gjv57sxbqh7-create-benefit) in a payroll system and [get existing benefits](https://developer.tryfinch.com/docs/reference/b3A6MTg4Mzc2MTg-get-all-benefits) from the system. Both of these requests will respond with a `benefit_id` in the response body. For example, a creation request will respond with:
+
+```json
+{
+  "benefit_id": "e8b90071-0c11-471c-86e8-e303ef2f6782",
+  "job_id": "54ae304a-d8fc-49cf-b5db-a9ecd85b11ab"
+}
+
+```
+
+You can use this `benefit_id` to perform enrollment, un-enrollment, and benefit retrieval actions on individuals.
+
+
+## Enrolling and Unenrolling Individuals
+
+### Creating new enrollments
+
+Enrolling a new individual is as simple as using the `benefit_id` returned from the company benefits endpoints above, and using it in a [`POST /benefits/{benefit_id}/individuals`](https://developer.tryfinch.com/docs/reference/s8q3gsrobqklj-enroll-individuals-in-benefits) request. In the body, you should provide a list of objects which specify the enrollment, one per individual. Each object should contain a flexible `configuration` object which specifies the enrollment configuration to apply to that individual. The schema of the configuration varies depending on the type of benefit you are enrolling, so please refer to the docs to ensure you are using the right schema.
+
+### Updating existing enrollments
+
+To update enrollment configurations for currently enrolled individuals, you can use the same `POST /benefits/{benefit_id}/individuals` endpoint that you use to enroll new individuals. When updating an existing enrollment for an individual, the enrollment configuration will be completely overwritten with the new configuration provided in the request, so please make sure to include the entire desired configuration. Since they both use the same endpoint, these update requests can be submitted in the same batch request as new enrollment requests.
+
+### Un-enrolling individuals
+
+You can unenroll individuals by using the [`DELETE /benefits/{benefit_id}/individuals`](https://developer.tryfinch.com/docs/reference/2bw7fbt8fztyx-unenroll-individuals-from-benefits) endpoint. This will remove the enrollment configuration for an individual.
+
+
+## Read and Write Behavior
+
+Write requests will be fulfilled asynchronously, while read requests are serviced synchronously.
+
+### Reading Benefits
+
+Note that because read requests are serviced synchronously, response times will vary. Depending on the payroll provider, you may experience latencies on the order of minutes.
+
+- `GET /employer/benefits` to list all company-wide benefits
+- `GET /employer/benefits/{benefit_id}` to list benefit information for a given benefit
+- `GET /employer/benefits/{benefit_id}/enrolled` to list individuals currently enrolled in a given benefit
+- `GET /employer/benefits/{benefits_id}/individuals` to get enrollment information for given individuals
+
+### Writing Benefits
+
+- `POST /employer/benefits` to create a new benefit
+- `POST /employer/benefits/{benefit_id}/individuals` to create or update enrollment(s) in an existing benefit
+- `POST /employer/benefits/{benefit_id}` to update an existing benefit
+- `GET /employer/benefits/meta` to list the available benefit types and configurations for the provider associated with the access token
+- `DELETE /employer/benefits/{benefit_id}/individuals`* to unenroll individuals from a benefit
+
+
+The response you receive from the **write** endpoints will contain a `job_id`. Using this `job_id`, you can poll  `GET /jobs/manual/{job_id}` to check the status of the job. Valid job status responses are either `pending`, `in_progress`, `complete`, or `error` with a response body containing further details.
+
+Example `POST /employer/benefits` response:
+
+```json
+{
+  "benefit_id": "264122c0-0216-4f21-a4cd-7b3bcddbe3fc",
+  "job_id": "497d98f3-580a-4ab9-830a-af2346d029b2"
+}
+
+```
+
+Example `POST /employer/benefits/{benefit_id}/individuals` response:
+
+```json
+{
+  "job_id": "3a82a144-d168-4207-942a-a5852b11df1c"
+}
+
+```
+
+This will be the same for `DELETE /employer/benefits/{benefit_id}/individuals`.
+
+Example `GET /jobs/manual/{job_id}` response after initial job submission:
+
+```json
+{
+  "job_id": "3a82a144-d168-4207-942a-a5852b11df1c",
+  "status": "pending"
+}
+
+```
+
+Example `GET /jobs/manual/{job_id}` response after job is completed for a `POST /employer/benefits/individuals` request with multiple individuals:
+
+```json
+{
+  "job_id": "3a82a144-d168-4207-942a-a5852b11df1c",
+  "status": "complete",
+  "body": [
+    {
+      "individual_id": "430f9d95-1dcf-4b99-b616-45f814416890",
+      "code": 201,
+      "message": "Successfully enrolled individual in benefit",
+    },
+    {
+      "individual_id": "647975ac-1e0f-4e9c-b705-e3042da48581",
+      "code": 200,
+      "message": "Successfully updated enrollment for individual",
+    },
+    {
+      "individual_id": "4a0a3b15-d3d6-41c2-a4a4-ca4ed1b68cf8",
+      "code": 404,
+      "message": "Individual not found"
+    },
+    ...
+  ]
+}
+
+```
+
+
+## Handling Failures
+
+Managing benefits is a time and money-sensitive activity. Therefore, in the unlikely event that a benefit request through Finch fails, we recommend that your team have a process in place to handle enrollments or to inform employers. We recommend leaving adequate buffer between request submission via Finch and payroll cutoff dates to account for time to address issues. Our recommendation is that you submit a request prior to at least 24 hours between completing the processing through Finch and the actual cutoff date.
+
+Enrollment and un-enrollment requests and responses are batched. This means that, within the same request batch, some enrollments/un-enrollments could succeed while others fail.
+
+You should inspect the `body` object of the response to `/jobs/manual/{job_id}` to discern failures. Note that the top-level response status code will be a `207`, but may include individual errors. Example:
+
+```json title=Top-level status code: 207
+{
+  "job_id": "497d98f3-580a-4ab9-830a-af2346d029b2",
+  "status": "complete",
+  "body": [
+    {
+      "individual_id": "430f9d95-1dcf-4b99-b616-45f814416890",
+      "code": 500,
+      "message": "Internal server error"
+    },
+    {
+      "individual_id": "647975ac-1e0f-4e9c-b705-e3042da48581",
+      "code": 404,
+      "message": "Individual not found"
+    }
+  ]
+}
+```
+
+## General Benefits Schedule
+
+Since enrolling benefits can be a sensitive activity, it is helpful to understand some of the nuances around payroll and benefits in general.
+
+### How do payroll benefit deductions work?
+
+Each payroll contains four important dates to know.
+
+1. **Payroll Start Date** - The first day of the pay period
+2. **Payroll End Date** - The last day of the pay period
+3. **Payroll Close Date** - The last date to make changes for that pay period
+4. **Paycheck Date** - The date on which employees are paid
+
+When considering benefits, it is important to submit any employee benefit changes before the pay close date in order to take affect for the current pay period. If any changes are submitted after the payroll close date, they will only affect the next pay period, not the current. Since each payroll close date is different per provider, it is important to know this date and set proper expectations with your customers.
+
+Some payroll providers offer a dedicated payroll representative to help with making payroll changes. If a payroll rep is helping your customer’s HR admin with changes in their system, it is important that you make it explicitly clear who does what so that the payroll rep does not overwrite any changes Finch has previously made. Calling out Benefit Code types and using thoughtful benefit descriptions (e.g. with your company name) help.
+
+---
+<!-- theme: success -->
+> ### Checkpoint + Next Step
+> At this point, you should have a good understanding of how to utilize the Finch Benefits API to create benefits manage employee enrollments in a robust manner accommodating various provider limitations. Now that you have everything in place for full 360° read/write integrations, you can begin to [test your Finch integration](/docs/Implementation-Guide/Test/Testing-Plan.md) to ensure reliability, accuracy, and performance over time.
+
+## Learn more
+- [Benefits API](/docs/Products/Benefits/Overview.md)
+- [Supported Benefits Providers](/docs/Integrations/Providers.md)
