@@ -1,0 +1,49 @@
+# Gusto SSN Decryption Guide
+
+SSN values returned from the Finch API are encrypted using the `xsalsa20poly1305` authenticated encryption cipher. Gusto will directly provide each developer with a unique decryption key that can be used to decrypt SSNs back into their raw plaintext format.
+
+Below are code snippets that demonstrate how you can facilitate this decryption process using your decryption key.
+
+<!--
+type: tab
+title: Python
+-->
+```python
+from base64 import urlsafe_b64decode
+from nacl.encoding import URLSafeBase64Encoder
+from nacl.secret import SecretBox
+
+ssn = "<encrypted_ssn_returned_from_api>"
+decryption_key = "<decryption_key_from_gusto>"
+
+secret_parts = ssn.split(".", 2)
+nonce = urlsafe_b64decode(secret_parts[0])
+ciphertext = urlsafe_b64decode(secret_parts[1])
+box = SecretBox(decryption_key, URLSafeBase64Encoder)
+ssn_bytes = box.decrypt(ciphertext, nonce)
+ssn = ssn_bytes.decode('utf-8')
+
+print(ssn)
+```
+
+<!--
+type: tab
+title: JavaScript
+-->
+```js
+const nacl = require('tweetnacl');
+
+const ssn = '<encrypted_ssn_returned_from_api>'
+const decryptionKey = '<decryption_key_from_gusto>'
+
+const [nonceBase64, cipherBase64] = ssn.split('.', 2)
+const nonce = new Uint8Array(Buffer.from(nonceBase64, 'base64'));
+const encryptedMessage = new Uint8Array(Buffer.from(cipherBase64, 'base64'));
+const keyBinary = new Uint8Array(Buffer.from(decryptionKey, 'base64'));
+const decryptedMessage = nacl.secretbox.open(encryptedMessage, nonce, keyBinary);
+const textDecoder = new TextDecoder('utf-8');
+const decodedString = textDecoder.decode(decryptedMessage);
+
+console.log(decodedString)
+```
+<!-- type: tab-end -->
