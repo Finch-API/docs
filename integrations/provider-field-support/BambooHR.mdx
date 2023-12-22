@@ -1,0 +1,301 @@
+---
+stoplight-id: 1lqvti99rha8d
+---
+
+# Bamboo HR
+
+<!--## Initial Integration Set Up [uncomment to add section]-->
+
+<!--## Employer Onboarding [uncomment to add section]-->
+
+## Product Field Support
+
+### Organization
+
+<!--
+type: tab
+title: Credentials
+-->
+Field support for employers authenticating with credentials
+<details style="color:#737373;padding-bottom:0.6em">
+<summary><h4 style="display:inline">Company</strong></summary>
+
+  Field | Support
+  ---- | -----
+  `id` | <strong><span style="color:green">✓</span></strong>
+  `legal_name` | <strong><span style="color:green">✓</span></strong>
+  `entity.type` | <strong><span style="color:green">✓</span></strong>
+  `entity.subtype` | <strong><span style="color:green">✓</span></strong>
+  `primary_email` | <strong><span style="color:green">✓</span></strong>
+  `primary_phone_number` | <strong><span style="color:green">✓</span></strong>
+  `ein` | <strong><span style="color:green">✓</span></strong>
+  `departments[].name` | <strong><span style="color:green">✓</span></strong>
+  `departments[].parent`| <strong><span style="color:green">✓</span></strong>
+  `departments[].parent.name`| <strong><span style="color:green">✓</span></strong>
+  `locations[].line1` | <strong><span style="color:green">✓</span></strong>
+  `locations[].line2` | <strong><span style="color:green">✓</span></strong>
+  `locations[].city` | <strong><span style="color:green">✓</span></strong>
+  `locations[].state` | <strong><span style="color:green">✓</span></strong>
+  `locations[].postal_code` | <strong><span style="color:green">✓</span></strong>
+  `locations[].country` | <strong><span style="color:green">✓</span></strong>
+  `accounts[].routing_number` | <strong><span style="color:green">✓</span></strong>
+  `accounts[].account_name` | <strong><span style="color:green">✓</span></strong>
+  `accounts[].institution_name` | <strong><span style="color:green">✓</span></strong>
+  `accounts[].account_type` | <strong><span style="color:green">✓</span></strong>
+  `accounts[].account_number` | <strong><span style="color:green">✓</span></strong>
+
+</details>
+
+<details style="color:#737373;padding-bottom:0.6em">
+<summary><h4 style="display:inline">Directory</strong></summary>
+
+  Field | Support
+  --- | ---
+  `id` | <strong><span style="color:green">✓</span></strong>
+  `first_name` | <strong><span style="color:green">✓</span></strong>
+  `middle_name` | <strong><span style="color:green">✓</span></strong>
+  `last_name` | <strong><span style="color:green">✓</span></strong>
+  `manager.id` | <strong><span style="color:green">✓</span></strong>
+  `department.name` | <strong><span style="color:green">✓</span></strong>
+  `is_active` | <strong><span style="color:green">✓</span></strong>
+
+</details>
+
+<details style="color:#737373;padding-bottom:0.6em">
+<summary><h4 style="display:inline">Individual</strong></summary>
+
+  Field | Support
+  --- | ---
+  `id` | <strong><span style="color:green">✓</span></strong>
+  `first_name` | <strong><span style="color:green">✓</span></strong>
+  `middle_name` | <strong><span style="color:green">✓</span></strong>
+  `last_name` | <strong><span style="color:green">✓</span></strong>
+  `preferred_name` | <strong><span style="color:green">✓</span></strong>
+  `emails[].data` | <strong><span style="color:green">✓</span></strong>
+  `emails[].type` | <strong><span style="color:green">✓</span></strong>
+  `phone_numbers[].data` | <strong><span style="color:green">✓</span></strong>
+  `phone_numbers[].type` | <strong><span style="color:green">✓</span></strong>
+  `dob` | <strong><span style="color:green">✓</span></strong>
+  `residence.line1` | <strong><span style="color:green">✓</span></strong>
+  `residence.line2` | <strong><span style="color:green">✓</span></strong>
+  `residence.city` | <strong><span style="color:green">✓</span></strong>
+  `residence.state` | <strong><span style="color:green">✓</span></strong>
+  `residence.postal_code` | <strong><span style="color:green">✓</span></strong>
+  `residence.country` | <strong><span style="color:green">✓</span></strong>
+  `gender` | <strong><span style="color:green">✓</span></strong>
+  `ethnicity` | <strong><span style="color:green">✓</span></strong>
+  `ssn` | <strong><span style="color:green">✓</span></strong>
+  `encrypted_ssn` | <strong><span style="color:grey">-</span></strong>
+
+</details>
+
+<details style="color:#737373;padding-bottom:0.6em">
+<summary><h4 style="display:inline">Employment</strong></summary>
+
+
+  Field | Support
+  --- | ---
+  `id` | <strong><span style="color:green">✓</span></strong>
+  `source_id` | <strong><span style="color:green">✓</span></strong>
+  `first_name` | <strong><span style="color:green">✓</span></strong>
+  `middle_name` | <strong><span style="color:green">✓</span></strong>
+  `last_name` | <strong><span style="color:green">✓</span></strong>
+  `title` | <strong><span style="color:green">✓</span></strong>
+  `manager.id` | <strong><span style="color:green">✓</span></strong>
+  `department.name` | <strong><span style="color:green">✓</span></strong>
+  `employment.type` | <strong><span style="color:green">✓</span></strong>
+  `employment.subtype` | <strong><span style="color:green">✓</span></strong>
+  `start_date` | <strong><span style="color:green">✓</span></strong>
+  `end_date` | <strong><span style="color:green">✓</span></strong>
+  `is_active` | <strong><span style="color:green">✓</span></strong>
+  `location.line1` | <strong><span style="color:green">✓</span></strong>
+  `location.line2` | <strong><span style="color:green">✓</span></strong>
+  `location.city` | <strong><span style="color:green">✓</span></strong>
+  `location.state` | <strong><span style="color:green">✓</span></strong>
+  `location.postal_code` | <strong><span style="color:green">✓</span></strong>
+  `location.country` | <strong><span style="color:green">✓</span></strong>
+  `income.unit` | <strong><span style="color:green">✓</span></strong>
+  `income.amount` | <strong><span style="color:green">✓</span></strong>
+  `income.currency` | <strong><span style="color:green">✓</span></strong>
+  `income_history` | <strong><span style="color:green">✓</span></strong>
+  `class_code` | <strong><span style="color:grey">-</span></strong>
+  `custom_fields` | <strong><span style="color:grey">-</span></strong>
+
+</details>
+
+
+<!--
+type: tab
+title: API
+-->
+Field support for employers authenticating via API
+<details style="color:#737373;padding-bottom:0.6em">
+<summary><h4 style="display:inline">Company</strong></summary>
+
+
+  Field | Support
+  ---- | -----
+  `id` | <strong><span style="color:grey">-</span></strong>
+  `legal_name` | <strong><span style="color:grey">-</span></strong>
+  `entity.type` | <strong><span style="color:grey">-</span></strong>
+  `entity.subtype` | <strong><span style="color:grey">-</span></strong>
+  `primary_email` | <strong><span style="color:grey">-</span></strong>
+  `primary_phone_number` | <strong><span style="color:grey">-</span></strong>
+  `ein` | <strong><span style="color:grey">-</span></strong>
+  `departments[]` | <strong><span style="color:grey">-</span></strong>
+  `departments[].parent`|
+  `departments[].parent.name` | <strong><span style="color:grey">-</span></strong>
+  `locations[].line1` | <strong><span style="color:grey">-</span></strong>
+  `locations[].line2` | <strong><span style="color:grey">-</span></strong>
+  `locations[].city` | <strong><span style="color:grey">-</span></strong>
+  `locations[].state` | <strong><span style="color:grey">-</span></strong>
+  `locations[].postal_code` | <strong><span style="color:grey">-</span></strong>
+  `locations[].country` | <strong><span style="color:grey">-</span></strong>
+  `accounts[].routing_number` | <strong><span style="color:grey">-</span></strong>
+  `accounts[].account_name` | <strong><span style="color:grey">-</span></strong>
+  `accounts[].institution_name` | <strong><span style="color:grey">-</span></strong>
+  `accounts[].account_type` | <strong><span style="color:grey">-</span></strong>
+  `accounts[].account_number` | <strong><span style="color:grey">-</span></strong>
+
+</details>
+
+<details style="color:#737373;padding-bottom:0.6em">
+<summary><h4 style="display:inline">Directory</strong></summary>
+
+  Field | Support
+  --- | ---
+  `id` | <strong><span style="color:green">✓</span></strong>
+  `first_name` | <strong><span style="color:green">✓</span></strong>
+  `middle_name` | <strong><span style="color:green">✓</span></strong>
+  `last_name` | <strong><span style="color:green">✓</span></strong>
+  `manager.id` | <strong><span style="color:green">✓</span></strong>
+  `department.name` | <strong><span style="color:green">✓</span></strong>
+  `is_active` | <strong><span style="color:green">✓</span></strong>
+
+</details>
+
+<details style="color:#737373;padding-bottom:0.6em">
+<summary><h4 style="display:inline">Individual</strong></summary>
+
+  Field | Support
+  --- | ---
+  `id` | <strong><span style="color:green">✓</span></strong>
+  `first_name` | <strong><span style="color:green">✓</span></strong>
+  `middle_name` | <strong><span style="color:green">✓</span></strong>
+  `last_name` | <strong><span style="color:green">✓</span></strong>
+  `preferred_name` | <strong><span style="color:green">✓</span></strong>
+  `emails[].data` | <strong><span style="color:green">✓</span></strong>
+  `emails[].type` | <strong><span style="color:green">✓</span></strong>
+  `phone_numbers[].data` | <strong><span style="color:green">✓</span></strong>
+  `phone_numbers[].type` | <strong><span style="color:green">✓</span></strong>
+  `dob` | <strong><span style="color:green">✓</span></strong>
+  `residence.line1` | <strong><span style="color:green">✓</span></strong>
+  `residence.line2` | <strong><span style="color:green">✓</span></strong>
+  `residence.city` | <strong><span style="color:green">✓</span></strong>
+  `residence.state` | <strong><span style="color:green">✓</span></strong>
+  `residence.postal_code` | <strong><span style="color:green">✓</span></strong>
+  `residence.country` | <strong><span style="color:green">✓</span></strong>
+  `gender` | <strong><span style="color:green">✓</span></strong>
+  `ethnicity` | <strong><span style="color:green">✓</span></strong>
+  `ssn` | <strong><span style="color:green">✓</span></strong>
+  `encrypted_ssn` | <strong><span style="color:grey">-</span></strong>
+
+</details>
+
+<details style="color:#737373;padding-bottom:0.6em">
+<summary><h4 style="display:inline">Employment</strong></summary>
+
+  Field | Support
+  --- | ---
+  `id` | <strong><span style="color:green">✓</span></strong>
+  `first_name` | <strong><span style="color:green">✓</span></strong>
+  `middle_name` | <strong><span style="color:green">✓</span></strong>
+  `last_name` | <strong><span style="color:green">✓</span></strong>
+  `title` | <strong><span style="color:green">✓</span></strong>
+  `manager.id` | <strong><span style="color:green">✓</span></strong>
+  `department.name` | <strong><span style="color:green">✓</span></strong>
+  `employment.type` | <strong><span style="color:green">✓</span></strong>
+  `employment.subtype` | <strong><span style="color:green">✓</span></strong>
+  `start_date` | <strong><span style="color:green">✓</span></strong>
+  `end_date` | <strong><span style="color:green">✓</span></strong>
+  `is_active` | <strong><span style="color:green">✓</span></strong>
+  `location.line1` | <strong><span style="color:grey">-</span></strong>
+  `location.line2` | <strong><span style="color:grey">-</span></strong>
+  `location.city` | <strong><span style="color:grey">-</span></strong>
+  `location.state` | <strong><span style="color:grey">-</span></strong>
+  `location.postal_code` | <strong><span style="color:grey">-</span></strong>
+  `location.country` | <strong><span style="color:grey">-</span></strong>
+  `income.unit` | <strong><span style="color:green">✓</span></strong>
+  `income.amount` | <strong><span style="color:green">✓</span></strong>
+  `income.currency` | <strong><span style="color:green">✓</span></strong>
+  `income.history` | <strong><span style="color:green">✓</span></strong>
+  `class_code` | <strong><span style="color:grey">-</span></strong>
+  `custom_fields` | <strong><span style="color:green">✓</span></strong>
+
+</details>
+
+<!-- type: tab-end -->
+
+### Deductions
+
+><strong><span style="color:green">✓</span></strong> - supported
+>
+><strong><span style="color:red">x</span></strong> - not supported by Finch
+>
+>`n/a` - not supported by provider
+>
+>`*` - the client must create the benefit
+
+
+<!--
+type: tab
+title: Supported Operations
+-->
+
+Benefit | Read Company Benefits | Create Company Benefits | Read Individual Benefits | Enroll/Unenroll Individual Benefits
+--------|----------|---------|------------|------------
+**401(k)** | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> |
+**Roth 401(k)** | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> |
+**401(k) Loan** | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> |
+**403(b)** | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> |
+**Roth 403(b)** | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> |
+**457** | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> |
+**Roth 457**  | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> |
+**Simple IRA** | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> |
+**HSA (post-tax)** | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> |
+**HSA (pre-tax)** | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> |
+**FSA Dependent** | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> |
+**FSA Medical** | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> |
+**Section 125 Dental** | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> |
+**Section 125 Medical** | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> |
+**Section 125 Vision** | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> |
+**Commuter (pre-tax)** | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> |
+**Custom pre-tax** | n/a | n/a | n/a | n/a |
+**Custom post-tax** | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> |
+
+<!--
+type: tab
+title: Supported Features
+-->
+
+Benefit | Features
+--------|----------
+**401(k)** | `company_contribution`: `fixed`, `percent`<br>`employee_deduction`: `fixed`, `percent`
+**Roth 401(k)** | `company_contribution`: `fixed`, `percent`<br>`employee_deduction`: `fixed`, `percent`
+**401(k) Loan** | `company_contribution`: `fixed`, `percent`<br>`employee_deduction`: `fixed`, `percent`
+**403(b)** | `company_contribution`: `fixed`, `percent`<br>`employee_deduction`: `fixed`, `percent`
+**Roth 403(b)**| `company_contribution`: `fixed`, `percent`<br>`employee_deduction`: `fixed`, `percent`
+**457**| `company_contribution`: `fixed`, `percent`<br>`employee_deduction`: `fixed`, `percent`
+**Roth 457** | `company_contribution`: `fixed`, `percent`<br>`employee_deduction`: `fixed`, `percent`
+**Simple IRA**| `company_contribution`: `fixed`, `percent`<br>`employee_deduction`: `fixed`, `percent`
+**HSA (pre-tax)**| `employee_deduction`: `fixed`, `percent`<br>`hsa_contribution_limit`: `individual`, `family`
+**HSA (post-tax)**| `company_contribution`: `fixed`, `percent`<br>`employee_deduction`: `fixed`, `percent`
+**FSA Dependent** | `employee_deduction`: `fixed`
+**FSA Medical** | `company_contribution`: `fixed`, `percent`<br>`employee_deduction`: `fixed`, `percent`
+**Section 125 Dental** | `company_contribution`: `fixed`, `percent`<br>`employee_deduction`: `fixed`, `percent`
+**Section 125 Medical**| `company_contribution`: `fixed`, `percent`<br>`employee_deduction`: `fixed`, `percent`
+**Section 125 Vision** | `company_contribution`: `fixed`, `percent`<br>`employee_deduction`: `fixed`, `percent`
+**Commuter (pre-tax)** | `company_contribution`: `fixed`, `percent`<br>`employee_deduction`: `fixed`, `percent`
+**Custom post-tax** | `company_contribution`: `fixed`, `percent`<br>`employee_deduction`: `fixed`, `percent`
+
+<!-- type: tab-end -->
