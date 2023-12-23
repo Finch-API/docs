@@ -50,21 +50,21 @@
             {
               "group": "Field Support by Provider",
               "pages": [
-                "/integrations/provider-field-support/ADP-Workforce-Now",
-                "/integrations/provider-field-support/AlphaStaff",
-                "/integrations/provider-field-support/BambooHR",
-                "/integrations/provider-field-support/Bob",
-                "/integrations/provider-field-support/ConnectPay",
-                "/integrations/provider-field-support/Deel",
-                "/integrations/provider-field-support/Gusto",
-                "/integrations/provider-field-support/HorizonPayroll",
-                "/integrations/provider-field-support/Humaans",
-                "/integrations/provider-field-support/Insperity",
-                "/integrations/provider-field-support/Justworks",
-                "/integrations/provider-field-support/Namely",
-                "/integrations/provider-field-support/Oyster-HR",
-                "/integrations/provider-field-support/Patriot",
-                "/integrations/provider-field-support/Paychex"
+                "integrations/provider-field-support/ADP-Workforce-Now",
+                "integrations/provider-field-support/AlphaStaff",
+                "integrations/provider-field-support/BambooHR",
+                "integrations/provider-field-support/Bob",
+                "integrations/provider-field-support/ConnectPay",
+                "integrations/provider-field-support/Deel",
+                "integrations/provider-field-support/Gusto",
+                "integrations/provider-field-support/HorizonPayroll",
+                "integrations/provider-field-support/Humaans",
+                "integrations/provider-field-support/Insperity",
+                "integrations/provider-field-support/Justworks",
+                "integrations/provider-field-support/Namely",
+                "integrations/provider-field-support/Oyster-HR",
+                "integrations/provider-field-support/Patriot",
+                "integrations/provider-field-support/Paychex"
               ]
             }
           ]
