@@ -41,8 +41,9 @@ Once the database is set up, to implement data access controls, you can use a co
 
 At a minimum, your application should have an `Admin` role since it is the employer's HR & Payroll admin who should only have the permissions to go through Finch Connect and establish a connection with their employment system. Since a regular employee does not have the permissions to see the whole company-wide details or payroll, they should not be shown the option to connect via Finch.
 
-<!-- theme: info -->
-> ### Reminder
+<Info>
+ ### Reminder
+</Info
 > SQL queries via JOIN statements are only one way of implementing multi-employer role-based access control. There are many ways to implement access control that allow more fine-grained authorization or robust permissioning. Choose the best option for your application's needs.  
 
 Wether you choose to maintain separate environments for each employer or a shared instance with secure access control, being able to minimize the risk of unauthorized data access or mixing up data from different customers or employers is highly valuable.
