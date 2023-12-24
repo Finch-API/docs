@@ -4,11 +4,8 @@ SSN values returned from the Finch API are encrypted using the `xsalsa20poly1305
 
 Below are code snippets that demonstrate how you can facilitate this decryption process using your decryption key.
 
-<!--
-type: tab
-title: Python
--->
-```python
+<CodeGroup>
+```python Python
 from base64 import urlsafe_b64decode
 from nacl.encoding import URLSafeBase64Encoder
 from nacl.secret import SecretBox
@@ -26,11 +23,7 @@ ssn = ssn_bytes.decode('utf-8')
 print(ssn)
 ```
 
-<!--
-type: tab
-title: JavaScript
--->
-```js
+```js Javascript
 const nacl = require('tweetnacl');
 
 const ssn = '<encrypted_ssn_returned_from_api>'
@@ -46,4 +39,4 @@ const decodedString = textDecoder.decode(decryptedMessage);
 
 console.log(decodedString)
 ```
-</Tabs>
+</CodeGroup>
