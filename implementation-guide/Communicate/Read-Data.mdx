@@ -103,10 +103,7 @@ In this step, you will learn how to make API requests, handle responses, and man
     ```
     
 1. **Handle API responses**: When Finch returns a response, parse the JSON data and extract the relevant information needed for your application. Store or display the data as needed for your application.
-      <!--
-    title: "Example response"
-    --> 
-    ```json
+    ```json Example response
     {
       "paging": {
         "count": 15,
@@ -145,10 +142,7 @@ In this step, you will learn how to make API requests, handle responses, and man
     ```
     
 1. **Handle errors and edge cases**: Be prepared to [handle errors and edge cases](/docs/Implementation-Guide/Optimize/Mitigate-Errors.md) in the API response. For example, Finch may return `4XX` or `5XX` [error types](https://developer.tryfinch.com/docs/reference/1f80003f67f0d-error-types) due to unsupported responses from the underlying employment system. Retrying immediately may not resolve the issue, so consider implementing a retry strategy with a delay. If the error persists, submit a support ticket with the `Finch-Request-ID` present in the headers of the response.
-     <!--
-    title: "Error handling example"
-    --> 
-    ```jsx
+    ```jsx Error handling example
     function fetchDataWithRetry(url, options, retries = 3, delay = 2000) {
       return fetch(url, options)
         .then(response => {
@@ -177,9 +171,10 @@ In this step, you will learn how to make API requests, handle responses, and man
 
 2. **Manage rate limits**: Finch enforces [rate limits](/docs/Developer-Resources/Rate-Limits.md) on a per-product basis for both applications and access tokens. Rate limits are counted on a per-minute basis for each product. Each product has its own "bucket" with a 60-second Time-To-Live (TTL). The first request for a product starts the 60-second TTL for that product's bucket, and rate limits reset after the 60-second period. If Finch returns a `429` HTTP status code, your application has exceeded the rate limit for a product. To [reduce rate limit errors](/docs/Implementation-Guide/Optimize/Mitigate-Errors.md#rate-limit-errors), you can implement a backoff strategy to retry requests when encountering rate limit errors. 
 ---
-<!-- theme: success -->
-> ### Checkpoint + Next Step
-> After completing this step, your application will be able to interact with the Finch API endpoints, read the necessary data, and handle various error scenarios. This will enable you to provide a seamless experience to your users while leveraging Finch's powerful API infrastructure. If all you need is to read data, the next step is to [test your application](/docs/Implementation-Guide/Test/Testing-Plan.md). If you need the ability to write data back to the provider, follow the [Write Data](/docs/Implementation-Guide/Communicate/Write-Data.md) step.
+<Check>
+### Checkpoint + Next Step
+After completing this step, your application will be able to interact with the Finch API endpoints, read the necessary data, and handle various error scenarios. This will enable you to provide a seamless experience to your users while leveraging Finch's powerful API infrastructure. If all you need is to read data, the next step is to [test your application](/docs/Implementation-Guide/Test/Testing-Plan.md). If you need the ability to write data back to the provider, follow the [Write Data](/docs/Implementation-Guide/Communicate/Write-Data.md) step.
+</Check>
 
 ## Learn more
 - [Mitigate Errors](/docs/Implementation-Guide/Optimize/Mitigate-Errors.md)
