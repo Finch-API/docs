@@ -89,6 +89,44 @@
                 "implementation-guide/Connect/Retrieve-Access-Token",
                 "implementation-guide/Connect/Manage-Connections"
               ]
+            },
+            {
+              "group": "Communicate",
+              "pages": [
+                "implementation-guide/Communicate/Read-Data",
+                "implementation-guide/Communicate/Write-Data",
+              ]
+            },
+            {
+              "group": "Test",
+              "pages": [
+                "implementation-guide/Test/Testing-Plan",
+                "implementation-guide/Test/Provider-Test-Environments",
+                "implementation-guide/Test/Finch-Sandbox"
+              ]
+            },
+            {
+              "group": "Secure",
+              "pages": [
+                "implementation-guide/Secure/Store-Tokens",
+                "implementation-guide/Secure/Disconnect-Tokens",
+                "implementation-guide/Optimize/(Optional)-Control-Access"
+              ]
+            },
+            {
+              "group": "Optimize",
+              "pages": [
+                "implementation-guide/Optimize/Increase-Employer-Adoption",
+                "implementation-guide/Optimize/Batch-Requests",
+                "implementation-guide/Optimize/Mitigate-Errors",
+                "implementation-guide/Optimize/Monitor-Usage"
+              ]
+            },
+            {
+              "group": "Deploy",
+              "pages": [
+                "implementation-guide/Deploy/Go-Live-Checklist"
+              ]
             }
           ]
         },
