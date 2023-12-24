@@ -51,11 +51,8 @@ After successfully logging in via Finch Connect, your browser will be redirected
 
 To exchange the `code` for a token, we use the `curl` command below. Copy the code below, paste into your text editor, replace the `<your_authorization_code>` in the command with the one you saved above (making sure to not include the angle brackets).
 
-<!--
-type: tab
-title: Request
--->
-```bash
+<CodeGroup>
+```bash Request
 curl https://api.tryfinch.com/auth/token \
   -X POST \
   -H "Content-Type: application/json" \
@@ -67,16 +64,12 @@ curl https://api.tryfinch.com/auth/token \
 }'
 ```
 
-<!--
-type: tab
-title: Response
--->
-```json
+```json Response
 {
   "access_token": "<your_access_token>",
 }
 ```
-</Tabs>
+</CodeGroup>
 
 Copy, paste, and run the command in your terminal. This `curl` command is going to make an HTTP POST request with a JSON encoded request body containing your:
 
@@ -95,21 +88,14 @@ Now that you have a valid `access_token`, you will use this access token to send
 
 Run the following command to retrieve the `largeco`'s employee directory!
 
-<!--
-type: tab
-title: Request
--->
-```bash
+<CodeGroup>
+```bash Request
 curl https://api.tryfinch.com/employer/directory \
   -H 'Authorization: Bearer <your_access_token>' \
   -H 'Content-Type: application/json' \
   -H 'Finch-API-Version: 2020-09-17'
 ```
-<!--
-type: tab
-title: Response
--->
-```json
+```json Response
 {
   "paging": {
     "count": 2,
@@ -143,7 +129,7 @@ title: Response
   ]
 }
 ```
-</Tabs>
+</CodeGroup>
 ---  
 
 <Check>
