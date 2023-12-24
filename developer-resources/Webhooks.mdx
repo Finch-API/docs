@@ -39,8 +39,8 @@ This secret will only be displayed once, so we recommend you store it as soon as
 Each webhook event contains the following fields in the response body:
 Field Name | Type | Description
 ---------|----------|---------
-`company_id` | string<uuid> | Unique Finch id of the company for which data has been updated.
-`account_id` | string<uuid> | Unique Finch id of the employer account that was used to make this connection. If an employer completes authorization through Finch multiple times with different accounts or API tokens, those connections will be associated with different `account_id`s.
+`company_id` | string&lt;uuid&gt; | Unique Finch id of the company for which data has been updated.
+`account_id` | string&lt;uuid&gt; | Unique Finch id of the employer account that was used to make this connection. If an employer completes authorization through Finch multiple times with different accounts or API tokens, those connections will be associated with different `account_id`s.
 `event_type` | string | The type of webhook being delivered.
 `data` | object | More information about the associated event. The structure of this object will vary per event type.
 
@@ -75,7 +75,7 @@ Job completion events fire when a job finishes running, whether the final state 
 Field Name | Type | Description
 ---------|----------|---------
 `event_type` | string | Follows the schema `job.{job_type}.complete`. `{job_type}` can be any valid Finch job type such as `data_sync_all`, `benefit_create`, or `benefit_enroll`.
-`data.job_id`| string<uuid> | The id of the job which has completed.
+`data.job_id`| string&lt;uuid&gt;  | The id of the job which has completed.
 `data.job_url` | string | The url to query the result of the job.
 
 Example:
