@@ -185,15 +185,10 @@ v1,g0hM9SsE+OTPJTGt/tmIKtSyZlE3uFJELVlNIOLJ1OE= v1,bm9ldHUjKzFob2VudXRob2VodWUzM
 ```
 
 2. **Generate the webhook signature**. Using the webhook secret, hash the webhook content in the form `{webhook_id}.{webhook_timestamp}.{body}` where webhook_id is the Finch-Event-Id, webhook_timestamp is the Finch-Timestamp, and body is the raw body of the request. The signature is sensitive to any changes, so even a small change in the body will cause the signature to be completely different. This means that you should not change the body in any way before verifying. If the signature does not match the value received in the `Finch-Signature` header, reject the webhook. **Note: when performing the signature comparison, it is safest to use a constant-time comparison to avoid potential timing attacks.**
-<!--
-type: tab
-title: Javascript
--->
-<!--
-title: "Signature generation example"
-lineNumbers: true
--->
-```javascript
+
+<CodeGroup>
+
+```javascript Javascript
 const crypto = require('crypto');
 
 const signedContent = `${webhook_id}.${webhook_timestamp}.${body}`
@@ -207,15 +202,7 @@ const signature = crypto
   .digest('base64');
 ```
 
-<!--
-type: tab
-title: Python
--->
-<!--
-title: "Signature generation example"
-lineNumbers: true
--->
-```python
+```python Python
 import hmac
 import base64
 
@@ -234,15 +221,7 @@ signature = base64.b64encode(
 
 ```
 
-<!--
-type: tab
-title: Java
--->
-<!--
-title: "Signature generation example"
-lineNumbers: true
--->
-```java
+```java Java
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
@@ -268,20 +247,13 @@ public class Main {
     }
 }
 ```
-</Tabs>
+</CodeGroup>
 
 3. **Verify the webhook timestamp** If the signature is valid, ensure the timestamp is not greater than five minutes in the past or future. Using outdated webhooks increases susceptibility to [replay attacks](https://en.wikipedia.org/wiki/Replay_attack).
 
 The [Finch Backend SDKs](https://developer.tryfinch.com/docs/documentation/p3il3pn6otgjt-sd-ks) encapsulate all of this logic to simplify the webhook verification process.
-<!--
-type: tab
-title: Node
--->
-<!--
-title: "Express.js server example using Node SDK"
-lineNumbers: true
--->
-```javascript
+<CodeGroup>
+```javascript Javascript (express.js)
 import Finch from '@tryfinch/finch-api';
 ...
 
@@ -293,15 +265,7 @@ app.use('/webhooks/finch', bodyParser.text({ type: '*/*' }), function (req, res)
 });
 ```
 
-<!--
-type: tab
-title: Python
--->
-<!--
-title: "FastAPI server example using Python SDK"
-lineNumbers: true
--->
-```python
+```python Python (FastAPI)
 from finch import Finch
 ...
 
@@ -316,15 +280,7 @@ async def handler(request: Request):
     return {'ok': True}
 ```
 
-<!--
-type: tab
-title: Java
--->
-<!--
-title: "SpringBoot server example using Java SDK"
-lineNumbers: true
--->
-```java
+```java Java (SpringBoot)
 import com.tryfinch.api.client.FinchClient;
 import com.tryfinch.api.client.okhttp.FinchOkHttpClient;
 ...
@@ -355,15 +311,7 @@ public class WebhookController {
 }
 ```
 
-<!--
-type: tab
-title: Kotlin
--->
-<!--
-title: "SpringBoot sever example using Kotlin SDK"
-lineNumbers: true
--->
-```kotlin
+```kotlin Kotlin (SpringBoot)
 import com.tryfinch.api.client.FinchClient
 import com.tryfinch.api.client.okhttp.FinchOkHttpClient
 ...
@@ -394,15 +342,7 @@ class WebhookController {
 }
 ```
 
-<!--
-type: tab
-title: Go
--->
-<!--
-title: net/http server example using Go SDK
-lineNumbers: true
--->
-```go
+```go Go (net/http)
 import (
   finchgo "github.com/Finch-API/finch-api-go"
   ...
@@ -433,7 +373,7 @@ func TestAppServer() {
   log.Fatal(http.ListenAndServe(":8081", nil))
 }
 ```
-</Tabs>
+</CodeGroup>
 
 ## Testing Webhooks
 
