@@ -7,7 +7,7 @@ To get started, sign up for a free account at [https://dashboard.tryfinch.com/si
 
 <Info>
  This `client_id` and `client_secret` will only work for the sandbox provider. If you would like to test real providers with live data, you must request developer keys from [developers@tryfinch.com](mailto:developers@tryfinch.com).
-</Info
+</Info>
 
 This guide will help you send your first request to Finch's API while the following guides dive deeper into the concepts and help you integrate Finch into your production application.
 
@@ -19,8 +19,9 @@ https://www.youtube.com/watch?v=WU0iKDSpA0Q
 
 Finch Connect provides a secure and elegant authorization flow for your users to grant your application access to their systems.
 
-<!-- theme: warning -->
-> Note: this quickstart guide is a simplified, but manual way of generating an authorization `code` and exchanging it for an `access_token`, which can be used to subsequently call our APIs. In a true production environment, you will want to automate this process completely inside your application's code.
+<Warning>
+ Note: this quickstart guide is a simplified, but manual way of generating an authorization `code` and exchanging it for an `access_token`, which can be used to subsequently call our APIs. In a true production environment, you will want to automate this process completely inside your application's code.
+</Warning>
 
 Since this quickstart assumes you have not built an application yet, we must make sure that a proper `redirect_uri` is set up before continuing or our authorization code generation will fail. In your [Finch Dashboard](https://dashboard.tryfinch.com), go to the "Redirect URIs" section and select `+ Add Redirect URI`. We are going to use [https://example.com](https://example.com) for testing purposes. In production, you will want to use your own application's urls for the Redirect Uris (and remove all mentions of https://example.com or http://localhost).
 

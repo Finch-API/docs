@@ -62,14 +62,14 @@ title: "Example /introspect response"
 
 A simple example is a `1:1` connection association. It can be represented by a single database table with columns for `customer_id` and the associated `access_token`. You can use a unique constraint on the `customer_id` column to ensure that each user can have only one associated `access_token`.
 
-<!-- focus: false -->
+
 ![1-To-1 Database Schema](../../../assets/images/manage-connections/single-connection-database.jpg)
 
 However, in production, you will want to handle the more [complex connection scenarios](#define-connections) above which have a `1:Many` relationship.
 
 This can be represented by two database tables: the *Customers* table one stores the `customer_id` and the *Connections* table stores the `company_id` + `provider_id` + `access_token` which references back to a `customer_id`.
 
-<!-- focus: false -->
+
 ![1-To-Many Database Schema](../../../assets/images/manage-connections/multiple-connection-database.jpg)
 
 In this realistic example:
@@ -87,7 +87,7 @@ To have your customer create multiple connections in your application, your "onb
 
 Below is an example User Interface. You can present your customers with a page showing all of their current connections and provide the option to connect more accounts, providers, or company entities.
 
-<!-- focus: false -->
+
 ![](../../../assets/images/manage-connections/multiple-connections-UI.png)
 
 ## Edge cases

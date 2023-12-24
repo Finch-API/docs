@@ -13,9 +13,10 @@ While unlikely, any robust application should still plan to encounter server err
 - **Health checks** - By calling the [/introspect](https://developer.tryfinch.com/docs/reference/eee6e798b0f93-introspect) endpoint on a regular basis, you can implement a health check to provide information about the status and health of your Finch integration and its connections. This can help in identifying the source of `500` errors faster.
 - **Retry** - Sometimes, simply retrying the request after a specified delay or adjusting the request parameters solves the problem.
 
-<!-- theme: danger -->
-> ### Product Outages
-> Finch reports all API outages and provider integration incidents. You can visit https://status.tryfinch.com subscribe to receive email notifications from Finch whenever we create, update, or resolve an incident.
+<Warning>
+ ### Product Outages
+Finch reports all API outages and provider integration incidents. You can visit https://status.tryfinch.com subscribe to receive email notifications from Finch whenever we create, update, or resolve an incident.
+</Warning>
 
 If any server error persists, contact the [Finch Support](mailto:support@tryfinch.com) team and attach the `finch-request-id` present in the headers of the response for further assistance.
 
