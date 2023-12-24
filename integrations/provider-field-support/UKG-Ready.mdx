@@ -1,32 +1,31 @@
 ---
-stoplight-id: o7nmae0ue51i6
+title: "UKG Ready"
 ---
 
-# UKG-Ready
-<!--## Initial Integration Set Up [uncomment to add section]-->
+{/* ## Initial Integration Set Up [uncomment to add section] */}
 
-<!--## Employer Onboarding [uncomment to add section]-->
+{/* ## Employer Onboarding [uncomment to add section] */}
 
 ## Product Field Support
 
 ### Organization
-<!--
-type: tab
-title: API
--->
+
+<Tabs>
+  <Tab title="API">
 Field support for employers authenticating via API
-<details style="color:#737373;padding-bottom:0.6em">
-<summary><h4 style="display:inline">Company</strong></summary>
+<AccordionGroup>
+
+      <Accordion title="Company">
 
   Field | Support
   ---- | -----
-  `id` | <strong><span style="color:green">✓</span></strong>
-  `legal_name` | <strong><span style="color:green">✓</span></strong>
+  `id` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `legal_name` | <strong><span style={{ color: 'green' }}>✓</span></strong>
   `entity.type` |
   `entity.subtype` |
   `primary_email` |
   `primary_phone_number` |
-  `ein` | <strong><span style="color:green">✓</span></strong>
+  `ein` | <strong><span style={{ color: 'green' }}>✓</span></strong>
   `departments[]` |
   `departments[].parent`|
   `departments[].parent.name`|
@@ -42,142 +41,147 @@ Field support for employers authenticating via API
   `accounts[].account_type` |
   `accounts[].account_number` |
 
-</details>
+      </Accordion>
 
-<details style="color:#737373;padding-bottom:0.6em">
-<summary><h4 style="display:inline">Directory</strong></summary>
+      <Accordion title="Directory">
 
   Field | Support
   --- | ---
-  `id` | <strong><span style="color:green">✓</span></strong>
-  `first_name` | <strong><span style="color:green">✓</span></strong>
-  `middle_name` | <strong><span style="color:green">✓</span></strong>
-  `last_name` | <strong><span style="color:green">✓</span></strong>
-  `manager.id` | <strong><span style="color:green">✓</span></strong>
+  `id` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `first_name` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `middle_name` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `last_name` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `manager.id` | <strong><span style={{ color: 'green' }}>✓</span></strong>
   `department.name` |
-  `is_active` | <strong><span style="color:green">✓</span></strong>
+  `is_active` | <strong><span style={{ color: 'green' }}>✓</span></strong>
 
-</details>
+      </Accordion>
 
-<details style="color:#737373;padding-bottom:0.6em">
-<summary><h4 style="display:inline">Individual</strong></summary>
-
-  Field | Support
-  --- | ---
-  `id` | <strong><span style="color:green">✓</span></strong>
-  `first_name` | <strong><span style="color:green">✓</span></strong>
-  `middle_name` | <strong><span style="color:green">✓</span></strong>
-  `last_name` | <strong><span style="color:green">✓</span></strong>
-  `preferred_name` | <strong><span style="color:green">✓</span></strong>
-  `emails[].data` | <strong><span style="color:green">✓</span></strong>
-  `emails[].type` | <strong><span style="color:green">✓</span></strong>
-  `phone_numbers[].data` | <strong><span style="color:green">✓</span></strong>
-  `phone_numbers[].type` | <strong><span style="color:green">✓</span></strong>
-  `dob` | <strong><span style="color:green">✓</span></strong>
-  `residence.line1` | <strong><span style="color:green">✓</span></strong>
-  `residence.line2` | <strong><span style="color:green">✓</span></strong>
-  `residence.city` | <strong><span style="color:green">✓</span></strong>
-  `residence.state` | <strong><span style="color:green">✓</span></strong>
-  `residence.postal_code` | <strong><span style="color:green">✓</span></strong>
-  `residence.country` | <strong><span style="color:green">✓</span></strong>
-  `gender` | <strong><span style="color:green">✓</span></strong>
-  `ethnicity` | <strong><span style="color:green">✓</span></strong>
-  `ssn` | <strong><span style="color:green">✓</span></strong>
-  `encrypted_ssn` | <strong><span style="color:grey">-</span></strong>
-
-</details>
-
-<details style="color:#737373;padding-bottom:0.6em">
-<summary><h4 style="display:inline">Employment</strong></summary>
+      <Accordion title="Individual">
 
   Field | Support
   --- | ---
-  `id` | <strong><span style="color:green">✓</span></strong>
-  `source_id` | <strong><span style="color:green">✓</span></strong>
-  `first_name` | <strong><span style="color:green">✓</span></strong>
-  `middle_name` | <strong><span style="color:green">✓</span></strong>
-  `last_name` | <strong><span style="color:green">✓</span></strong>
-  `title` | <strong><span style="color:green">✓</span></strong>
-  `manager.id` | <strong><span style="color:green">✓</span></strong>
+  `id` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `first_name` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `middle_name` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `last_name` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `preferred_name` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `emails[].data` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `emails[].type` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `phone_numbers[].data` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `phone_numbers[].type` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `dob` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `residence.line1` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `residence.line2` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `residence.city` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `residence.state` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `residence.postal_code` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `residence.country` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `gender` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `ethnicity` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `ssn` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `encrypted_ssn` | <strong><span style={{ color: 'grey' }}>-</span></strong>
+
+      </Accordion>
+
+      <Accordion title="Employment">
+
+  Field | Support
+  --- | ---
+  `id` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `source_id` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `first_name` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `middle_name` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `last_name` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `title` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `manager.id` | <strong><span style={{ color: 'green' }}>✓</span></strong>
   `department.name` |
   `employment.type` |
-  `employment.subtype` | <strong><span style="color:green">✓</span></strong>
-  `start_date` | <strong><span style="color:green">✓</span></strong>
-  `end_date` | <strong><span style="color:green">✓</span></strong>
-  `is_active` | <strong><span style="color:green">✓</span></strong>
+  `employment.subtype` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `start_date` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `end_date` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `is_active` | <strong><span style={{ color: 'green' }}>✓</span></strong>
   `location.line1` |
   `location.line2` |
   `location.city` |
   `location.state` |
   `location.postal_code` |
   `location.country` |
-  `income.unit` | <strong><span style="color:green">✓</span></strong>
-  `income.amount` | <strong><span style="color:green">✓</span></strong>
-  `income.currency` | <strong><span style="color:green">✓</span></strong>
-  `income_history` | <strong><span style="color:green">✓</span></strong>
-  `class_code` | <strong><span style="color:grey">✓</span></strong>
-  `custom_fields` | <strong><span style="color:green">✓</span></strong>
+  `income.unit` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `income.amount` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `income.currency` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `income_history` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `class_code` | <strong><span style={{ color: 'grey' }}>✓</span></strong>
+  `custom_fields` | <strong><span style={{ color: 'green' }}>✓</span></strong>
 
-</details>
+      </Accordion>
 
-<!-- type: tab-end -->
+    </AccordionGroup>
 
-### Pay
-<!--
-type: tab
-title: API
--->
+  </Tab>
+
+</Tabs>
+
+### Payroll
+<Tabs>
+
+  <Tab title="API">
 Field support for employers authenticating via API
-<details style="color:#737373;padding-bottom:0.6em">
-<summary><h4 style="display:inline">Payment</strong></summary>
+
+    <AccordionGroup>
+
+      <Accordion title="Payment">
 
   Field | Support
   --- | ---
-  `id` | <strong><span style="color:green">✓</span></strong>
-  `pay_period.start_date` | <strong><span style="color:green">✓</span></strong>
-  `pay_period.end_date` | <strong><span style="color:green">✓</span></strong>
-  `pay_date` | <strong><span style="color:green">✓</span></strong>
+  `id` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `pay_period.start_date` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `pay_period.end_date` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `pay_date` | <strong><span style={{ color: 'green' }}>✓</span></strong>
   `debit_date` |
   `company_debit` |
-  `gross_pay` | <strong><span style="color:green">✓</span></strong>
-  `net_pay` | <strong><span style="color:green">✓</span></strong>
-  `employer_taxes` | <strong><span style="color:green">✓</span></strong>
-  `employee_taxes` | <strong><span style="color:green">✓</span></strong>
-  `individual_ids` | <strong><span style="color:green">✓</span></strong>
+  `gross_pay` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `net_pay` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `employer_taxes` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `employee_taxes` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `individual_ids` | <strong><span style={{ color: 'green' }}>✓</span></strong>
 
-</details>
+      </Accordion>
 
-<details style="color:#737373;padding-bottom:0.6em">
-<summary><h4 style="display:inline">Pay Statement</strong></summary>
+      <Accordion title="Pay Statement">
 
   Field | Support
   --- | ---
-  `individual_id` | <strong><span style="color:green">✓</span></strong>
-  `type` | <strong><span style="color:green">✓</span></strong>
+  `individual_id` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `type` | <strong><span style={{ color: 'green' }}>✓</span></strong>
   `payment_method` |
-  `total_hours` | <strong><span style="color:green">✓</span></strong>
-  `gross_pay` | <strong><span style="color:green">✓</span></strong>
-  `net_pay` | <strong><span style="color:green">✓</span></strong>
+  `total_hours` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `gross_pay` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `net_pay` | <strong><span style={{ color: 'green' }}>✓</span></strong>
   `earnings[].type` |
-  `earnings[].name` | <strong><span style="color:green">✓</span></strong>
-  `earnings[].amount` | <strong><span style="color:green">✓</span></strong>
-  `earnings[].currency` | <strong><span style="color:green">✓</span></strong>
-  `earnings[].hours` | <strong><span style="color:green">✓</span></strong>
-  `taxes[].type` | <strong><span style="color:green">✓</span></strong>
-  `taxes[].name` | <strong><span style="color:green">✓</span></strong>
-  `taxes[].amount` | <strong><span style="color:green">✓</span></strong>
-  `taxes[].currency` | <strong><span style="color:green">✓</span></strong>
-  `taxes[].hours` | <strong><span style="color:green">✓</span></strong>
-  `employee_deductions[].type` | <strong><span style="color:green">✓</span></strong>
-  `employee_deductions[].name` | <strong><span style="color:green">✓</span></strong>
-  `employee_deductions[].amount` | <strong><span style="color:green">✓</span></strong>
-  `employee_deductions[].currency` | <strong><span style="color:green">✓</span></strong>
-  `employee_deductions[].pre_tax` | <strong><span style="color:green">✓</span></strong>
-  `employer_contributions[].type` | <strong><span style="color:green">✓</span></strong>
-  `employer_contributions[].name` | <strong><span style="color:green">✓</span></strong>
-  `employer_contributions[].amount` | <strong><span style="color:green">✓</span></strong>
-  `employer_contributions[].currency` | <strong><span style="color:green">✓</span></strong>
+  `earnings[].name` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `earnings[].amount` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `earnings[].currency` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `earnings[].hours` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `taxes[].type` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `taxes[].name` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `taxes[].amount` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `taxes[].currency` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `taxes[].hours` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `employee_deductions[].type` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `employee_deductions[].name` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `employee_deductions[].amount` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `employee_deductions[].currency` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `employee_deductions[].pre_tax` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `employer_contributions[].type` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `employer_contributions[].name` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `employer_contributions[].amount` | <strong><span style={{ color: 'green' }}>✓</span></strong>
+  `employer_contributions[].currency` | <strong><span style={{ color: 'green' }}>✓</span></strong>
 
-</details>
+      </Accordion>
 
-<!-- type: tab-end -->
+    </AccordionGroup>
+
+  </Tab>
+
+</Tabs>

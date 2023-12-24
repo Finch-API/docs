@@ -1,8 +1,6 @@
 ---
-stoplight-id: k6gz5zkt9vaen
+title: "Set Up Finch Connect"
 ---
-
-# Set Up Finch Connect
 
 Now that your application is [registered with Finch](/docs/Implementation-Guide/Connect/Create-Account.md), it's time to integrate Finch Connect into your application's frontend. Finch Connect is the user-facing authentication flow that allows your users to securely input their employment system credentials to establish a connection with their provider. This prerequisite step is crucial before obtaining access tokens to make API requests. 
 
@@ -116,7 +114,7 @@ title: Javascript
   </body>
 </html>
 ```        
-<!-- type: tab-end -->
+</Tabs>
 3. **Implement the authentication flow**: Add a button or a link in your application that triggers the Finch Connect flow. Users will click this button or link to start the authentication process.
 <!--
 type: tab
@@ -155,7 +153,7 @@ title: Javascript
   </body>
 </html>
 ```
-<!-- type: tab-end -->
+</Tabs>
         
 4. **Listen for events**: Finch Connect emits events that your application should listen for to handle the different stages of the authentication process. The two most important events are `onSuccess` and `onError`.
     1. `onSuccess`: This event is triggered when the user completes the authentication process. It returns an authorization `code` that you will use to obtain an `access_token` in the next step. Pass this authorization `code` securely and temporarily to the access token exchange function.

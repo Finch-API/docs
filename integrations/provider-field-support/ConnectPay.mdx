@@ -1,35 +1,32 @@
 ---
-stoplight-id: 8vx94l6mkhoa9
+title: "ConnectPay"
 ---
 
-# ConnectPay
+{/* ## Initial Integration Set Up [uncomment to add section] */}
 
-<!--## Initial Integration Set Up [uncomment to add section]-->
-
-<!--## Employer Onboarding [uncomment to add section]-->
+{/* ## Employer Onboarding [uncomment to add section] */}
 
 ## Product Field Support
 
 ### Deductions
 
-<!--
-type: tab
-title: Supported Operations
--->
+<Tabs>
+
+  <Tab title="Supported Operations">
 
 Benefit | Read Company Benefits | Create Company Benefits | Read Individual Benefits | Enroll/Unenroll Individual Benefits
 --------|----------|---------|------------|------------
-**401(k)** | <strong><span style="color:red">x</span></strong> | * | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> |
-**Roth 401(k)** | <strong><span style="color:red">x</span></strong> | * | <strong><span style="color:red">x</span></strong> | <strong><span style="color:green">✓</span></strong> |
+**401(k)** | <strong><span style={{ color: 'red' }}>x</span></strong> | * | <strong><span style={{ color: 'red' }}>x</span></strong> | <strong><span style={{ color: 'green' }}>✓</span></strong> |
+**Roth 401(k)** | <strong><span style={{ color: 'red' }}>x</span></strong> | * | <strong><span style={{ color: 'red' }}>x</span></strong> | <strong><span style={{ color: 'green' }}>✓</span></strong> |
 
-<!--
-type: tab
-title: Supported Features
--->
+  </Tab>
+
+  <Tab title="Supported Featuures">
 
 Benefit | Features
 --------|----------
-**401(k)** | `company_contribution`: `percent`<br>`employee_deduction`: `fixed`, `percent`<br>`catch_up`<br>`annual_maximum`
-**Roth 401(k)** | `employee_deduction`: `fixed`, `percent`<br>`catch_up`<br>`annual_maximum`
+**401(k)** | `company_contribution`: `percent`<br />`employee_deduction`: `fixed`, `percent`<br />`catch_up`<br />`annual_maximum`
+**Roth 401(k)** | `employee_deduction`: `fixed`, `percent`<br />`catch_up`<br />`annual_maximum`
 
-<!-- type: tab-end -->
+  </Tab>
+</Tabs>

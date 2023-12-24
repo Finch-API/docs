@@ -1,8 +1,6 @@
 ---
-stoplight-id: col7xfm69ll1t
+title: "Webhooks"
 ---
-
-# Webhooks
 
 Finch offers webhooks to inform you of changes to data models in a push-notification fashion, rather than you having to rely exclusively on pulling data from our API. A webhook URL is a HTTPS endpoint configured by your application to receive requests from Finch.
 
@@ -269,7 +267,7 @@ public class Main {
     }
 }
 ```
-<!-- type: tab-end -->
+</Tabs>
 
 3. **Verify the webhook timestamp** If the signature is valid, ensure the timestamp is not greater than five minutes in the past or future. Using outdated webhooks increases susceptibility to [replay attacks](https://en.wikipedia.org/wiki/Replay_attack).
 
@@ -434,7 +432,7 @@ func TestAppServer() {
   log.Fatal(http.ListenAndServe(":8081", nil))
 }
 ```
-<!-- type: tab-end -->
+</Tabs>
 
 ## Testing Webhooks
 
