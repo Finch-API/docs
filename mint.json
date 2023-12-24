@@ -31,6 +31,16 @@
         "name": "Quickstart",
         "icon": "rabbit-running",
         "url": "/how-finch-works/quickstart"
+      },
+      {
+        "name": "Changelog",
+        "icon": "megaphone",
+        "url": "https://changelog.tryfinch.com"
+      },
+      {
+        "name": "API Status",
+        "icon": "bars",
+        "url": "https://status.tryfinch.com"
       }
     ],
     "navigation": [
@@ -94,7 +104,7 @@
               "group": "Communicate",
               "pages": [
                 "implementation-guide/Communicate/Read-Data",
-                "implementation-guide/Communicate/Write-Data",
+                "implementation-guide/Communicate/Write-Data"
               ]
             },
             {
