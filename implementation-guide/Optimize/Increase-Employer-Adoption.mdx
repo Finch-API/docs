@@ -31,9 +31,7 @@ The suggestions below are listed in priority order.
 
 Rather than presenting Finch Connect and other manual flows as equal alternatives, encourage your customers to use Finch as the default. You can always include an option to ‘skip this step’, and offer the manual flows as a back up. You can also play with the size, positioning, and color of your entry point to Finch Connect, or test out labels like "Recommended" or "Preferred" to encourage usage.
 
-<!--
-focus: false
--->
+
 ![Finch Connect Best Practices 1.jpg](../../../assets/images/increase-employer-adoption/finch-connect-best-practices-01.jpg)
 
 ## 2. Include extra messaging for context
@@ -71,9 +69,7 @@ If a user does not connect their employment system during the onboarding process
 
 While the employer authorization process takes only 30 seconds, a full syncing of the provider’s data can take some time. That’s why we recommend embedding Finch Connect as early as possible in the onboarding process. While data cannot be retrieved until the synchronization is complete, you can take advantage of this time to continue your core onboarding process, collecting additional information or showing your product tutorial.
 
-<!--
-focus: false
--->
+
 ![Finch Connect Best Practices 2.jpg](../../../assets/images/increase-employer-adoption/finch-connect-best-practices-02.jpg)
 
 You can programmatically add visual cues to show when the data import is complete. Finch provides a [List All Automated Jobs](https://developer.tryfinch.com/docs/reference/77c908ca898ba-list-all-automated-jobs) endpoint that provides a real-time status of the data syncing process. While the job’s `status` is still `pending`, the Finch endpoints will **return a HTTP 202 response** until the sync is complete. Continue to call the [List All Automated Jobs](https://developer.tryfinch.com/docs/reference/77c908ca898ba-list-all-automated-jobs) endpoint to monitor the status. Once the job’s `status` moves to `complete`, you can now call Finch’s various endpoints to read the data. A new job is created to sync the employer’s data 24 hours from the previous sync.
@@ -197,9 +193,7 @@ https://connect.tryfinch.com/authorize?
 #### Custom integration page
 If you want complete control over the user experience, you can also build your own provider selector screen and launch Finch Connect with the right provider each time.
 
-<!--
-focus: false
--->
+
 ![Finch Connect Best Practices 3.jpg](../../../assets/images/increase-employer-adoption/finch-connect-best-practices-03.jpg)
 
 In any case, bypassing the provider selector screen removes friction by eliminating the guesswork for customers during the set up process. 
