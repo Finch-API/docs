@@ -7,7 +7,7 @@ In order to enable an integration with Gusto, you will need to complete a set of
 
 In addition, you should create an account in the Gusto Developer portal, where you can [sign up as a Gusto developer](https://dev.gusto.com/accounts/sign_up) and agree to [Gusto’s Terms of Service](https://gusto.com/about/terms/developer-terms-of-service). From there, you may generate test keys to use in testing your Finch connection to Gusto.
 
-Follow [our full setup guide](/Integrations/Provider-specific-Information/Gusto) for more details.
+Follow [our full setup guide](/integrations/provider-specific-information/Gusto) for more details.
 
 {/* ## Employer Onboarding [uncomment to add section] */}
 
@@ -235,7 +235,7 @@ Field support for employers authenticating via API
 
 #### Handling Encrypted SSN
 
-Gusto's API returns SSN that are encrypted using `xsalsa20poly1305`, an authenticated encryption cipher. If you have been granted access to SSN data by Gusto, SSN will be supplied in the `encrypted_ssn` field. Gusto will provide you with a decryption key that only you can use to translate the encrypted value into its original format. For specific details and examples of how to decrypt SSNs, please refer to the [Gusto SSN Decryption Guide](/Integrations/Provider-specific-Information/Gusto-SSN-Decryption-Guide).
+Gusto's API returns SSN that are encrypted using `xsalsa20poly1305`, an authenticated encryption cipher. If you have been granted access to SSN data by Gusto, SSN will be supplied in the `encrypted_ssn` field. Gusto will provide you with a decryption key that only you can use to translate the encrypted value into its original format. For specific details and examples of how to decrypt SSNs, please refer to the [Gusto SSN Decryption Guide](/integrations/provider-specific-information/Gusto-SSN-Decryption-Guide).
 
 ### Payroll
 <Tabs>

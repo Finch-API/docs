@@ -27,7 +27,7 @@ Product | Max requests initiated per minute
 `payment` | 12
 `pay-statement` | 12
 
-If an application rate limit is encountered, it will contain the `finch_code`: [finch_application_rl](/Development-Guides/Errors/Error-Types#error-types-1) in the response body.
+If an application rate limit is encountered, it will contain the `finch_code`: [finch_application_rl](/api-reference/development-guides/errors/Error-Types#error-types-1) in the response body.
 
 ```json
 // HTTP 429 response body for application rate limit exceeded
@@ -49,7 +49,7 @@ Type | Max requests | Duration | Penalty
 -------|-------------|-------|-------------
 `API` | 1000 | 5 minutes | 60 minutes
 
-If an IP Address rate limit is encountered, it will contain the `finch_code`: [finch_api_ip_rl](/Development-Guides/Errors/Error-Types#error-types-1) in the response body.
+If an IP Address rate limit is encountered, it will contain the `finch_code`: [finch_api_ip_rl](/api-reference/development-guides/errors/Error-Types#error-types-1) in the response body.
 
 ```json
 // HTTP 429 response body for application rate limit exceeded
@@ -67,4 +67,4 @@ If an IP Address rate limit is encountered, it will contain the `finch_code`: [f
 
 ## Handling Rate Limit Errors
 
-If you are experiencing rate limits, there are several ways to minimize the risk of hitting rate limits highlighted in our [Handling Rate Limit Errors](/Best-Practices/Handling-Rate-Limit-Errors) Best Practices guide.
+If you are experiencing rate limits, there are several ways to minimize the risk of hitting rate limits highlighted in our [Handling Rate Limit Errors](/implementation-guide/Optimize/Mitigate-Errors#rate-limit-errors) Best Practices guide.

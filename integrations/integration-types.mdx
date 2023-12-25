@@ -63,7 +63,7 @@ Reach out to **`developers@tryfinch.com`** to enable the Assisted Connect Flow. 
 
 <Note>For assisted integrations, your users will see instructions on how to manually connect each employment system in Finch Connect.</Note>
 
-Launch [Finch Connect](/Implementation-Guide/Connect/Set-Up-Finch-Connect) with **`manual=true`** so your user can see all providers that support assisted integrations. After granting your application access, you can retrieve an authorization **`code`** and exchange it for an **`access_token`** as usual.
+Launch [Finch Connect](/implementation-guide/Connect/Set-Up-Finch-Connect) with **`manual=true`** so your user can see all providers that support assisted integrations. After granting your application access, you can retrieve an authorization **`code`** and exchange it for an **`access_token`** as usual.
 
 ```bash
 https://connect.tryfinch.com/authorize?
@@ -98,7 +98,7 @@ To view the status of your connected employers, you can use the [Finch Developer
 | Connected | The connection is set up and Finch is able to access the required data. |
 | Disconnected | All accounts for this employer have been disconnected. |
 
-You can also use the `connection_status` on the [`/introspect`](/api-reference/management/introspect) endpoint to see the connection status of the assisted account.
+You can also use the `connection_status` on the [`/introspect`]() endpoint to see the connection status of the assisted account.
 ```json
 {
   ...

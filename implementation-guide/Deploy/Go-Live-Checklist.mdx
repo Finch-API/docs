@@ -8,55 +8,55 @@ If you have followed the Implementation Guide completely, your application is re
 
 Finch Connect is the frontend user interface that allows your customers to safely and securely grant your application access to their employment systems. The following steps will optimize your integration to increase conversion, improve your user experience, and avoid common configuration errors.
 
-- [ ] Define the list of [product scopes](/Implementation-Guide/Connect/Create-Account#product-scopes) your application needs to request to onboard an employer.
-- [ ] [Integrate Finch Connect](/Implementation-Guide/Connect/Set-Up-Finch-Connect) into your application's frontend. Finch Connect should be displayed as a part of your onboarding flow, preferably behind an authentication login.
-- [ ] [Exchange](/Implementation-Guide/Connect/Retrieve-Access-Token) an authorization code for an access token without any human intervention.
+- [ ] Define the list of [product scopes](/implementation-guide/Connect/Create-Account#product-scopes) your application needs to request to onboard an employer.
+- [ ] [Integrate Finch Connect](/implementation-guide/Connect/Set-Up-Finch-Connect) into your application's frontend. Finch Connect should be displayed as a part of your onboarding flow, preferably behind an authentication login.
+- [ ] [Exchange](/implementation-guide/Connect/Retrieve-Access-Token) an authorization code for an access token without any human intervention.
 
 **Design a seamless onboarding experience**
 
-- [ ] [Display messaging to your customer prior to launching Finch Connect](/Implementation-Guide/Optimize/Increase-Employer-Adoption#2-include-extra-messaging-for-context) that explains that they will be prompted to connect their payroll or HRIS system with Finch and offers an explanation for what type of data your app will collect and why.
-- [ ] Introduce Finch Connect as the [default method](/Implementation-Guide/Optimize/Increase-Employer-Adoption#1-set-finch-connect-as-the-default-integration-option) of connecting and explains the value the employer is receiving by connecting their employment system.
-- [ ] Add visual clues to [show when the employer's data import is complete](/Implementation-Guide/Optimize/Increase-Employer-Adoption#4-deploy-finch-early-in-the-onboarding-process).
+- [ ] [Display messaging to your customer prior to launching Finch Connect](/implementation-guide/Optimize/Increase-Employer-Adoption#2-include-extra-messaging-for-context) that explains that they will be prompted to connect their payroll or HRIS system with Finch and offers an explanation for what type of data your app will collect and why.
+- [ ] Introduce Finch Connect as the [default method](/implementation-guide/Optimize/Increase-Employer-Adoption#1-set-finch-connect-as-the-default-integration-option) of connecting and explains the value the employer is receiving by connecting their employment system.
+- [ ] Add visual clues to [show when the employer's data import is complete](/implementation-guide/Optimize/Increase-Employer-Adoption#4-deploy-finch-early-in-the-onboarding-process).
 
 **Support customer with multiple connections**
 
-- [ ] Some of your customers may use multiple employment systems for various reasons. Your application should be able to [handle multiple connections](/Implementation-Guide/Connect/Manage-Connections) per customer.
+- [ ] Some of your customers may use multiple employment systems for various reasons. Your application should be able to [handle multiple connections](/implementation-guide/Connect/Manage-Connections) per customer.
 
 **Configure authentication methods**
 
-- [ ] Get in touch with your Finch Representative if you would like [specific auth methods](/Get-Started/Employment-API-Glossary#authentication-method) displayed in [Finch Connect](/Implementation-Guide/Connect/Set-Up-Finch-Connect), and we can manage it for you.
+- [ ] Get in touch with your Finch Representative if you would like [specific auth methods](/how-finch-works/unified-employment-api-glossary#authentication-method) displayed in [Finch Connect](/implementation-guide/Connect/Set-Up-Finch-Connect), and we can manage it for you.
 
 ## Integrate Finch API
 
 Given the nature of the underlying systems the Finch APIs are built on top of, the following steps are recommended to build a resilient integration.
 
-- [ ] [Integrate the Finch APIs](/Implementation-Guide/Communicate/Read-Data) into your application's backend.
+- [ ] [Integrate the Finch APIs](/implementation-guide/Communicate/Read-Data) into your application's backend.
 
 **Send API requests**
 
-- [ ] Integrate an [external rate limiter](/Implementation-Guide/Optimize/Mitigate-Errors#rate-limit-errors) into your application that respects the Finch API [rate limits](https://developer.tryfinch.com/docs/reference/64f780582a5a2-rate-limits).
+- [ ] Integrate an [external rate limiter](/implementation-guide/Optimize/Mitigate-Errors#rate-limit-errors) into your application that respects the Finch API [rate limits](https://developer.tryfinch.com/docs/reference/64f780582a5a2-rate-limits).
 
 **Handle API responses**
 
-- [ ]  Most data points returned by the API are `null`able. This is because employers can intentionally or unintentionally leave fields blank in the employment system; Finch merely returns what is in the employment system as is. You must ensure your [application is resilient](/Implementation-Guide/Communicate/Read-Data) to `null` fields showing up in unexpected ways.
+- [ ]  Most data points returned by the API are `null`able. This is because employers can intentionally or unintentionally leave fields blank in the employment system; Finch merely returns what is in the employment system as is. You must ensure your [application is resilient](/implementation-guide/Communicate/Read-Data) to `null` fields showing up in unexpected ways.
 
 **Handle response headers**
 
-- [ ] Finch [syncs data with providers](/Developer-Resources/Data-Syncs) on a scheduled cadence, and the status of the data we return is available in the API response headers. Ensure your integration checks these response headers as needed.
+- [ ] Finch [syncs data with providers](/developer-resources/Data-Syncs) on a scheduled cadence, and the status of the data we return is available in the API response headers. Ensure your integration checks these response headers as needed.
 
 **Handle error responses**
 
-Your application should [expect](https://developer.tryfinch.com/docs/reference/1f80003f67f0d-error-types) and [handle errors](/Implementation-Guide/Optimize/Mitigate-Errors) from the Finch API.
+Your application should [expect](https://developer.tryfinch.com/docs/reference/1f80003f67f0d-error-types) and [handle errors](/implementation-guide/Optimize/Mitigate-Errors) from the Finch API.
 
 There are three important errors your application should be aware of.
 
-- [ ]  Ensure there are user flows built to support [reauthentication](/Developer-Resources/Reauthentication), i.e. when your user needs to go through Finch Connect again to reconnect their employment system if their initial connection has stopped working.
+- [ ]  Ensure there are user flows built to support [reauthentication](/developer-resources/Reauthentication), i.e. when your user needs to go through Finch Connect again to reconnect their employment system if their initial connection has stopped working.
 - [ ]  Implement the troubleshooting tips to gracefully [handle `server_error`s](https://developer.tryfinch.com/docs/reference/7e03b7d6dec4a-error-handling) from Finch.
-- [ ]  If you use our [batch endpoints](/Implementation-Guide/Optimize/Batch-Requests), ensure your application handles errors returned in the batch format.
+- [ ]  If you use our [batch endpoints](/implementation-guide/Optimize/Batch-Requests), ensure your application handles errors returned in the batch format.
 
 **Support users with custom setups**
 
-- [ ]  Some of your customers may use [multiple employment systems](/Implementation-Guide/Connect/Manage-Connections). This will involve application logic and database schema considerations on your end.
+- [ ]  Some of your customers may use [multiple employment systems](/implementation-guide/Connect/Manage-Connections). This will involve application logic and database schema considerations on your end.
 
 ## Security
 
@@ -64,7 +64,7 @@ The data stored within your customers' systems are sensitive and should be handl
 
 - [ ]  Store your `client_secret` in a backend data store. It should never be exposed client-side. It is recommended to store it encrypted.
 - [ ]  Since your `client_secret` should remain on the backend, you should always perform an authorization `code` for an `access_token` exchange only on your back-end server and never on the client-side.
-- [ ]  [Save `access_token`s](/Implementation-Guide/Secure/Store-Tokens) in a backend data store against the users of your application. It should never be exposed client-side. It is recommended to store them encrypted.
+- [ ]  [Save `access_token`s](/implementation-guide/Secure/Store-Tokens) in a backend data store against the users of your application. It should never be exposed client-side. It is recommended to store them encrypted.
 
 ## Storage and Logging
 
@@ -77,15 +77,15 @@ Storing and logging key identifiers will ensure a faster turnaround time when co
 
 - [ ] Email forwarding to Finch allows you to provision a custom email address for some API integrations. Contact your Development Success Representative or send an email to `developers@tryfinch.com` to get started.
 
-- [ ] With email forwarding set up, ask our team to opt in to [authentication fallback](/Implementation-Guide/Optimize/Increase-Employer-Adoption#set-up-authentication-fallback) to allow your customers better ability to authenticate through Finch Connect. This feature is only available to *Scale* tier customers.
+- [ ] With email forwarding set up, ask our team to opt in to [authentication fallback](/implementation-guide/Optimize/Increase-Employer-Adoption#set-up-authentication-fallback) to allow your customers better ability to authenticate through Finch Connect. This feature is only available to *Scale* tier customers.
 
 ## Test your Finch integration and going live
 
 Before going live, it is valuable to know the options available for you to test your Finch integration. Below are our suggested steps:
 
-- [ ]  Use the [Finch Sandbox](/Implementation-Guide/Test/Finch-Sandbox) to test your integration against mock data.
-- [ ]  Some employment systems like Bamboo HR, Zenefits, and Gusto allow you to sign up for free demos. You can use these accounts to [test against a real employment system](/Implementation-Guide/Test/Live-Providers).
-- [ ]  If your application requires [write](/Implementation-Guide/Communicate/Write-Data) operations, send our team a message on Slack or `developers@tryfinch.com`.
+- [ ]  Use the [Finch Sandbox](/implementation-guide/Test/Finch-Sandbox) to test your integration against mock data.
+- [ ]  Some employment systems like Bamboo HR, Zenefits, and Gusto allow you to sign up for free demos. You can use these accounts to [test against a real employment system](/implementation-guide/Test/Provider-Test-Environments).
+- [ ]  If your application requires [write](/implementation-guide/Communicate/Write-Data) operations, send our team a message on Slack or `developers@tryfinch.com`.
 
 Once you have tested your Finch integration with test accounts, you can go live.
 
@@ -102,4 +102,4 @@ The following steps will ensure you and your team is set up for success once you
 ## Learn more
 
 - [Product Permissions](https://developer.tryfinch.com/docs/reference/e68b00055f1d8-permissions)
-- [Finch SDKs](/Developer-Resources/SDKs)
+- [Finch SDKs](/developer-resources/SDKs)

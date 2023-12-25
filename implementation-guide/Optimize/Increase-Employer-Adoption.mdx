@@ -6,7 +6,7 @@ Finch Connect is our embeddable User Interface (UI) that enables employers to co
 
 > New to Finch Connect or looking for help getting started? Read the [Finch Overview](/how-finch-works/finch-overview)
 
-If you’ve [implemented Finch Connect](/Implementation-Guide/Connect/Set-Up-Finch-Connect), but are seeing drop-off from employers or low connection completion rates, try the following suggestions below to optimize conversion. Before implementing these best practices, make sure you have a mechanism to track conversion rates so you can measure any improvements.
+If you’ve [implemented Finch Connect](/implementation-guide/Connect/Set-Up-Finch-Connect), but are seeing drop-off from employers or low connection completion rates, try the following suggestions below to optimize conversion. Before implementing these best practices, make sure you have a mechanism to track conversion rates so you can measure any improvements.
 
 The suggestions below are listed in priority order.
 
@@ -157,7 +157,7 @@ If you already know which provider(s) your customers use (or want to use), you c
 This removes three possible friction points:
 
 1. If you already know which provider is being used by the customer, you can skip an extra step in the Finch Connect flow.
-1. If you want to avoid the customer choosing the wrong provider (e.g. many different [versions of ADP](/integrations/Providers)), then you can suggest the right version.
+1. If you want to avoid the customer choosing the wrong provider (e.g. many different [versions of ADP](/integrations/providers)), then you can suggest the right version.
 1. If you want to better own the user experience, you can build your own provider selection page and launch Finch Connect with the right provider each time.
 
 The provider selection screen can be skipped by providing a valid [provider_id](/implementation-guide/Connect/Set-Up-Finch-Connect) in the `payroll_provider` option while opening Finch Connect.
@@ -212,7 +212,7 @@ Learn more about how to set up authentication fallback [here](/implementation-gu
 
 ### Notify users that need to reauthenticate
 
-Finch aims to ensure your application maintains long-lived access to your users' employment systems. However, when a user changes security settings on their account or an employment system makes changes to its infrastructure, Finch's connection can get disconnected. This will result in an error with the HTTP status code of `401` and `finch_code` of `reauthenticate_user`. When an access token returns this, your user will need to reauthenticate by going through the [Automated Connect Flow](/Implementation-Guide/Connect/Set-Up-Finch-Connect) again.
+Finch aims to ensure your application maintains long-lived access to your users' employment systems. However, when a user changes security settings on their account or an employment system makes changes to its infrastructure, Finch's connection can get disconnected. This will result in an error with the HTTP status code of `401` and `finch_code` of `reauthenticate_user`. When an access token returns this, your user will need to reauthenticate by going through the [Automated Connect Flow](/implementation-guide/Connect/Set-Up-Finch-Connect) again.
 
 To increase conversion, we recommend either using in-app or email notifications to notify your user there is an issue with their connection, why re-connecting is beneficial, and the steps they need to follow to re-connect. To create a more seamless experience, you can bypass the employment system selection page by using the `payroll_provider` parameter. You can find the `payroll_provider` of your user by calling the [`/introspect`](https://developer.tryfinch.com/docs/reference/9d248a993cb53-introspect) endpoint with their `access_token`.
 
@@ -227,9 +227,9 @@ Remember this will create a new `access_token` for your user that will be to be 
 
 ## Checkpoint + Next Step
 <Check>
- After completing this step, your application will have many opportunities to optimize Finch Connection increase the completion rate. Even subtle changes can increase employer adotpion of your application dramatically. Determine which recommendations apply to your application the most and start there. Then continue to optimize your application by [batching IDs in your requests](/Implementation-Guide/Optimize/Batch-Requests) to reduce endpoint calls.
+ After completing this step, your application will have many opportunities to optimize Finch Connection increase the completion rate. Even subtle changes can increase employer adotpion of your application dramatically. Determine which recommendations apply to your application the most and start there. Then continue to optimize your application by [batching IDs in your requests](/implementation-guide/Optimize/Batch-Requests) to reduce endpoint calls.
 </Check>
 
 ## Learn more
 
-- [Mitigate Reauthentication Errors](/Implementation-Guide/Optimize/Mitigate-Errors)
+- [Mitigate Reauthentication Errors](/implementation-guide/Optimize/Mitigate-Errors)

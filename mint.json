@@ -34,7 +34,7 @@
       },
       {
         "name": "API Status",
-        "icon": "bars",
+        "icon": "signal-bars",
         "url": "https://status.tryfinch.com"
       }
     ],
@@ -78,9 +78,9 @@
         {
           "group": "Products",
           "pages": [
-            "products/Organization/Overview",
-            "products/Pay/Overview",
-            "products/Benefits/Overview"
+            "products/organization/Overview",
+            "products/pay/Overview",
+            "products/benefits/Overview"
           ]
         },
         {
@@ -192,8 +192,8 @@
               {
                 "group": "Errors",
                 "pages": [
-                  "api-reference/development-guides/Errors/Error-Handling",
-                  "api-reference/development-guides/Errors/Error-Types"
+                  "api-reference/development-guides/errors/Error-Handling",
+                  "api-reference/development-guides/errors/Error-Types"
                 ]
               }
             ]
