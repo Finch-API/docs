@@ -4,7 +4,7 @@ title: "Finch Overview"
 
 Finch is a Unified Employment API that enables you to build a single integration with Finch and instantly connect to hundreds of employment systems. Once Finch is integrated into your application, you can access your customers' company details, employment history, employee count, individual contact information, income details, company pay periods, and individual paycheck details like earnings, taxes, deductions, and contributions.
 
-Finch works by allowing your customers (employers) to connect their employment systems (HRIS, Payroll, etc.) to your application. This connection process is facilitated through [Finch Connect](), our employer-facing user interface which provides an elegant and secure authorization flow where your customers (employers) approve permissions, select their provider, and authorize access to their employment systems. Upon a successful connection, Finch will issue an access token to your application which is used to make API requests to Finch API endpoints.
+Finch works by allowing your customers (employers) to connect their employment systems (HRIS, Payroll, etc.) to your application. This connection process is facilitated through [Finch Connect](/how-finch-works/finch-connect), our employer-facing user interface which provides an elegant and secure authorization flow where your customers (employers) approve permissions, select their provider, and authorize access to their employment systems. Upon a successful connection, Finch will issue an access token to your application which is used to make API requests to Finch API endpoints.
 
 ![How Finch Works Diagram](../images/how-finch-works-diagram.png)
 
@@ -12,13 +12,13 @@ Finch works by allowing your customers (employers) to connect their employment s
 
 Finch offers three products: Organization, Payroll, and Deductions. Each product has its own set of endpoints, which provide specific data related to HRIS and payroll employment systems.
 
-- Our [Organization]() product provides APIs to read company directory and employee data including contact information, demographics, departmental hierarchy, income history, and more.
-- Our [Payroll]() product provides APIs for retrieving company payroll and inspecting individual paycheck information such as earnings, taxes, deductions, and contributions.
-- Our [Deductions]() product provides APIs for creating, enrolling, and unenrolling individuals in deductions and contributions directly within the payroll provider.
+- Our [Organization](/products/organization/Overview) product provides APIs to read company directory and employee data including contact information, demographics, departmental hierarchy, income history, and more.
+- Our [Payroll](/products/pay/Overview) product provides APIs for retrieving company payroll and inspecting individual paycheck information such as earnings, taxes, deductions, and contributions.
+- Our [Deductions](/products/benefits/Overview) product provides APIs for creating, enrolling, and unenrolling individuals in deductions and contributions directly within the payroll provider.
 
 ## Finch Connect
 
-Employers connect their data to your application in 4 easy steps, facilitated through [Finch Connect](). 
+Employers connect their data to your application in 4 easy steps, facilitated through [Finch Connect](/how-finch-works/finch-connect). 
 
 - **Prioritize privacy**: Finch Connect discloses data privacy practices right from the start, so your customers know where and how their data is used.
 - **Confirm permissions**: Finch Connect displays the granular permissions needed to access the requested data. Finch only shares data that has been approved.
@@ -27,8 +27,8 @@ Employers connect their data to your application in 4 easy steps, facilitated th
 
 ## Integration Types
 
-Finch offers two [Integration Types]() that enable you to optimize for either data refresh cadence or long-tail provider coverage. This allows you to service *all* of your customers via Finch, no matter which employment systems they are using. Employers will go through different Finch Connect experiences depending on the integration type.  
+Finch offers two [Integration Types](/integrations/integration-types) that enable you to optimize for either data refresh cadence or long-tail provider coverage. This allows you to service *all* of your customers via Finch, no matter which employment systems they are using. Employers will go through different Finch Connect experiences depending on the integration type.  
 
 ## Connections
 
-After an employer authenticates via Finch Connect, a connection is established between you and the employer via Finch. A [connection]() is a unique *Provider* + *App* + *Company* pairing, so several accounts from an employer for the same provider will still count as one connection.
+After an employer authenticates via Finch Connect, a connection is established between you and the employer via Finch. A [connection](/how-finch-works/unified-employment-api-glossary#connection) is a unique *Provider* + *App* + *Company* pairing, so several accounts from an employer for the same provider will still count as one connection.
