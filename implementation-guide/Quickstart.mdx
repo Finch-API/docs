@@ -1,7 +1,6 @@
 ---
-stoplight-id: cmlh3anpgti5n
+title: "Quickstart"
 ---
-# ⏩ Quickstart
 
 To get started, sign up for a free account at [https://dashboard.tryfinch.com/signup](https://dashboard.tryfinch.com/signup). After registration, you will have access to a sandbox application `client_id` and `client_secret` to build and test how Finch works using simulated data.
 
@@ -25,9 +24,9 @@ Finch Connect provides a secure and elegant authorization flow for your users to
 
 Since this quickstart assumes you have not built an application yet, we must make sure that a proper `redirect_uri` is set up before continuing or our authorization code generation will fail. In your [Finch Dashboard](https://dashboard.tryfinch.com), go to the "Redirect URIs" section and select `+ Add Redirect URI`. We are going to use [https://example.com](https://example.com) for testing purposes. In production, you will want to use your own application's urls for the Redirect Uris (and remove all mentions of https://example.com or http://localhost).
 
-Redirect URIs are only needed if you are [redirecting to Finch Connect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md#redirect-to-finch-connect). If you decide to use our [embedded Finch Connect flow](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md#embedded-finch-connect), you do not need to specify a `redirect_uri`; the SDK does this for you.
+Redirect URIs are only needed if you are [redirecting to Finch Connect](/docs/implementation-guide/Connect/Set-Up-Finch-Connect#redirect-to-finch-connect). If you decide to use our [embedded Finch Connect flow](/docs/implementation-guide/Connect/Set-Up-Finch-Connect.md#embedded-finch-connect), you do not need to specify a `redirect_uri`; the SDK does this for you.
 
-We will launch [Finch Connect](/docs/Get-Started/Finch-Connect.md) - our secure and elegant authorization flow for your users to grant your application access to their systems - by constructing and navigating to the following URL on your browser. Copy the url below, open up your favorite text editor (Notes, TextEdit, VS Code, etc), paste, and replace `<your_client_id>` with the client id found in your [Finch Dashboard](https://dashboard.tryfinch.com). Remove the angle brackets when replacing `<your_client_id>`.
+We will launch [Finch Connect](/docs/how-finch-works/finch-connect) - our secure and elegant authorization flow for your users to grant your application access to their systems - by constructing and navigating to the following URL on your browser. Copy the url below, open up your favorite text editor (Notes, TextEdit, VS Code, etc), paste, and replace `<your_client_id>` with the client id found in your [Finch Dashboard](https://dashboard.tryfinch.com). Remove the angle brackets when replacing `<your_client_id>`.
 
 ```bash
 https://connect.tryfinch.com/authorize?
@@ -41,7 +40,7 @@ https://connect.tryfinch.com/authorize?
 
 ## Log in to the Finch sandbox account
 
-Click on the Finch Sandbox mock provider on the selector page and log in with the username `largeco` and password `letmein`. Visit [Finch Sandbox](/docs/Implementation-Guide/Test/Finch-Sandbox.md) for more information on the various types of mock payroll providers you can test.
+Click on the Finch Sandbox mock provider on the selector page and log in with the username `largeco` and password `letmein`. Visit [Finch Sandbox](/docs/implementation-guide/Test/Finch-Sandbox) for more information on the various types of mock payroll providers you can test.
 
 > This is the final interaction your end-user will have with Finch. In the future, all of the following steps will occur on your application's [frontend and backend](/docs/Implementation-Guide/Introduction.md#frontend--backend).
 

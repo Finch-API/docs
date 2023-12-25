@@ -44,10 +44,7 @@ Since Finch defines a connection based on a unique `provider_id` and `company_id
 
 The best way to retrieve the `provider_id` and `company_id` (or `account_id`) of an access token is by calling the [Introspect](https://developer.tryfinch.com/docs/reference/eee6e798b0f93-introspect) endpoint. It will return a JSON body containing account information associated with the `access_token`.  
 
-<!--
-title: "Example /introspect response"
--->
-```json
+```json Example /introspect response
 {
   "account_id": "d8ef1814-5913-492f-b5c0-a16e2d6432c9",
   "client_id": "25ea8bd8-f76b-41f9-96e3-1e6162021c50",

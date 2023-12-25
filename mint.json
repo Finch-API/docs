@@ -28,11 +28,6 @@
     ],
     "anchors": [
       {
-        "name": "Quickstart",
-        "icon": "rabbit-running",
-        "url": "/how-finch-works/quickstart"
-      },
-      {
         "name": "Changelog",
         "icon": "megaphone",
         "url": "https://changelog.tryfinch.com"
@@ -47,6 +42,7 @@
         {
           "group": "How Finch Works",
           "pages": [
+            "how-finch-works/quickstart",
             "how-finch-works/finch-overview",
             "how-finch-works/finch-connect",
             "how-finch-works/unified-employment-api-glossary"
@@ -120,7 +116,7 @@
               "pages": [
                 "implementation-guide/Secure/Store-Tokens",
                 "implementation-guide/Secure/Disconnect-Tokens",
-                "implementation-guide/Optimize/(Optional)-Control-Access"
+                "implementation-guide/Secure/Control-Access"
               ]
             },
             {
@@ -151,7 +147,7 @@
             "developer-resources/Reauthentication",
             "developer-resources/Reconcile-Employees",
             "developer-resources/Enable-SSN-Field",
-            "developer-resources/Calculating-YTD-Gross-Wages",
+            "developer-resources/Calculating-YTD-Wages",
             "developer-resources/Developer-FAQs"
           ]
         },

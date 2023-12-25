@@ -165,11 +165,8 @@ The provider selection screen can be skipped by providing a valid [provider_id](
 If you don't know the customer's payroll system upfront or you want to give the customer as many options to connect as possible, then leave the `payroll_provider` option empty while opening Finch Connect.
 
 
-<!--
-type: tab
-title: Bypass Enabled
--->
-```bash
+<CodeBlock>
+```bash Bypass Enabled
 https://connect.tryfinch.com/authorize?
 &client_id=<your_client_id>
 &products=company directory individual employment payment pay_statement
@@ -177,17 +174,13 @@ https://connect.tryfinch.com/authorize?
 &redirect_uri=https://example.com
 ```
 
-<!--
-type: tab
-title: Bypass Disabled 
--->
-```bash
+```bash Bypass Disabled
 https://connect.tryfinch.com/authorize?
 &client_id=<your_client_id>
 &products=company directory individual employment payment pay_statement
 &redirect_uri=https://example.com
 ```
-</Tabs>
+</CodeBlock>
 
 
 #### Custom integration page

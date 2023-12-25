@@ -57,11 +57,8 @@ If you are using a [Finch-provided SDK](/docs/Developer-Resources/SDKs.md#fronte
 
 2. **Configure Finch Connect**: Every flow requires you to configure Finch Connect with your unique `client_id`. You can find this `client_id` in your Finch Developer Dashboard. Additionally, set the `redirect_uri` parameter to the URL where users will be redirected after completing the authentication flow (also set in the Finch Developer Dashboard).
 
-<!--
-type: tab
-title: React
--->
-```js
+<CodeBlock>
+```js React
 import React, { useState } from "react";
 import { useFinchConnect } from "react-finch-connect";
 
@@ -84,11 +81,7 @@ const App = () => {
   // ...
 };
 ```
-<!--
-type: tab
-title: Javascript
--->
-```html
+```html Javascript
 <html>
   <body>
     <script>
@@ -114,13 +107,12 @@ title: Javascript
   </body>
 </html>
 ```        
-</Tabs>
+</CodeBlock>
+
 3. **Implement the authentication flow**: Add a button or a link in your application that triggers the Finch Connect flow. Users will click this button or link to start the authentication process.
-<!--
-type: tab
-title: React
--->
-```js
+
+<CodeBlock>
+```js React
 const App = () => {
   // ...
 
@@ -132,11 +124,7 @@ const App = () => {
   );
 };
 ```
-<!--
-type: tab
-title: Javascript
--->
-```html
+```html Javascript
 <html>
   <body>
     <button id="connect-button">Open Finch Connect</button>
@@ -153,7 +141,7 @@ title: Javascript
   </body>
 </html>
 ```
-</Tabs>
+</CodeBlock>
         
 4. **Listen for events**: Finch Connect emits events that your application should listen for to handle the different stages of the authentication process. The two most important events are `onSuccess` and `onError`.
     1. `onSuccess`: This event is triggered when the user completes the authentication process. It returns an authorization `code` that you will use to obtain an `access_token` in the next step. Pass this authorization `code` securely and temporarily to the access token exchange function.

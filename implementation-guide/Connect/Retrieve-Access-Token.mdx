@@ -12,10 +12,7 @@ Now that you have successfully [integrated Finch Connect](/docs/Implementation-G
     - `client_secret`: Your unique client secret from the Finch developer dashboard.
     - `code`: The authorization code obtained from Finch Connect in the [Set Up Finch Connect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md).
     - `redirect_uri` (optional): If using the Redirect Finch Connect Flow, include the `redirect_uri`. This is the same redirect URI you used when setting up Finch Connect. If you using Embedded Flow, do not include `redirect_uri` in the payload.
-     <!--
-    title: "Token exchange example"
-    --> 
-    ```bash
+    ```bash Token exchange example
     curl https://api.tryfinch.com/auth/token \
       -X POST \
       -H "Content-Type: application/json" \
