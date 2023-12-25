@@ -92,13 +92,13 @@ Finch looks at two broad categories when defining data quality:
 
 ### Can I bypass the provider selection screen in Finch Connect?
 
-- You can [bypass the provider screen](/docs/Implementation-Guide/Optimize/Increase-Employer-Adoption) if you already know the provider name by passing `payroll_provider=<your_provider_name>` into the `/authorize` url when opening Finch Connect.
+- You can [bypass the provider screen](/Implementation-Guide/Optimize/Increase-Employer-Adoption) if you already know the provider name by passing `payroll_provider=<your_provider_name>` into the `/authorize` url when opening Finch Connect.
 
 ---
 
 ### How long is the access token lifetime?
 
-- A Finch `access_token` lifetime is infinite; it does not expire⁠, unless you [disconnect](/docs/Implementation-Guide/Secure/Disconnect-Tokens) it. If a `401 Re-authentication` error is received (either by a user changing their security setting or an employment system makes an infrastructure change), Finch’s connection can get disconnected, which requires a user to [reauthenticate](/docs/Implementation-Guide/Optimize/Mitigate-Errors) and a new Finch access_token will be created and sent back to your app. 
+- A Finch `access_token` lifetime is infinite; it does not expire⁠, unless you [disconnect](/Implementation-Guide/Secure/Disconnect-Tokens) it. If a `401 Re-authentication` error is received (either by a user changing their security setting or an employment system makes an infrastructure change), Finch’s connection can get disconnected, which requires a user to [reauthenticate](/Implementation-Guide/Optimize/Mitigate-Errors) and a new Finch access_token will be created and sent back to your app. 
 
 ---
 

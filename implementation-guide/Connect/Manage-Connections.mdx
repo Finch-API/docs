@@ -2,7 +2,7 @@
 title: "Manage Connections"
 ---
 
-Every [access token obtained](/docs/Implementation-Guide/Connect/Retrieve-Access-Token) is associated with a connection. Therefore, to prevent mixing up data across different users or employers, it is important to make sure you associate each access token with the correct connections in your application. Implementing a system to track the relationship between your customers and their corresponding access tokens is recommended. 
+Every [access token obtained](/Implementation-Guide/Connect/Retrieve-Access-Token) is associated with a connection. Therefore, to prevent mixing up data across different users or employers, it is important to make sure you associate each access token with the correct connections in your application. Implementing a system to track the relationship between your customers and their corresponding access tokens is recommended. 
 
 ## Define connections
 
@@ -67,7 +67,7 @@ However, in production, you will want to handle the more [complex connection sce
 This can be represented by two database tables: the *Customers* table one stores the `customer_id` and the *Connections* table stores the `company_id` + `provider_id` + `access_token` which references back to a `customer_id`.
 
 
-![1-To-Many Database Schema](/docs/images/manage-connections/multiple-connection-database.jpg)
+![1-To-Many Database Schema](/images/manage-connections/multiple-connection-database.jpg)
 
 In this realistic example:
 
@@ -79,7 +79,7 @@ Now, when you insert data into the *Connections* table, you'll need to ensure th
 
 ## Enabling multiple connections with Finch Connect
 
-To have your customer create multiple connections in your application, your "onboarding" flow or "connections" page must allow them to go through [Finch Connect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect) multiple times.
+To have your customer create multiple connections in your application, your "onboarding" flow or "connections" page must allow them to go through [Finch Connect](/Implementation-Guide/Connect/Set-Up-Finch-Connect) multiple times.
 
 
 Below is an example User Interface. You can present your customers with a page showing all of their current connections and provide the option to connect more accounts, providers, or company entities.
@@ -101,14 +101,14 @@ In the [multi-provider or multi-company](#define-connections) scenarios, if your
 
 ## Checkpoint + Next Step
 <Check>
- After completing this step, you should know how to associate access tokens with multiple accounts for each new connection. With proper connection organization, you are ready to use the access token to [make API requests](/docs/Implementation-Guide/Communicate/Read-Data) to Finch's various endpoints.
+ After completing this step, you should know how to associate access tokens with multiple accounts for each new connection. With proper connection organization, you are ready to use the access token to [make API requests](/Implementation-Guide/Communicate/Read-Data) to Finch's various endpoints.
 </Check>
 
 
 ## Learn more
 
-- [Control User Access](/docs/Implementation-Guide/Secure/Control-Access)
-- [Set Up Finch Connect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect)
-- [Reauthenticating Connections](/docs/Developer-Resources/Reauthentication)
-- [Reconcile Employees](/docs/Developer-Resources/Reconcile-employees)
-- [Integration Types: Automated](/docs/Integrations/Integration-Types#automated)
+- [Control User Access](/Implementation-Guide/Secure/Control-Access)
+- [Set Up Finch Connect](/Implementation-Guide/Connect/Set-Up-Finch-Connect)
+- [Reauthenticating Connections](/Developer-Resources/Reauthentication)
+- [Reconcile Employees](/Developer-Resources/Reconcile-employees)
+- [Integration Types: Automated](/Integrations/Integration-Types#automated)
