@@ -16,10 +16,12 @@ Create a test plan that outlines various scenarios, edge cases, and expected out
 
 Finch has two types of sandboxes:
 - [Provider Sandboxes](/Implementation-Guide/Test/Provider-Test-Environments) allow you to set up a test environment in an external provider system and connect to that system via Finch. This allows you to test Finch's ability to connect to an external system, modify data directly in that system, and see those changes reflected in API calls to Finch.
-![Provider Test Environment.png](</docs/images/sandbox/Provider Test Environment.png> 'Provider Sandbox')
+
+![Provider Test Environment.png](</images/sandbox/Provider Test Environment.png> 'Provider Sandbox')
 
 - The [Finch Sandbox](Finch-Sandbox) lets you generate data to simulate scenarios you might encounter from a live provider without requiring an external connection. This sandbox environment allows for rapid and repetitive testing.
-![Finch Sandbox.png](</docs/images/sandbox/Finch Sandbox.png> 'Finch Sandbox')
+
+![Finch Sandbox.png](</images/sandbox/Finch Sandbox.png> 'Finch Sandbox')
 
 Typically, provider test environments are useful during the early stages of testing with Finch or when testing a new integration, as they allow you to gain confidence in Finch's connection to that system. The Finch sandbox is useful for ongoing testing where repetitive, programmatic simulations are needed.
 
