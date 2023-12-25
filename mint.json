@@ -180,6 +180,23 @@
               "api-reference/3-benefits/enroll-individuals-in-benefits",
               "api-reference/3-benefits/unenroll-individuals-from-benefits"
             ]
+          },
+          {
+            "group": "Development Guides",
+            "pages": [
+              "api-reference/development-guides/Permissions",
+              "api-reference/development-guides/Headers",
+              "api-reference/development-guides/Versioning",
+              "api-reference/development-guides/Rate-Limits",
+              "api-reference/development-guides/Handling-API-Responses",
+              {
+                "group": "Errors",
+                "pages": [
+                  "api-reference/development-guides/Errors/Error-Handling",
+                  "api-reference/development-guides/Errors/Error-Types"
+                ]
+              }
+            ]
           }
     ],
     "footerSocials":
