@@ -4,14 +4,14 @@ title: "Providers"
 
 Finch supports integrations with over 200 Human Resource Information System (HRIS) providers, listed below. For each provider you will find:
 * Provider display name
-* Provider `id` (used in the `payroll_provider` parameter in [Finch Connect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md))
+* Provider `id` (used in the `payroll_provider` parameter in [Finch Connect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect))
 * Finch Products supported for the provider (Organization, Payroll, Deductions)
 * Integration types available for each supported Product (Automated, Assisted)
 
 **Please note:** Many HRIS providers include payroll functionality, but some do not. If there is no payroll data available from a provider, it will be marked **N/A**. Providers marked <span style={{ color: 'red' }}>Not Supported</span> support payroll data, but an integration is not avaiable due to constraints by the provider. 
 
 ### Integration Types
-If Finch supports an integration, it will be marked as one of two integration types: <span style={{ color: 'darkgreen' }}>Automated</span> or <span style={{ color: 'goldenrod' }}>Assisted</span>. Automated integrations refresh data every **24 hours**; while assisted integrations refresh data every **7 days** and require a [configuration period](/docs/Integrations/Integration-Types.md#configuration-periods). [Learn more about Integration types](/docs/Integrations/Integration-Types.md).
+If Finch supports an integration, it will be marked as one of two integration types: <span style={{ color: 'darkgreen' }}>Automated</span> or <span style={{ color: 'goldenrod' }}>Assisted</span>. Automated integrations refresh data every **24 hours**; while assisted integrations refresh data every **7 days** and require a [configuration period](/docs/Integrations/Integration-Types#configuration-periods). [Learn more about Integration types](/docs/Integrations/Integration-Types).
 
 ### How to Request New Integrations
 Finch supports Organization data for every provider listed below. 
@@ -28,34 +28,34 @@ Popular supported HRIS integrations and products.
 
 | DISPLAY NAME | ID | ORGANIZATION | PAYROLL | DEDUCTIONS |
 | --- | --- | --- | --- | --- |
-| [ADP Workforce Now](/docs/Integrations/Provider-Field-Support/ADP-Workforce-Now.md)† | `adp_workforce_now` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | <span style={{ color: 'goldenrod' }}>Assisted</span> |
-| [AlphaStaff](/docs/Integrations/Provider-Field-Support/AlphaStaff.md) | `alphastaff` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | Upon Request |
-| [BambooHR](/docs/Integrations/Provider-Field-Support/BambooHR.md) | `bamboo_hr` |  <span style={{ color: 'darkgreen' }}>Automated</span> | Upon Request | <span style={{ color: 'goldenrod' }}>Assisted</span> |
-| [bob](/docs/Integrations/Provider-Field-Support/Bob.md) | `bob` |  <span style={{ color: 'darkgreen' }}>Automated</span> | Upon Request | N/A |
-| [Deel](/docs/Integrations/Provider-Field-Support/Deel.md) | `deel` |  <span style={{ color: 'darkgreen' }}>Automated</span> | Upon Request | Upon Request |
-| [Gusto](/docs/Integrations/Provider-Field-Support/Gusto.md) | `gusto` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> |
-| [Humaans](/docs/Integrations/Provider-Field-Support/Humaans.md) | `humaans` |  <span style={{ color: 'darkgreen' }}>Automated</span> | Upon Request | N/A |
-| [Insperity](/docs/Integrations/Provider-Field-Support/Insperity.md) | `insperity` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | Upon Request |
-| [Justworks](/docs/Integrations/Provider-Field-Support/Justworks.md) | `justworks` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | <span style={{ color: 'goldenrod' }}>Assisted</span> |
-| [Namely](/docs/Integrations/Provider-Field-Support/Namely.md) | `namely` |  <span style={{ color: 'darkgreen' }}>Automated</span> | Upon Request | Upon Request |
-| [Oyster HR](/docs/Integrations/Provider-Field-Support/Oyster-HR.md) | `oyster_hr` |  <span style={{ color: 'darkgreen' }}>Automated</span> | N/A | N/A |
-| [Paychex Flex](/docs/Integrations/Provider-Field-Support/Paychex.md) | `paychex_flex` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | <span style={{ color: 'goldenrod' }}>Assisted</span> |
-| [Paycom](/docs/Integrations/Provider-Field-Support/Paycom.md) | `paycom` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | <span style={{ color: 'goldenrod' }}>Assisted</span> |
-| [Paycor](/docs/Integrations/Provider-Field-Support/Paycor.md) | `paycor` |  <span style={{ color: 'darkgreen' }}>Automated</span> | <span style={{ color: 'goldenrod' }}>Assisted</span> | <span style={{ color: 'goldenrod' }}>Assisted</span> |
-| [Paylocity](/docs/Integrations/Provider-Field-Support/Paylocity.md) | `paylocity` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | <span style={{ color: 'goldenrod' }}>Assisted</span> |
-| [Personio](/docs/Integrations/Provider-Field-Support/Personio.md) | `personio` |  <span style={{ color: 'darkgreen' }}>Automated</span> | N/A | N/A |
-| [QuickBooks Online](/docs/Integrations/Provider-Field-Support/Quickbooks.md) | `quickbooks` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | <span style={{ color: 'goldenrod' }}>Assisted</span> |
-| [Rippling](/docs/Integrations/Provider-Field-Support/Rippling.md) | `rippling` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | N/A |
-| [Run Powered by ADP](/docs/Integrations/Provider-Field-Support/Run-Powered-By-ADP.md) | `adp_run` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | <span style={{ color: 'goldenrod' }}>Assisted</span> |
-| [Sage HR](/docs/Integrations/Provider-Field-Support/SageHR.md) | `sage_hr` |  <span style={{ color: 'darkgreen' }}>Automated</span> | N/A | Upon Request |
-| [Sapling](/docs/Integrations/Provider-Field-Support/Sapling.md) | `sapling` |  <span style={{ color: 'darkgreen' }}>Automated</span> | N/A | N/A |
-| [Sequoia One](/docs/Integrations/Provider-Field-Support/Sequioa-One.md) | `sequoia_one` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | Upon Request |
-| [Square Payroll](/docs/Integrations/Provider-Field-Support/Square-Payroll.md) | `square_payroll` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | <span style={{ color: 'goldenrod' }}>Assisted</span> |
-| [TriNet](/docs/Integrations/Provider-Field-Support/TriNet.md) | `trinet` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> |
-| [UKG Ready](/docs/Integrations/Provider-Field-Support/UKG-Ready.md) | `ukg_ready` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | Upon Request |
-| [UltiPro (UKG Pro)](/docs/Integrations/Provider-Field-Support/UKG-Pro.md) | `ulti_pro` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | Upon Request |
-| [Wave](/docs/Integrations/Provider-Field-Support/Wave.md) | `wave` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | <span style={{ color: 'goldenrod' }}>Assisted</span> |
-| [Workday](/docs/Integrations/Provider-Field-Support/Workday.md) | `workday` |  <span style={{ color: 'darkgreen' }}>Automated</span> | Upon Request | Upon Request |
+| [ADP Workforce Now](/docs/Integrations/Provider-Field-Support/ADP-Workforce-Now)† | `adp_workforce_now` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | <span style={{ color: 'goldenrod' }}>Assisted</span> |
+| [AlphaStaff](/docs/Integrations/Provider-Field-Support/AlphaStaff) | `alphastaff` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | Upon Request |
+| [BambooHR](/docs/Integrations/Provider-Field-Support/BambooHR) | `bamboo_hr` |  <span style={{ color: 'darkgreen' }}>Automated</span> | Upon Request | <span style={{ color: 'goldenrod' }}>Assisted</span> |
+| [bob](/docs/Integrations/Provider-Field-Support/Bob) | `bob` |  <span style={{ color: 'darkgreen' }}>Automated</span> | Upon Request | N/A |
+| [Deel](/docs/Integrations/Provider-Field-Support/Deel) | `deel` |  <span style={{ color: 'darkgreen' }}>Automated</span> | Upon Request | Upon Request |
+| [Gusto](/docs/Integrations/Provider-Field-Support/Gusto) | `gusto` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> |
+| [Humaans](/docs/Integrations/Provider-Field-Support/Humaans) | `humaans` |  <span style={{ color: 'darkgreen' }}>Automated</span> | Upon Request | N/A |
+| [Insperity](/docs/Integrations/Provider-Field-Support/Insperity) | `insperity` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | Upon Request |
+| [Justworks](/docs/Integrations/Provider-Field-Support/Justworks) | `justworks` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | <span style={{ color: 'goldenrod' }}>Assisted</span> |
+| [Namely](/docs/Integrations/Provider-Field-Support/Namely) | `namely` |  <span style={{ color: 'darkgreen' }}>Automated</span> | Upon Request | Upon Request |
+| [Oyster HR](/docs/Integrations/Provider-Field-Support/Oyster-HR) | `oyster_hr` |  <span style={{ color: 'darkgreen' }}>Automated</span> | N/A | N/A |
+| [Paychex Flex](/docs/Integrations/Provider-Field-Support/Paychex) | `paychex_flex` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | <span style={{ color: 'goldenrod' }}>Assisted</span> |
+| [Paycom](/docs/Integrations/Provider-Field-Support/Paycom) | `paycom` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | <span style={{ color: 'goldenrod' }}>Assisted</span> |
+| [Paycor](/docs/Integrations/Provider-Field-Support/Paycor) | `paycor` |  <span style={{ color: 'darkgreen' }}>Automated</span> | <span style={{ color: 'goldenrod' }}>Assisted</span> | <span style={{ color: 'goldenrod' }}>Assisted</span> |
+| [Paylocity](/docs/Integrations/Provider-Field-Support/Paylocity) | `paylocity` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | <span style={{ color: 'goldenrod' }}>Assisted</span> |
+| [Personio](/docs/Integrations/Provider-Field-Support/Personio) | `personio` |  <span style={{ color: 'darkgreen' }}>Automated</span> | N/A | N/A |
+| [QuickBooks Online](/docs/Integrations/Provider-Field-Support/Quickbooks) | `quickbooks` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | <span style={{ color: 'goldenrod' }}>Assisted</span> |
+| [Rippling](/docs/Integrations/Provider-Field-Support/Rippling) | `rippling` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | N/A |
+| [Run Powered by ADP](/docs/Integrations/Provider-Field-Support/Run-Powered-By-ADP) | `adp_run` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | <span style={{ color: 'goldenrod' }}>Assisted</span> |
+| [Sage HR](/docs/Integrations/Provider-Field-Support/SageHR) | `sage_hr` |  <span style={{ color: 'darkgreen' }}>Automated</span> | N/A | Upon Request |
+| [Sapling](/docs/Integrations/Provider-Field-Support/Sapling) | `sapling` |  <span style={{ color: 'darkgreen' }}>Automated</span> | N/A | N/A |
+| [Sequoia One](/docs/Integrations/Provider-Field-Support/Sequioa-One) | `sequoia_one` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | Upon Request |
+| [Square Payroll](/docs/Integrations/Provider-Field-Support/Square-Payroll) | `square_payroll` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | <span style={{ color: 'goldenrod' }}>Assisted</span> |
+| [TriNet](/docs/Integrations/Provider-Field-Support/TriNet) | `trinet` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> |
+| [UKG Ready](/docs/Integrations/Provider-Field-Support/UKG-Ready) | `ukg_ready` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | Upon Request |
+| [UltiPro (UKG Pro)](/docs/Integrations/Provider-Field-Support/UKG-Pro) | `ulti_pro` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | Upon Request |
+| [Wave](/docs/Integrations/Provider-Field-Support/Wave) | `wave` |  <span style={{ color: 'darkgreen' }}>Automated</span> |  <span style={{ color: 'darkgreen' }}>Automated</span> | <span style={{ color: 'goldenrod' }}>Assisted</span> |
+| [Workday](/docs/Integrations/Provider-Field-Support/Workday) | `workday` |  <span style={{ color: 'darkgreen' }}>Automated</span> | Upon Request | Upon Request |
 
 </Accordion>
 
@@ -267,4 +267,4 @@ Velocity Global | `velocity_global` | <span style={{ color: 'goldenrod' }}>Assis
 
 </Accordion>
 
-*†ADP Workforce Now utilizes Auth Fallback and will function as an Assisted flow in Finch Connect. This means the employer will follow normal Assisted Connect instructions to authorize access. Once the Connect flow is completed, ADP WFN will function as a normal, automated connection with one caveat: until the first Data Sync is completed, Finch will serve a 202 response for any request for ADP WFN data. You must opt into Auth Fallback to utilize the ADP Workforce Now integration. For more information, see the [Data Syncs](/docs/Developer-Resources/Data-Syncs.md) page.*
+*†ADP Workforce Now utilizes Auth Fallback and will function as an Assisted flow in Finch Connect. This means the employer will follow normal Assisted Connect instructions to authorize access. Once the Connect flow is completed, ADP WFN will function as a normal, automated connection with one caveat: until the first Data Sync is completed, Finch will serve a 202 response for any request for ADP WFN data. You must opt into Auth Fallback to utilize the ADP Workforce Now integration. For more information, see the [Data Syncs](/docs/Developer-Resources/Data-Syncs) page.*

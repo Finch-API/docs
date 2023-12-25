@@ -2,7 +2,7 @@
 title: "Disconnect Tokens"
 ---
 
-A connection exists once an access token is obtained and [stored securely](/docs/Implementation-Guide/Secure/Store-Tokens.md). Once a connection is no longer needed or requested to be deleted by the customer, calling the [/disconnect](https://developer.tryfinch.com/docs/reference/c65ecbd512332-disconnect) endpoint will disconnect all associated access tokens for that particular connection. It is important to know how Finch defines a connection to understand what happens when a connection is disconnected. 
+A connection exists once an access token is obtained and [stored securely](/docs/Implementation-Guide/Secure/Store-Tokens). Once a connection is no longer needed or requested to be deleted by the customer, calling the [/disconnect](https://developer.tryfinch.com/docs/reference/c65ecbd512332-disconnect) endpoint will disconnect all associated access tokens for that particular connection. It is important to know how Finch defines a connection to understand what happens when a connection is disconnected. 
 
 ## Disconnect scenarios
 
@@ -59,9 +59,9 @@ However, even though the access token issued in step 4 was still set up by User 
 
 ## Checkpoint + Next Step
 <Check>
- After completing this step, you should know what will happen to a connection if an access token is disconnected. Your application should give your customers the ability to disconnect their connection, which subsequently calls the Finch Disconnect endpoint from the backend. By storing tokens securely and disconnecting connections when necessary, your application is more secure. If you plan on presenting the data back to the employer via a User Interface, it is crucial to [control user access properly](/docs/Implementation-Guide/Secure/Control-Access.md) to ensure employment data is only viewable to the correct customer account. 
+ After completing this step, you should know what will happen to a connection if an access token is disconnected. Your application should give your customers the ability to disconnect their connection, which subsequently calls the Finch Disconnect endpoint from the backend. By storing tokens securely and disconnecting connections when necessary, your application is more secure. If you plan on presenting the data back to the employer via a User Interface, it is crucial to [control user access properly](/docs/Implementation-Guide/Secure/Control-Access) to ensure employment data is only viewable to the correct customer account. 
 </Check>
 
 ## Learn more
 - [Disconnect Endpoint](https://developer.tryfinch.com/docs/reference/c65ecbd512332-disconnect)
-- [Manage Connections](docs/Implementation-Guide/Connect/Manage-Connections.md)
+- [Manage Connections](docs/Implementation-Guide/Connect/Manage-Connections)

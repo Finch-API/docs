@@ -1,6 +1,6 @@
 # Reauthentication
 
-If Finch ever loses a connection with an employer's provider system, we will return a `401 Unauthorized` HTTP status code with a `finch_code` of `reauthenticate_user` (see [Finch API errors](https://developer.tryfinch.com/docs/reference/Errors/Error-Types.md)). 
+If Finch ever loses a connection with an employer's provider system, we will return a `401 Unauthorized` HTTP status code with a `finch_code` of `reauthenticate_user` (see [Finch API errors](https://developer.tryfinch.com/docs/reference/Errors/Error-Types)). 
 
 ```js
 {
@@ -11,4 +11,4 @@ If Finch ever loses a connection with an employer's provider system, we will ret
 }
 ```
 
-If an access token is returning this error, follow the [reauthentication process](/docs/Implementation-Guide/Optimize/Mitigate-Errors.md#reauthentication-errors) to reconnect the employer.
+If an access token is returning this error, follow the [reauthentication process](/docs/Implementation-Guide/Optimize/Mitigate-Errors#reauthentication-errors) to reconnect the employer.

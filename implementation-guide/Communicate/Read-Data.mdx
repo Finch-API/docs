@@ -2,7 +2,7 @@
 title: "Read Organization and Payroll Data"
 ---
 
-After [isolating each connection](/docs/Implementation-Guide/Connect/Manage-Connections.md) to an employer, you can now make API requests to Finch's various endpoints, such as `/company`, `/directory`, `/individual`, `/employment`, `/payment`, and `/pay-statement`. These endpoints only allow the reading of data from employment providers; they do not permit the writing of data back to the system. Writing deductions and contributions back to the provider is covered in [Write Data](docs/Implementation-Guide/Communicate/Write-Data.md) step.
+After [isolating each connection](/docs/Implementation-Guide/Connect/Manage-Connections) to an employer, you can now make API requests to Finch's various endpoints, such as `/company`, `/directory`, `/individual`, `/employment`, `/payment`, and `/pay-statement`. These endpoints only allow the reading of data from employment providers; they do not permit the writing of data back to the system. Writing deductions and contributions back to the provider is covered in [Write Data](docs/Implementation-Guide/Communicate/Write-Data) step.
 
 In this step, you will learn how to make API requests, handle responses, and manage request rate limits.
 
@@ -14,7 +14,7 @@ In this step, you will learn how to make API requests, handle responses, and man
         - `/employment`: Access employment-related data, like job title, department, and start and end dates, and income.
         - `/payment`: Get payroll information, including pay frequency and last payment date.
         - `/pay-statement`: Fetch detailed individual paycheck data, including earnings, taxes, employee deductions, and employer contributions.
-        - `/benefits`: Create and enroll employees in various types of benefits directly in the employer’s provider. The “benefits” are applied directly to the employee’s next paycheck in the deductions or contributions section. This endpoint is covered more in [Write Data](docs/Implementation-Guide/Communicate/Write-Data.md).
+        - `/benefits`: Create and enroll employees in various types of benefits directly in the employer’s provider. The “benefits” are applied directly to the employee’s next paycheck in the deductions or contributions section. This endpoint is covered more in [Write Data](docs/Implementation-Guide/Communicate/Write-Data).
 
 1. **Set up the HTTP request**: Use an HTTP library such as [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) or [Axios](https://axios-http.com/docs/intro) (or another suitable package) to create an HTTP request. Include the access token in the `Authorization` header using the format `Bearer <your_access_token>`. Make sure the HTTP request uses the appropriate method (GET, POST, etc.) and includes any required parameters.
     
@@ -141,7 +141,7 @@ In this step, you will learn how to make API requests, handle responses, and man
     }
     ```
     
-1. **Handle errors and edge cases**: Be prepared to [handle errors and edge cases](/docs/Implementation-Guide/Optimize/Mitigate-Errors.md) in the API response. For example, Finch may return `4XX` or `5XX` [error types](https://developer.tryfinch.com/docs/reference/1f80003f67f0d-error-types) due to unsupported responses from the underlying employment system. Retrying immediately may not resolve the issue, so consider implementing a retry strategy with a delay. If the error persists, submit a support ticket with the `Finch-Request-ID` present in the headers of the response.
+1. **Handle errors and edge cases**: Be prepared to [handle errors and edge cases](/docs/Implementation-Guide/Optimize/Mitigate-Errors) in the API response. For example, Finch may return `4XX` or `5XX` [error types](https://developer.tryfinch.com/docs/reference/1f80003f67f0d-error-types) due to unsupported responses from the underlying employment system. Retrying immediately may not resolve the issue, so consider implementing a retry strategy with a delay. If the error persists, submit a support ticket with the `Finch-Request-ID` present in the headers of the response.
     ```jsx Error handling example
     function fetchDataWithRetry(url, options, retries = 3, delay = 2000) {
       return fetch(url, options)
@@ -167,15 +167,15 @@ In this step, you will learn how to make API requests, handle responses, and man
     .then(data => console.log(data));
     ```
     
-1. **Handle 401 re-authentication errors**: If Finch returns a `401` HTTP status code and a `finch_code` of   `reauthenticate_user`, it indicates Finch has lost access to the employer’s provider. If this happens, display a prompt on your frontend to have the end-user [go through Finch Connect again](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md) to reconnect the provider. Upon successful re-authentication, [obtain a new access token](/docs/Implementation-Guide/Connect/Retrieve-Access-Token.md) and continue making API requests with the new token. The old token can be discarded.  
+1. **Handle 401 re-authentication errors**: If Finch returns a `401` HTTP status code and a `finch_code` of   `reauthenticate_user`, it indicates Finch has lost access to the employer’s provider. If this happens, display a prompt on your frontend to have the end-user [go through Finch Connect again](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect) to reconnect the provider. Upon successful re-authentication, [obtain a new access token](/docs/Implementation-Guide/Connect/Retrieve-Access-Token) and continue making API requests with the new token. The old token can be discarded.  
 
-2. **Manage rate limits**: Finch enforces [rate limits](/docs/Developer-Resources/Rate-Limits.md) on a per-product basis for both applications and access tokens. Rate limits are counted on a per-minute basis for each product. Each product has its own "bucket" with a 60-second Time-To-Live (TTL). The first request for a product starts the 60-second TTL for that product's bucket, and rate limits reset after the 60-second period. If Finch returns a `429` HTTP status code, your application has exceeded the rate limit for a product. To [reduce rate limit errors](/docs/Implementation-Guide/Optimize/Mitigate-Errors.md#rate-limit-errors), you can implement a backoff strategy to retry requests when encountering rate limit errors. 
+2. **Manage rate limits**: Finch enforces [rate limits](/docs/Developer-Resources/Rate-Limits) on a per-product basis for both applications and access tokens. Rate limits are counted on a per-minute basis for each product. Each product has its own "bucket" with a 60-second Time-To-Live (TTL). The first request for a product starts the 60-second TTL for that product's bucket, and rate limits reset after the 60-second period. If Finch returns a `429` HTTP status code, your application has exceeded the rate limit for a product. To [reduce rate limit errors](/docs/Implementation-Guide/Optimize/Mitigate-Errors#rate-limit-errors), you can implement a backoff strategy to retry requests when encountering rate limit errors. 
 ---
 <Check>
 ### Checkpoint + Next Step
-After completing this step, your application will be able to interact with the Finch API endpoints, read the necessary data, and handle various error scenarios. This will enable you to provide a seamless experience to your users while leveraging Finch's powerful API infrastructure. If all you need is to read data, the next step is to [test your application](/docs/Implementation-Guide/Test/Testing-Plan.md). If you need the ability to write data back to the provider, follow the [Write Data](/docs/Implementation-Guide/Communicate/Write-Data.md) step.
+After completing this step, your application will be able to interact with the Finch API endpoints, read the necessary data, and handle various error scenarios. This will enable you to provide a seamless experience to your users while leveraging Finch's powerful API infrastructure. If all you need is to read data, the next step is to [test your application](/docs/Implementation-Guide/Test/Testing-Plan). If you need the ability to write data back to the provider, follow the [Write Data](/docs/Implementation-Guide/Communicate/Write-Data) step.
 </Check>
 
 ## Learn more
-- [Mitigate Errors](/docs/Implementation-Guide/Optimize/Mitigate-Errors.md)
-- [Monitor Usage](/docs/Implementation-Guide/Optimize/Monitor-Usage.md)
+- [Mitigate Errors](/docs/Implementation-Guide/Optimize/Mitigate-Errors)
+- [Monitor Usage](/docs/Implementation-Guide/Optimize/Monitor-Usage)

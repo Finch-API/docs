@@ -2,7 +2,7 @@
 title: "(Optional) Control Access"
 ---
 
-If you have [set up a connection properly](/docs/Implementation-Guide/Secure/Manage-Connections.md) and [retrieved data from Finch APIs](/docs/Implementation-Guide/Communicate/Read-Data.md), you must also ensure that you're only displaying or processing data relevant to the authenticated user and not mixing up data from different customers or employers.
+If you have [set up a connection properly](/docs/Implementation-Guide/Secure/Manage-Connections) and [retrieved data from Finch APIs](/docs/Implementation-Guide/Communicate/Read-Data), you must also ensure that you're only displaying or processing data relevant to the authenticated user and not mixing up data from different customers or employers.
 
 For instance, only fetching specific customer data using *their* access token, then only displaying *their* data on *their* account dashboard.
 
@@ -27,7 +27,7 @@ The RBAC system follows a simple logic: A user requests access to a resource, an
 > ### Cross-Employer Authorization
 > There may be scenarios where a user needs access across multiple employers (maybe they manage multiple employers for a PEO, or Professional Employer Organization. In such cases, your RBAC authorization system must support cross-employer roles and permissions without compromising the security or isolation of individual employers.
 
-Building upon the database tables `customers` & `finch_connections` defined in the [Manage Connections](/docs/Implementation-Guide/Secure/Manage-Connections.md) guide, in order to implement multi-employer RBAC, we need a few additional tables.
+Building upon the database tables `customers` & `finch_connections` defined in the [Manage Connections](/docs/Implementation-Guide/Secure/Manage-Connections) guide, in order to implement multi-employer RBAC, we need a few additional tables.
 
 - `customers`: Represents the "entities" who use your system.
 - `finch_connections`: Represents the different connections (i.e. employers) a customer might have in your system.
@@ -52,10 +52,10 @@ Wether you choose to maintain separate environments for each employer or a share
 
 ## Checkpoint + Next Step
 <Check>
- After completing this step, you should be familiar with the database techniques necessary to effectively track the relationship between user accounts and access tokens and implement data access controls based on user roles or permissions. Next, we will delve into optimizing your Finch API implementation, starting with [increasing Finch Connect adoption rates](/docs/Implementation-Guide/Optimize/Increase-Finch-Connect-Adoption.md).
+ After completing this step, you should be familiar with the database techniques necessary to effectively track the relationship between user accounts and access tokens and implement data access controls based on user roles or permissions. Next, we will delve into optimizing your Finch API implementation, starting with [increasing Finch Connect adoption rates](/docs/Implementation-Guide/Optimize/Increase-Finch-Connect-Adoption).
 </Check>
 
 ## Learn more
 
-- [Manage Connections](docs/Implementation-Guide/Connect/Manage-Connections.md)
-- [Reconcile Employees](/docs/Developer-Resources/Reconcile-Employees.md)
+- [Manage Connections](docs/Implementation-Guide/Connect/Manage-Connections)
+- [Reconcile Employees](/docs/Developer-Resources/Reconcile-Employees)

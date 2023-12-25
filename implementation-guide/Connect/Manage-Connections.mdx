@@ -2,7 +2,7 @@
 title: "Manage Connections"
 ---
 
-Every [access token obtained](/docs/Implementation-Guide/Connect/Retrieve-Access-Token.md) is associated with a connection. Therefore, to prevent mixing up data across different users or employers, it is important to make sure you associate each access token with the correct connections in your application. Implementing a system to track the relationship between your customers and their corresponding access tokens is recommended. 
+Every [access token obtained](/docs/Implementation-Guide/Connect/Retrieve-Access-Token) is associated with a connection. Therefore, to prevent mixing up data across different users or employers, it is important to make sure you associate each access token with the correct connections in your application. Implementing a system to track the relationship between your customers and their corresponding access tokens is recommended. 
 
 ## Define connections
 
@@ -60,14 +60,14 @@ The best way to retrieve the `provider_id` and `company_id` (or `account_id`) of
 A simple example is a `1:1` connection association. It can be represented by a single database table with columns for `customer_id` and the associated `access_token`. You can use a unique constraint on the `customer_id` column to ensure that each user can have only one associated `access_token`.
 
 
-![1-To-1 Database Schema](../../../assets/images/manage-connections/single-connection-database.jpg)
+![1-To-1 Database Schema](/docs/images/manage-connections/single-connection-database.jpg)
 
 However, in production, you will want to handle the more [complex connection scenarios](#define-connections) above which have a `1:Many` relationship.
 
 This can be represented by two database tables: the *Customers* table one stores the `customer_id` and the *Connections* table stores the `company_id` + `provider_id` + `access_token` which references back to a `customer_id`.
 
 
-![1-To-Many Database Schema](../../../assets/images/manage-connections/multiple-connection-database.jpg)
+![1-To-Many Database Schema](/docs/images/manage-connections/multiple-connection-database.jpg)
 
 In this realistic example:
 
@@ -79,36 +79,36 @@ Now, when you insert data into the *Connections* table, you'll need to ensure th
 
 ## Enabling multiple connections with Finch Connect
 
-To have your customer create multiple connections in your application, your "onboarding" flow or "connections" page must allow them to go through [Finch Connect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md) multiple times.
+To have your customer create multiple connections in your application, your "onboarding" flow or "connections" page must allow them to go through [Finch Connect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect) multiple times.
 
 
 Below is an example User Interface. You can present your customers with a page showing all of their current connections and provide the option to connect more accounts, providers, or company entities.
 
 
-![](../../../assets/images/manage-connections/multiple-connections-UI.png)
+![](/docs/images/manage-connections/multiple-connections-UI.png)
 
 ## Edge cases
 
 ### Reauthentication
 
-In [reauthentication](docs/Developer-Resources/Reauthentication.md) situations, your customer should be prompted to reconnect their provider again before continuing to use the application. When the Finch Connect flow is completed, a new access token will be generated. Simply replace the old token with the new token and start making Finch API requests with the updated token like before.
+In [reauthentication](docs/Developer-Resources/Reauthentication) situations, your customer should be prompted to reconnect their provider again before continuing to use the application. When the Finch Connect flow is completed, a new access token will be generated. Simply replace the old token with the new token and start making Finch API requests with the updated token like before.
 
 ### Repeating employees
 
-In the [multi-provider or multi-company](#define-connections) scenarios, if your application is combining data across multiple access tokens, you may need to [reconcile employees](docs/Developer-Resources/Reconcile-employees.md) between responses in order to merge employee data properly.
+In the [multi-provider or multi-company](#define-connections) scenarios, if your application is combining data across multiple access tokens, you may need to [reconcile employees](docs/Developer-Resources/Reconcile-employees) between responses in order to merge employee data properly.
 
 ---
 
 ## Checkpoint + Next Step
 <Check>
- After completing this step, you should know how to associate access tokens with multiple accounts for each new connection. With proper connection organization, you are ready to use the access token to [make API requests](/docs/Implementation-Guide/Communicate/Read-Data.md) to Finch's various endpoints.
+ After completing this step, you should know how to associate access tokens with multiple accounts for each new connection. With proper connection organization, you are ready to use the access token to [make API requests](/docs/Implementation-Guide/Communicate/Read-Data) to Finch's various endpoints.
 </Check>
 
 
 ## Learn more
 
-- [Control User Access](/docs/Implementation-Guide/Secure/Control-Access.md)
-- [Set Up Finch Connect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md)
-- [Reauthenticating Connections](/docs/Developer-Resources/Reauthentication.md)
-- [Reconcile Employees](/docs/Developer-Resources/Reconcile-employees.md)
-- [Integration Types: Automated](/docs/Integrations/Integration-Types.md#automated)
+- [Control User Access](/docs/Implementation-Guide/Secure/Control-Access)
+- [Set Up Finch Connect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect)
+- [Reauthenticating Connections](/docs/Developer-Resources/Reauthentication)
+- [Reconcile Employees](/docs/Developer-Resources/Reconcile-employees)
+- [Integration Types: Automated](/docs/Integrations/Integration-Types#automated)

@@ -2,7 +2,7 @@
 title: "Write Benefits Data Using Async APIs"
 ---
 
-The [Benefits](https://developer.tryfinch.com/docs/documentation/sk5k4fx5x9c7m-benefits) API allows developers to write [contributions](/docs/Get-Started/Employment-API-Glossary.md#contribution) and [deductions](/docs/Get-Started/Employment-API-Glossary.md#deduction) across payroll providers for retirement, medical, and fringe benefits using our unified API.
+The [Benefits](https://developer.tryfinch.com/docs/documentation/sk5k4fx5x9c7m-benefits) API allows developers to write [contributions](/docs/Get-Started/Employment-API-Glossary#contribution) and [deductions](/docs/Get-Started/Employment-API-Glossary#deduction) across payroll providers for retirement, medical, and fringe benefits using our unified API.
 
 The API allows you to:
 
@@ -19,13 +19,13 @@ There are several steps you should take to ensure a smooth Benefits onboarding e
 
 The types and features of each benefit can vary between payroll systems. For this reason, we provide a `benefits_support` field on the  [`/providers`](https://developer.tryfinch.com/docs/reference/1e18fe9cc1c67-providers) endpoint, which will return the available benefit types and features for each payroll provider. If you try to make a request using an access token that does not allow a certain configuration or benefit type, our API will respond with a 400 or 422 status code (see [Errors](https://developer.tryfinch.com/docs/reference/1f80003f67f0d-error-types)), depending on the specific error. This endpoint can help you avoid those errors by understanding beforehand what types of requests you can make.
 
-This information is also available in [our provider documentation](/docs/Integrations/Providers.md).
+This information is also available in [our provider documentation](/docs/Integrations/Providers).
 
 ### Preparing for provider limitations
 
 Providers have varying limitations on which operations are available and which actions can be performed via the Finch Benefits API.
 
-For example, you should be prepared for providers which do not allow for automatic benefit creation (Paychex Flex, Paycom, Trinet, etc. ) and design your workflow to accommodate those cases. As Finch encounters new provider limitations, we add them to our [Provider Field Support](/docs/Integrations/Providers.md). For each of the limited providers, you should confirm with the employer that the correct benefits are set up in their system prior to enrolling individuals through Finch.
+For example, you should be prepared for providers which do not allow for automatic benefit creation (Paychex Flex, Paycom, Trinet, etc. ) and design your workflow to accommodate those cases. As Finch encounters new provider limitations, we add them to our [Provider Field Support](/docs/Integrations/Providers). For each of the limited providers, you should confirm with the employer that the correct benefits are set up in their system prior to enrolling individuals through Finch.
 
 If you try to enroll an employee in a benefit that is not set up, you may receive a `422` response code from Finch indicating that the benefit is not set up by the employer. In these cases, you should reach back out to the employer to ensure the benefits have been correctly set up.
 
@@ -191,9 +191,9 @@ Some payroll providers offer a dedicated payroll representative to help with mak
 ---
 <Check>
 ## Checkpoint + Next Step
-At this point, you should have a good understanding of how to utilize the Finch Benefits API to create benefits manage employee enrollments in a robust manner accommodating various provider limitations. Now that you have everything in place for full 360° read/write integrations, you can begin to [test your Finch integration](/docs/Implementation-Guide/Test/Testing-Plan.md) to ensure reliability, accuracy, and performance over time.
+At this point, you should have a good understanding of how to utilize the Finch Benefits API to create benefits manage employee enrollments in a robust manner accommodating various provider limitations. Now that you have everything in place for full 360° read/write integrations, you can begin to [test your Finch integration](/docs/Implementation-Guide/Test/Testing-Plan) to ensure reliability, accuracy, and performance over time.
 </Check>
 
 ## Learn more
-- [Benefits API](/docs/Products/Benefits/Overview.md)
-- [Supported Benefits Providers](/docs/Integrations/Providers.md)
+- [Benefits API](/docs/Products/Benefits/Overview)
+- [Supported Benefits Providers](/docs/Integrations/Providers)

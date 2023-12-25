@@ -10,7 +10,7 @@ While not required since the Finch Sandbox is a full-featured testing solution, 
 You can connect to a provider test environment in two ways:
 1. Configure Finch Connect with the `sandbox=provider` parameter set. With this setting, you can connect to any of the provider sandboxes which Finch supports.
 
-1. Select your Sandbox application in the Finch Dashboard. Under the "Provider Sandbox" tab, click on "Launch Finch Connect". The Finch Connect modal displayed will function exactly as if the `sandbox` parameter were set to `provider`.![](<../../../assets/images/sandbox/dashboard-connect.png>) **Note that in this scenario, Finch will perform the access token exchange step for you and provide you directly with an access token. You should copy this token and use it for your resulting API requests.**
+1. Select your Sandbox application in the Finch Dashboard. Under the "Provider Sandbox" tab, click on "Launch Finch Connect". The Finch Connect modal displayed will function exactly as if the `sandbox` parameter were set to `provider`.![](</docs/images/sandbox/dashboard-connect.png>) **Note that in this scenario, Finch will perform the access token exchange step for you and provide you directly with an access token. You should copy this token and use it for your resulting API requests.**
 
 > Because these are external provider connections, Finch allows a maximum of 5 active provider sandbox connections per application.
 
@@ -19,25 +19,25 @@ Some providers support sandbox environments which allow you to create companies,
 
 ### Gusto
 Complete the following steps to connect to Gusto's sandbox environment:
-1. [Sign up for a developer account](https://dev.gusto.com/accounts/sign_up). If you already have a developer acccount from following the [Gusto integration setup instructions](docs/Integrations/Provider-specific-Information/Gusto.md), you may skip this step.![gusto-signup.gif](../../../assets/images/gusto/gusto-signup.gif)
+1. [Sign up for a developer account](https://dev.gusto.com/accounts/sign_up). If you already have a developer acccount from following the [Gusto integration setup instructions](docs/Integrations/Provider-specific-Information/Gusto), you may skip this step.![gusto-signup.gif](/docs/images/gusto/gusto-signup.gif)
 
 1. Under the "Demo Companies" tab, select "Create demo company".
 
-1. Once this company is created, you will be provided with a set of credentials. ![](<../../../assets/images/sandbox/gusto-test-company.png>) You may log in to this sandbox company at https://app.gusto-demo.com/login. This will allow you to view the company and make any modifications you wish to test various scenarios.
+1. Once this company is created, you will be provided with a set of credentials. ![](</docs/images/sandbox/gusto-test-company.png>) You may log in to this sandbox company at https://app.gusto-demo.com/login. This will allow you to view the company and make any modifications you wish to test various scenarios.
 
 1. To connect to this company via Finch, follow the steps outlined above to configure Finch Connect to display provider sandboxes, select Gusto, and input the credentials into Gusto's OAuth flow. Upon successfull completion of Connect, you will have a working Gusto sandbox connection!
 
 
 ### Deel
 Complete the following steps to connect to Deel's sandbox environment. See the [Deel developer docs](https://developer.deel.com/docs/sandbox) for information on Deel sandbox limitations.
-1. [Sign up for a demo account](https://demo.letsdeel.com/create-profile?user-type=client). You may fill in any dummy information in the signup forms, including a dummy company name and tax ID.![](<../../../assets/images/sandbox/deel-demo.png>)
+1. [Sign up for a demo account](https://demo.letsdeel.com/create-profile?user-type=client). You may fill in any dummy information in the signup forms, including a dummy company name and tax ID.![](</docs/images/sandbox/deel-demo.png>)
 
 1. To connect to this company via Finch, follow the steps outlined [above](#connecting-to-a-provider-test-environment) to configure Finch Connect to display provider sandboxes, select Deel, and input your Deel credentials into Deel's OAuth flow.
 
 ### Square
 Complete the following steps to connect to Square's sandbox environment. See the [Square developer docs](https://developer.squareup.com/docs/devtools/sandbox/overview#sandbox-limitations) for information on Square sandbox limitations.
 1. [Sign up for a free Square developer account](https://squareup.com/login?app=developer&lang_code=en-US&return_to=https://developer.squareup.com/apps?lang=en-US&country=us).
-1. Before going through the OAuth flow in Finch Connect, log in to your Square developer account at [developer.squareup.com](https://developer.squareup.com). Click "Open" next to the sandbox test account you wish to connect to. **You must have this account open in another window in order for the OAuth flow to work properly**![sqaure-demo.png](<../../../assets/images/sandbox/square-demo.png>)
+1. Before going through the OAuth flow in Finch Connect, log in to your Square developer account at [developer.squareup.com](https://developer.squareup.com). Click "Open" next to the sandbox test account you wish to connect to. **You must have this account open in another window in order for the OAuth flow to work properly**![sqaure-demo.png](</docs/images/sandbox/square-demo.png>)
 
 1. Use the OAuth flow in Finch Connect to connect your new account. 
 
@@ -75,9 +75,9 @@ To get a test account for Bob, [fill out an application](https://dash.partnersta
 
 ## Checkpoint + Next Step
 <Check>
- After completing this step, you will have tested your application thoroughly with mock data from the sandbox and any live providers you set up. You are now ready to connect employers in bulk. Therefore, since you will be [managing multiple connections](/docs/Implementation-Guide/Connect/Manage-Connections.md) simultaneously, you must make sure to [store the connection's access token](/docs/Implementation-Guide/Secure/Store-Tokens.md) properly. This reduces the risk of sensative employer data being exposed.
+ After completing this step, you will have tested your application thoroughly with mock data from the sandbox and any live providers you set up. You are now ready to connect employers in bulk. Therefore, since you will be [managing multiple connections](/docs/Implementation-Guide/Connect/Manage-Connections) simultaneously, you must make sure to [store the connection's access token](/docs/Implementation-Guide/Secure/Store-Tokens) properly. This reduces the risk of sensative employer data being exposed.
 </Check>
 
 ## Learn more
 
-- [Finch Sandbox](/docs/Implementation-Guide/Test/Finch-Sandbox.md)
+- [Finch Sandbox](/docs/Implementation-Guide/Test/Finch-Sandbox)

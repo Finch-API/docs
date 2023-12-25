@@ -22,15 +22,15 @@ If any server error persists, contact the [Finch Support](mailto:support@tryfinc
 
 ## Reauthentication errors
 
-When connections are set up in Finch, a long-lived session is established between you, Finch, and your users' employment systems. There is no need to refresh the connection on a recurring basis. However, if a user changes security settings on their account or an employment system makes changes to its infrastructure, Finch's connection can get disconnected. This will result in an error with the HTTP status code of `401 Unauthorized` and `finch_code` of `reauthenticate_user` (see [Finch API errors](https://developer.tryfinch.com/docs/reference/Errors/Error-Types.md)). When an access token returns this, your user will need to re-authenticate by going through the Finch Connect flow again.
+When connections are set up in Finch, a long-lived session is established between you, Finch, and your users' employment systems. There is no need to refresh the connection on a recurring basis. However, if a user changes security settings on their account or an employment system makes changes to its infrastructure, Finch's connection can get disconnected. This will result in an error with the HTTP status code of `401 Unauthorized` and `finch_code` of `reauthenticate_user` (see [Finch API errors](https://developer.tryfinch.com/docs/reference/Errors/Error-Types)). When an access token returns this, your user will need to re-authenticate by going through the Finch Connect flow again.
 
-Since a reauthentication error means that a connection is disconnected and the access token is no longer working, your customer must be reengaged to have them reconnect their provider through [Finch Connect](/docs/Get-Started/Finch-Connect.md) again to get a new access token. We recommend using automatic in-app or email notifications to alert your customer that there is an issue with their connection, why reconnecting is beneficial, and the steps they need to follow to reconnect.
+Since a reauthentication error means that a connection is disconnected and the access token is no longer working, your customer must be reengaged to have them reconnect their provider through [Finch Connect](/docs/Get-Started/Finch-Connect) again to get a new access token. We recommend using automatic in-app or email notifications to alert your customer that there is an issue with their connection, why reconnecting is beneficial, and the steps they need to follow to reconnect.
 
 Finch recommends the following steps to handle reauthentication errors:
 
 1. Catch `401` HTTP status code error responses with the `finch_code` of `reauthenticate_user`  in your application while handling Finch API responses.
-2. Construct the correct [Finch Connect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md) authorization URL again for your customer to reauthenticate. To create a more seamless experience, you can [bypass the employment system selection page](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md#selector-screen-bypass-flow) by using the `payroll_provider` parameter. You can find the `payroll_provider` of your customer by calling the [/introspect](https://developer.tryfinch.com/docs/reference/eee6e798b0f93-introspect) endpoint with their `access_token`.
-3. Notify the customer that their connection is broken, and they can resolve it by reconnecting their account. To increase conversion, we recommend letting your customer know why reconnecting is beneficial to them and the services they will miss out in the interim. You can prompt your user to log on to their application dashboard where they can reconnect through [Finch Connect embedded](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md#embedded-finch-connect) in your app or send them an email with the [Finch Connect redirect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md#redirect-to-finch-connect) link. 
+2. Construct the correct [Finch Connect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect) authorization URL again for your customer to reauthenticate. To create a more seamless experience, you can [bypass the employment system selection page](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect#selector-screen-bypass-flow) by using the `payroll_provider` parameter. You can find the `payroll_provider` of your customer by calling the [/introspect](https://developer.tryfinch.com/docs/reference/eee6e798b0f93-introspect) endpoint with their `access_token`.
+3. Notify the customer that their connection is broken, and they can resolve it by reconnecting their account. To increase conversion, we recommend letting your customer know why reconnecting is beneficial to them and the services they will miss out in the interim. You can prompt your user to log on to their application dashboard where they can reconnect through [Finch Connect embedded](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect#embedded-finch-connect) in your app or send them an email with the [Finch Connect redirect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect#redirect-to-finch-connect) link. 
 4. Once your customer goes through Finch Connect successfully, an authorization `code` is generated which you will need to exchange for a new `access_token` that you can use to send requests to the Finch API again. Make sure to save this new token in your database.
 
 > While you will receive a new access token for the employer, everything else will remain the same. All Finch identifiers, like `individual_id` or `payment_id`, are the same across tokens.
@@ -49,7 +49,7 @@ Below are a few ways to fix rate limit errors.
 
 ### Leverage batched requests
 
-A quick fix if you are hitting rate limit errors is to implement [batched requests](/docs/Implementation-Guide/Optimize/Batch-Requests.md). 
+A quick fix if you are hitting rate limit errors is to implement [batched requests](/docs/Implementation-Guide/Optimize/Batch-Requests). 
 
 If you are try to retrieve individual details for a 1000-person company, calling the [/individual](https://developer.tryfinch.com/docs/reference/9d6c83b09e205-individual) endpoint 1000 times will quickly hit the API's rate limits. Since there is no limit to the amount of IDs that you can send in a single request, you can batch the 1000 `individual_ids` and send as a single request. You will receive back a single response from Finch with an array of 1000 objects containing each individual's details. 
 
@@ -150,10 +150,10 @@ directoryRateLimiter
 
 ## Checkpoint + Next Step
 <Check>
- After completing this step, you should be equipped to handle some of Finch's common error scenarios and how to address them in your application leading to a more resiliant integration. It is easier to mitigate errors if your application has an adequate way to [monitor API requests](/docs/Implementation-Guide/Optimize/Monitor-Usage.md) and observe API usage, which is covered in the next section.
+ After completing this step, you should be equipped to handle some of Finch's common error scenarios and how to address them in your application leading to a more resiliant integration. It is easier to mitigate errors if your application has an adequate way to [monitor API requests](/docs/Implementation-Guide/Optimize/Monitor-Usage) and observe API usage, which is covered in the next section.
 </Check>
 
 ## Learn more
-- [Set Up Finch Connect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect.md)
+- [Set Up Finch Connect](/docs/Implementation-Guide/Connect/Set-Up-Finch-Connect)
 - [Rate Limits](https://developer.tryfinch.com/docs/reference/64f780582a5a2-rate-limits)
-- [Error Types](https://developer.tryfinch.com/docs/reference/Errors/Error-Types.md)
+- [Error Types](https://developer.tryfinch.com/docs/reference/Errors/Error-Types)
