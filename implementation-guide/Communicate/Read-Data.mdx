@@ -2,7 +2,7 @@
 title: "Read Organization and Payroll Data"
 ---
 
-After [isolating each connection](/Implementation-Guide/Connect/Manage-Connections) to an employer, you can now make API requests to Finch's various endpoints, such as `/company`, `/directory`, `/individual`, `/employment`, `/payment`, and `/pay-statement`. These endpoints only allow the reading of data from employment providers; they do not permit the writing of data back to the system. Writing deductions and contributions back to the provider is covered in [Write Data](docs/Implementation-Guide/Communicate/Write-Data) step.
+After [isolating each connection](/Implementation-Guide/Connect/Manage-Connections) to an employer, you can now make API requests to Finch's various endpoints, such as `/company`, `/directory`, `/individual`, `/employment`, `/payment`, and `/pay-statement`. These endpoints only allow the reading of data from employment providers; they do not permit the writing of data back to the system. Writing deductions and contributions back to the provider is covered in [Write Data](/Implementation-Guide/Communicate/Write-Data) step.
 
 In this step, you will learn how to make API requests, handle responses, and manage request rate limits.
 
@@ -14,7 +14,7 @@ In this step, you will learn how to make API requests, handle responses, and man
         - `/employment`: Access employment-related data, like job title, department, and start and end dates, and income.
         - `/payment`: Get payroll information, including pay frequency and last payment date.
         - `/pay-statement`: Fetch detailed individual paycheck data, including earnings, taxes, employee deductions, and employer contributions.
-        - `/benefits`: Create and enroll employees in various types of benefits directly in the employer’s provider. The “benefits” are applied directly to the employee’s next paycheck in the deductions or contributions section. This endpoint is covered more in [Write Data](docs/Implementation-Guide/Communicate/Write-Data).
+        - `/benefits`: Create and enroll employees in various types of benefits directly in the employer’s provider. The “benefits” are applied directly to the employee’s next paycheck in the deductions or contributions section. This endpoint is covered more in [Write Data](/Implementation-Guide/Communicate/Write-Data).
 
 1. **Set up the HTTP request**: Use an HTTP library such as [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) or [Axios](https://axios-http.com/docs/intro) (or another suitable package) to create an HTTP request. Include the access token in the `Authorization` header using the format `Bearer <your_access_token>`. Make sure the HTTP request uses the appropriate method (GET, POST, etc.) and includes any required parameters.
     
