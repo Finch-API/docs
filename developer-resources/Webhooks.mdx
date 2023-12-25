@@ -24,11 +24,11 @@ Webhook endpoints should use HTTPS and expect to receive POST requests with the 
 
 You can create webhooks via the [Finch Developer Dashboard](https://dashboard.tryfinch.com/).
 
-![Screen Shot 2023-07-26 at 2.37.15 PM.png](<../../assets/images/webhooks/webhooksCreate.png>)
+![webhooksCreate.png](</images/webhooks/webhooksCreate.png>)
 
 After registering a webhook, you will be provided with a webhook secret. This secret can be used to validate that the webhooks you receive were sent by Finch.
 
-![Screen Shot 2023-07-26 at 2.40.47 PM.png](<../../assets/images/webhooks/webhooksSecret.png>)
+![webhooksSecret](</images/webhooks/webhooksSecret.png>)
 
 This secret will only be displayed once, so we recommend you store it as soon as you receive it. See the Webhook Verification section for more details.
 
@@ -379,7 +379,7 @@ func TestAppServer() {
 
 You can send a test request to any webhook through the developer dashboard.
 
-![Test webhooks](../../assets/images/webhooks/webhooksTest.png)
+![Test webhooks](/images/webhooks/webhooksTest.png)
 
 The test webhook will include the same structure as data update webhooks, with the `event_type` set to `test`
 
