@@ -182,6 +182,19 @@
             ]
           },
           {
+            "group": "Management",
+            "pages": [
+              "api-reference/4-management/providers",
+              "api-reference/4-management/introspect",
+              "api-reference/4-management/disconnect",
+              "api-reference/4-management/forward",
+              "api-reference/4-management/refresh-job",
+              "api-reference/4-management/list-automated-jobs",
+              "api-reference/4-management/get-automated-job",
+              "api-reference/4-management/get-manual-job"
+            ]
+          },
+          {
             "group": "Development Guides",
             "pages": [
               "api-reference/development-guides/Permissions",
