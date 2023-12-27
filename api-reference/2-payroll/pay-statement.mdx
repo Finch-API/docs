@@ -1,3 +1,36 @@
 ---
 openapi: post /employer/pay-statement
 ---
+<RequestExample>
+``` curl cURL
+```
+
+``` python Python
+from finch import Finch
+
+client = Finch(
+    access_token="<access_token>",
+)
+
+page = client.hris.pay_statements.retrieve_many(
+    requests: [
+        {
+            "payment_id": "<payment_id>"
+        }
+    ]
+)
+print(page.page)
+```
+
+``` javascript Node
+```
+
+``` go Go
+```
+
+``` java Java
+```
+
+``` kotlin Kotlin
+```
+</RequestExample>

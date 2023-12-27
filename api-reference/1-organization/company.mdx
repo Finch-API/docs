@@ -1,3 +1,34 @@
 ---
 openapi: get /employer/company
 ---
+<RequestExample>
+``` curl cURL
+curl --request GET \
+  --url https://api.tryfinch.com/employer/company \
+  --header 'Authorization: <authorization>' \
+  --header 'Finch-API-Version: <finch-api-version>'
+```
+
+``` python Python
+from finch import Finch
+
+client = Finch(
+    access_token="<access_token>",
+)
+
+page = client.hris.company.retrieve()
+print(page.page)
+```
+
+``` javascript Node
+```
+
+``` go Go
+```
+
+``` java Java
+```
+
+``` kotlin Kotlin
+```
+</RequestExample>

@@ -1,3 +1,33 @@
 ---
 openapi: post /employer/individual
 ---
+<RequestExample>
+``` python Python
+from finch import Finch
+
+client = Finch(
+    access_token="<access_token>",
+)
+
+page = client.hris.individuals.retrieve_many(
+    requests: [
+        {
+            "individual_id": "<individual_id>",
+        }
+    ]
+)
+print(page.page)
+```
+
+``` javascript Node
+```
+
+``` go Go
+```
+
+``` java Java
+```
+
+``` kotlin Kotlin
+```
+</RequestExample>
