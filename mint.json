@@ -220,299 +220,299 @@
     "redirects": [
       {
         "source": "/docs/documentation/cmlh3anpgti5n-quickstart",
-        "destination": "/docs/how-finch-works/quickstart"
+        "destination": "/how-finch-works/quickstart"
       },
       {
         "source": "/docs/documentation/ryhgo25ftf8qf-finch-overview",
-        "destination": "/docs/how-finch-works/finch-overview"
+        "destination": "/how-finch-works/finch-overview"
       },
       {
         "source": "/docs/documentation/heu981m0ko6kl-connect-an-employer",
-        "destination": "/docs/how-finch-works/finch-connect"
+        "destination": "/how-finch-works/finch-connect"
       },
       {
         "source": "/docs/documentation/9kx5krhzt8gg5-unified-employment-api-glossary",
-        "destination": "/docs/how-finch-works/unified-employment-api-glossary"
+        "destination": "/how-finch-works/unified-employment-api-glossary"
       },
       {
         "source": "/docs/documentation/zlmyjv7tunbh7-integration-types",
-        "destination": "/docs/integrations/integration-types"
+        "destination": "/integrations/integration-types"
       },
       {
         "source": "/docs/documentation/3tucvi0qnrbzy-providers",
-        "destination": "/docs/integrations/providers"
+        "destination": "/integrations/providers"
       },
       {
         "source": "/docs/documentation/asodmjpqerk6m-zenefits",
-        "destination": "/docs/integrations/field-support-by-provider/Zenefits"
+        "destination": "/integrations/provider-field-support/Zenefits"
       },
       {
           "source": "/docs/documentation/ku5tneoinzkvu-insperity",
-          "destination": "/docs/integrations/field-support-by-provider/Insperity"
+          "destination": "/integrations/provider-field-support/Insperity"
       },
       {
           "source": "/docs/documentation/f64jid5ncbsn5-gusto",
-          "destination": "/docs/integrations/field-support-by-provider/Gusto"
+          "destination": "/integrations/provider-field-support/Gusto"
       },
       {
           "source": "/docs/documentation/5213663wtakgk-workday",
-          "destination": "/docs/integrations/field-support-by-provider/Workday"
+          "destination": "/integrations/provider-field-support/Workday"
       },
       {
           "source": "/docs/documentation/qsxbc2s9qgmju-paycom",
-          "destination": "/docs/integrations/field-support-by-provider/Paycom"
+          "destination": "/integrations/provider-field-support/Paycom"
       },
       {
           "source": "/docs/documentation/gp6sxjg77nrm6-alphastaff",
-          "destination": "/docs/integrations/field-support-by-provider/AlphaStaff"
+          "destination": "/integrations/provider-field-support/AlphaStaff"
       },
       {
           "source": "/docs/documentation/9fp86d4kxi7yu-namely",
-          "destination": "/docs/integrations/field-support-by-provider/Namely"
+          "destination": "/integrations/provider-field-support/Namely"
       },
       {
           "source": "/docs/documentation/vg3ajk05idijz-square-payroll",
-          "destination": "/docs/integrations/field-support-by-provider/Square-Payroll"
+          "destination": "/integrations/provider-field-support/Square-Payroll"
       },
       {
           "source": "/docs/documentation/6znccwbapa6ip-sapling",
-          "destination": "/docs/integrations/field-support-by-provider/Sapling"
+          "destination": "/integrations/provider-field-support/Sapling"
       },
       {
           "source": "/docs/documentation/w8oghzgu0mtmz-sequioa-one",
-          "destination": "/docs/integrations/field-support-by-provider/Sequioa-One"
+          "destination": "/integrations/provider-field-support/Sequioa-One"
       },
       {
           "source": "/docs/documentation/zdcs9cnqs1a6p-deel",
-          "destination": "/docs/integrations/field-support-by-provider/Deel"
+          "destination": "/integrations/provider-field-support/Deel"
       },
       {
           "source": "/docs/documentation/vfbxobvylh3yw-oyster-hr",
-          "destination": "/docs/integrations/field-support-by-provider/Oyster-HR"
+          "destination": "/integrations/provider-field-support/Oyster-HR"
       },
       {
           "source": "/docs/documentation/e2zwx9e3yowbg-quickbooks",
-          "destination": "/docs/integrations/field-support-by-provider/Quickbooks"
+          "destination": "/integrations/provider-field-support/Quickbooks"
       },
       {
           "source": "/docs/documentation/6r8ho30br3plu-trinet",
-          "destination": "/docs/integrations/field-support-by-provider/TriNet"
+          "destination": "/integrations/provider-field-support/TriNet"
       },
       {
           "source": "/docs/documentation/jc80ifdxe43wf-bob",
-          "destination": "/docs/integrations/field-support-by-provider/Bob"
+          "destination": "/integrations/provider-field-support/Bob"
       },
       {
           "source": "/docs/documentation/5acxpb11pu3qt-personio",
-          "destination": "/docs/integrations/field-support-by-provider/Personio"
+          "destination": "/integrations/provider-field-support/Personio"
       },
       {
           "source": "/docs/documentation/6lzyz37x3311v-paylocity",
-          "destination": "/docs/integrations/field-support-by-provider/Paylocity"
+          "destination": "/integrations/provider-field-support/Paylocity"
       },
       {
           "source": "/docs/documentation/1lqvti99rha8d-bamboo-hr",
-          "destination": "/docs/integrations/field-support-by-provider/Bamboo-HR"
+          "destination": "/integrations/provider-field-support/Bamboo-HR"
       },
       {
           "source": "/docs/documentation/qqmyx12tncaud-ukg-pro",
-          "destination": "/docs/integrations/field-support-by-provider/UKG-Pro"
+          "destination": "/integrations/provider-field-support/UKG-Pro"
       },
       {
           "source": "/docs/documentation/vd2n5s6uu42gd-wave",
-          "destination": "/docs/integrations/field-support-by-provider/Wave"
+          "destination": "/integrations/provider-field-support/Wave"
       },
       {
           "source": "/docs/documentation/l6kmoqu01oayn-sagehr",
-          "destination": "/docs/integrations/field-support-by-provider/SageHR"
+          "destination": "/integrations/provider-field-support/SageHR"
       },
       {
           "source": "/docs/documentation/1v0q5oixw7jr2-humaans",
-          "destination": "/docs/integrations/field-support-by-provider/Humaans"
+          "destination": "/integrations/provider-field-support/Humaans"
       },
       {
           "source": "/docs/documentation/o7nmae0ue51i6-ukg-ready",
-          "destination": "/docs/integrations/field-support-by-provider/UKG-Ready"
+          "destination": "/integrations/provider-field-support/UKG-Ready"
       },
       {
           "source": "/docs/documentation/8vx94l6mkhoa9-connectpay",
-          "destination": "/docs/integrations/field-support-by-provider/ConnectPay"
+          "destination": "/integrations/provider-field-support/ConnectPay"
       },
       {
           "source": "/docs/documentation/j9saiptow0w55-rippling",
-          "destination": "/docs/integrations/field-support-by-provider/Rippling"
+          "destination": "/integrations/provider-field-support/Rippling"
       },
       {
           "source": "/docs/documentation/moqmqhfmhlrli-adp-workforce-now",
-          "destination": "/docs/integrations/field-support-by-provider/ADP-Workforce-Now"
+          "destination": "/integrations/provider-field-support/ADP-Workforce-Now"
       },
       {
           "source": "/docs/documentation/5gu3h2vlga57s-justworks",
-          "destination": "/docs/integrations/field-support-by-provider/Justworks"
+          "destination": "/integrations/provider-field-support/Justworks"
       },
       {
           "source": "/docs/documentation/6r8ho30br3paz-horizon-payroll",
-          "destination": "/docs/integrations/field-support-by-provider/Horizon-Payroll"
+          "destination": "/integrations/provider-field-support/Horizon-Payroll"
       },
       {
           "source": "/docs/documentation/xx6qi47l63xhu-paychex",
-          "destination": "/docs/integrations/field-support-by-provider/Paychex"
+          "destination": "/integrations/provider-field-support/Paychex"
       },
       {
           "source": "/docs/documentation/2qn3bd6c1aghn-paycor",
-          "destination": "/docs/integrations/field-support-by-provider/Paycor"
+          "destination": "/integrations/provider-field-support/Paycor"
       },
       {
           "source": "/docs/documentation/bfmwrnaf2pzq4-run-powered-by-adp",
-          "destination": "/docs/integrations/field-support-by-provider/Run-Powered-By-ADP"
+          "destination": "/integrations/provider-field-support/Run-Powered-By-ADP"
       },
       {
           "source": "/docs/documentation/lacl8tokk2wf1-paytime",
-          "destination": "/docs/integrations/field-support-by-provider/Paytime"
+          "destination": "/integrations/provider-field-support/Paytime"
       },
       {
           "source": "/docs/documentation/p8vw8ztztqlc1-patriot",
-          "destination": "/docs/integrations/field-support-by-provider/Patriot"
+          "destination": "/integrations/provider-field-support/Patriot"
       },
       {
         "source": "/docs/documentation/mjhvwfixk48yq-gusto-onboarding-and-migration-guide",
-        "destination": "/docs/integrations/provider-specific-information/Gusto"
+        "destination": "/integrations/provider-specific-information/Gusto"
       },
       {
           "source": "/docs/documentation/wi0sbm4e1h7qn-gusto-ssn-decryption-guide",
-          "destination": "/docs/integrations/provider-specific-information/Gusto-SSN-Decryption-Guide"
+          "destination": "/integrations/provider-specific-information/Gusto-SSN-Decryption-Guide"
       },
       {
           "source": "/docs/documentation/shbladss6g89v-deel-onboarding-guide",
-          "destination": "/docs/integrations/provider-specific-information/Deel"
+          "destination": "/integrations/provider-specific-information/Deel"
       },
       {
         "source": "/docs/documentation/bafkwf6gawr6f-read-organization-and-payroll-data",
-        "destination": "/docs/implementation-guide/Communicate/Read-Data"
+        "destination": "/implementation-guide/Communicate/Read-Data"
       },
       {
           "source": "/docs/documentation/kzkp3pqlvroja-write-deductions-and-contributions",
-          "destination": "/docs/implementation-guide/Communicate/Write-Data"
+          "destination": "/implementation-guide/Communicate/Write-Data"
       },
       {
           "source": "/docs/documentation/wm7zfmoys8e6y-introduction",
-          "destination": "/docs/implementation-guide/Introduction"
+          "destination": "/implementation-guide/Introduction"
       },
       {
         "source": "/docs/documentation/bvr8dijau43z1-manage-connections",
-        "destination": "/docs/implementation-guide/Connect/Manage-Connections"
+        "destination": "/implementation-guide/Connect/Manage-Connections"
       },
       {
           "source": "/docs/documentation/3gkjif6dea8zb-create-a-finch-developer-account",
-          "destination": "/docs/implementation-guide/Connect/Create-Account"
+          "destination": "/implementation-guide/Connect/Create-Account"
       },
       {
           "source": "/docs/documentation/k6gz5zkt9vaen-set-up-finch-connect",
-          "destination": "/docs/implementation-guide/Connect/Set-Up-Finch-Connect"
+          "destination": "/implementation-guide/Connect/Set-Up-Finch-Connect"
       },
       {
           "source": "/docs/documentation/sym55dcx4n0cx-retrieve-access-token",
-          "destination": "/docs/implementation-guide/Connect/Retrieve-Access-Token"
+          "destination": "/implementation-guide/Connect/Retrieve-Access-Token"
       },
       {
         "source": "/docs/documentation/i9icuw2bxyq6n-go-live-checklist",
-        "destination": "/docs/implementation-guide/Deploy/Go-Live-Checklist"
+        "destination": "/implementation-guide/Deploy/Go-Live-Checklist"
       },
       {
         "source": "/docs/documentation/13thlcki1xnc9-monitor-usage",
-        "destination": "/docs/implementation-guide/Optimize/Monitor-Usage"
+        "destination": "/implementation-guide/Optimize/Monitor-Usage"
       },
       {
           "source": "/docs/documentation/alzum4cgfy90f-batch-requests",
-          "destination": "/docs/implementation-guide/Optimize/Batch-Requests"
+          "destination": "/implementation-guide/Optimize/Batch-Requests"
       },
       {
           "source": "/docs/documentation/cp8k09to4q3rz-how-to-increase-employer-adoption",
-          "destination": "/docs/implementation-guide/Optimize/Increase-Employer-Adoption"
+          "destination": "/implementation-guide/Optimize/Increase-Employer-Adoption"
       },
       {
           "source": "/docs/documentation/b0zdskcye8r7t-mitigate-errors",
-          "destination": "/docs/implementation-guide/Optimize/Mitigate-Errors"
+          "destination": "/implementation-guide/Optimize/Mitigate-Errors"
       },
       {
         "source": "/docs/documentation/onn9fhj6mn8mw-disconnect-tokens",
-        "destination": "/docs/implementation-guide/Secure/Disconnect-Tokens"
+        "destination": "/implementation-guide/Secure/Disconnect-Tokens"
       },
       {
           "source": "/docs/documentation/20ab9vex9ff0v-store-access-tokens",
-          "destination": "/docs/implementation-guide/Secure/Store-Tokens"
+          "destination": "/implementation-guide/Secure/Store-Tokens"
       },
       {
           "source": "/docs/documentation/e3swjkhi0j2or-control-access",
-          "destination": "/docs/implementation-guide/Secure/Control-Access"
+          "destination": "/implementation-guide/Secure/Control-Access"
       },
       {
         "source": "/docs/documentation/wc83h1mxua6b6-develop-your-test-plan",
-        "destination": "/docs/implementation-guide/Test/Testing-Plan"
+        "destination": "/implementation-guide/Test/Testing-Plan"
       },
       {
           "source": "/docs/documentation/pzie4zvmok31z-provider-sandboxes",
-          "destination": "/docs/implementation-guide/Test/Provider-Test-Evironments"
+          "destination": "/implementation-guide/Test/Provider-Test-Evironments"
       },
       {
           "source": "/docs/documentation/3x7je96vjp2xq-finch-sandbox",
-          "destination": "/docs/implementation-guide/Test/Finch-Sandbox"
+          "destination": "/implementation-guide/Test/Finch-Sandbox"
       },
       {
         "source": "/docs/documentation/zzsk7qdfgp3e4-calculating-year-to-date-wages",
-        "destination": "/docs/developer-resources/Calculating-Year-To-Date-Wages"
+        "destination": "/developer-resources/Calculating-Year-To-Date-Wages"
       },
       {
           "source": "/docs/documentation/wcycnavk8xgio-request-forwarding",
-          "destination": "/docs/developer-resources/Request-Forwarding"
+          "destination": "/developer-resources/Request-Forwarding"
       },
       {
           "source": "/docs/documentation/i9zfpirj51sw7-rate-limits",
-          "destination": "/docs/developer-resources/Rate-Limits"
+          "destination": "/developer-resources/Rate-Limits"
       },
       {
           "source": "/docs/documentation/yfk0679mj589e-reconcile-employees",
-          "destination": "/docs/developer-resources/Reconcile-Employees"
+          "destination": "/developer-resources/Reconcile-Employees"
       },
       {
           "source": "/docs/documentation/col7xfm69ll1t-webhooks",
-          "destination": "/docs/developer-resources/Webhooks"
+          "destination": "/developer-resources/Webhooks"
       },
       {
           "source": "/docs/documentation/p3il3pn6otgjt-sd-ks",
-          "destination": "/docs/developer-resources/SDKs"
+          "destination": "/developer-resources/SDKs"
       },
       {
           "source": "/docs/documentation/x0h6mfmxddhll-enable-social-security-number-(ssn)-field",
-          "destination": "/docs/developer-resources/Enable-SSN-Field"
+          "destination": "/developer-resources/Enable-SSN-Field"
       },
       {
           "source": "/docs/documentation/c7dd3c389021b-reauthentication",
-          "destination": "/docs/developer-resources/Reauthentication"
+          "destination": "/developer-resources/Reauthentication"
       },
       {
           "source": "/docs/documentation/ns3poq7m3l2m0-data-syncs",
-          "destination": "/docs/developer-resources/Data-Syncs"
+          "destination": "/developer-resources/Data-Syncs"
       },
       {
           "source": "/docs/documentation/dzz7ynlx2cpht-finch-developer-fa-qs",
-          "destination": "/docs/developer-resources/Developer-FAQs"
+          "destination": "/developer-resources/Developer-FAQs"
       },
       {
         "source": "/docs/documentation/206pvsnhvgk4p-organization",
-        "destination": "/docs/products/organization/Overview"
+        "destination": "/products/organization/Overview"
       },
       {
         "source": "/docs/documentation/ofhl402q2tq8n-payroll",
-        "destination": "/docs/products/pay/Overview"
+        "destination": "/products/pay/Overview"
       },
       {
         "source": "/docs/documentation/sk5k4fx5x9c7m-deductions",
-        "destination": "/docs/products/benefits/Overview"
+        "destination": "/products/benefits/Overview"
       },
       {
           "source": "/docs/documentation/z9ssyh7davpgw-write-benefits-data-using-async-apis",
-          "destination": "/docs/products/benefits/Async-Benefits"
+          "destination": "/products/benefits/Async-Benefits"
       }
     ]
   }
