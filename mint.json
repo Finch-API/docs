@@ -168,17 +168,17 @@
             ]
           },
           {
-            "group": "Benefits",
+            "group": "Deductions",
             "pages": [
-              "api-reference/3-benefits/get-all-benefits",
-              "api-reference/3-benefits/create-benefit",
-              "api-reference/3-benefits/[deprecated]-get-benefits-metadata",
-              "api-reference/3-benefits/get-benefit",
-              "api-reference/3-benefits/update-benefit",
-              "api-reference/3-benefits/get-enrolled-individuals",
-              "api-reference/3-benefits/get-benefits-for-individuals",
-              "api-reference/3-benefits/enroll-individuals-in-benefits",
-              "api-reference/3-benefits/unenroll-individuals-from-benefits"
+              "api-reference/3-deductions/get-all-benefits",
+              "api-reference/3-deductions/create-benefit",
+              "api-reference/3-deductions/[deprecated]-get-benefits-metadata",
+              "api-reference/3-deductions/get-benefit",
+              "api-reference/3-deductions/update-benefit",
+              "api-reference/3-deductions/get-enrolled-individuals",
+              "api-reference/3-deductions/get-benefits-for-individuals",
+              "api-reference/3-deductions/enroll-individuals-in-benefits",
+              "api-reference/3-deductions/unenroll-individuals-from-benefits"
             ]
           },
           {
