@@ -170,15 +170,15 @@
           {
             "group": "Deductions",
             "pages": [
-              "api-reference/3-deductions/get-all-benefits",
-              "api-reference/3-deductions/create-benefit",
-              "api-reference/3-deductions/[deprecated]-get-benefits-metadata",
-              "api-reference/3-deductions/get-benefit",
-              "api-reference/3-deductions/update-benefit",
+              "api-reference/3-deductions/get-all-deductions",
+              "api-reference/3-deductions/create-deduction",
+              "api-reference/3-deductions/[deprecated]-get-deductions-metadata",
+              "api-reference/3-deductions/get-deduction",
+              "api-reference/3-deductions/update-deduction",
               "api-reference/3-deductions/get-enrolled-individuals",
-              "api-reference/3-deductions/get-benefits-for-individuals",
-              "api-reference/3-deductions/enroll-individuals-in-benefits",
-              "api-reference/3-deductions/unenroll-individuals-from-benefits"
+              "api-reference/3-deductions/get-deductions-for-individuals",
+              "api-reference/3-deductions/enroll-individuals-in-deductions",
+              "api-reference/3-deductions/unenroll-individuals-from-deductions"
             ]
           },
           {
@@ -513,6 +513,130 @@
       {
           "source": "/docs/documentation/z9ssyh7davpgw-write-benefits-data-using-async-apis",
           "destination": "/products/benefits/Async-Benefits"
+      },
+      {
+          "source": "/docs/reference/0c7c919255262-hris-api-reference",
+          "destination": "/api-reference/api-reference/1-organization/company"
+      },
+      {
+          "source": "/docs/reference/33162be1eed72-company",
+          "destination": "/api-reference/api-reference/1-organization/company"
+      },
+      {
+          "source": "/docs/reference/12419c085fc0e-directory",
+          "destination": "/api-reference/api-reference/1-organization/directory"
+      },
+      {
+          "source": "/docs/reference/9d6c83b09e205-individual",
+          "destination": "/api-reference/api-reference/1-organization/individual"
+      },
+      {
+          "source": "/docs/reference/1ba5cdec4c979-employment",
+          "destination": "/api-reference/api-reference/1-organization/employment"
+      },
+      {
+          "source": "docs/reference/b811fdc2542ca-payment",
+          "destination": "/api-reference/api-reference/2-payroll/payment"
+      },
+      {
+          "source": "/docs/reference/d5fd02c41e83a-pay-statement",
+          "destination": "/api-reference/api-reference/2-payroll/pay-statement"
+      },
+      {
+          "source": "/docs/reference/d22e2304e8c9c-get-all-deductions",
+          "destination": "/api-reference/api-reference/3-deductions/get-all-deductions"
+      },
+      {
+          "source": "/docs/reference/48b2addc6de34-create-deduction",
+          "destination": "/api-reference/api-reference/3-deductions/create-deduction"
+      },
+      {
+          "source": "/docs/reference/6b3fa94c40a81-deprecated-get-deductions-metadata",
+          "destination": "/api-reference/api-reference/3-deductions/[deprecated]-get-deductions-metadata"
+      },
+      {
+          "source": "/docs/reference/904fe08431240-get-deduction",
+          "destination": "/api-reference/api-reference/3-deductions/get-deduction"
+      },
+      {
+          "source": "/docs/reference/f3a6c92476e69-update-deduction",
+          "destination": "/api-reference/api-reference/3-deductions/update-deduction"
+      },
+      {
+          "source": "/docs/reference/aafc410e1eaa1-get-enrolled-individuals",
+          "destination": "/api-reference/api-reference/3-deductions/get-enrolled-individuals"
+      },
+      {
+          "source": "/docs/reference/a10997ffea9ad-get-deductions-for-individuals",
+          "destination": "/api-reference/api-reference/3-deductions/get-deductions-for-individuals"
+      },
+      {
+          "source": "/docs/reference/eb8994494966c-enroll-individuals-in-deductions",
+          "destination": "/api-reference/api-reference/3-deductions/enroll-individuals-in-deductions"
+      },
+      {
+          "source": "/docs/reference/d52800ec818bd-unenroll-individuals-from-deductions",
+          "destination": "/api-reference/api-reference/3-deductions/unenroll-individuals-from-deductions"
+      },
+      {
+          "source": "/docs/reference/1e18fe9cc1c67-providers",
+          "destination": "/api-reference/api-reference/4-management/providers"
+      },
+      {
+          "source": "/docs/reference/9d248a993cb53-introspect",
+          "destination": "/api-reference/api-reference/4-management/introspect"
+      },
+      {
+          "source": "/docs/reference/65e3402f1e5c2-disconnect",
+          "destination": "/api-reference/api-reference/4-management/disconnect"
+      },
+      {
+          "source": "/docs/reference/dwnn4o21afzyr-request-forwarding",
+          "destination": "/api-reference/api-reference/4-management/forward"
+      },
+      {
+          "source": "/docs/reference/77c908ca898ba-list-all-automated-jobs",
+          "destination": "/api-reference/api-reference/4-management/list-automated-jobs"
+      },
+      {
+          "source": "/docs/reference/a5c17cb258df9-enqueue-a-new-automated-job",
+          "destination": "/api-reference/api-reference/4-management/refresh-job"
+      },
+      {
+          "source": "/docs/reference/ef87e969ad5f7-retrieve-an-automated-job",
+          "destination": "/api-reference/api-reference/4-management/get-automated-job"
+      },
+      {
+          "source": "/docs/reference/c14f91353e6d5-retrieve-a-manual-job",
+          "destination": "/api-reference/api-reference/4-management/get-manual-job"
+      },
+      {
+          "source": "/docs/reference/e68b00055f1d8-permissions",
+          "destination": "/api-reference/api-reference/development-guides/Permissions"
+      },
+      {
+          "source": "/docs/reference/8182e8be8dd31-headers",
+          "destination": "/api-reference/api-reference/development-guides/Headers"
+      },
+      {
+          "source": "/docs/reference/0509e1cdd8e34-api-versioning",
+          "destination": "/api-reference/api-reference/development-guides/Versioning"
+      },
+      {
+          "source": "/docs/reference/64f780582a5a2-rate-limits",
+          "destination": "/api-reference/api-reference/development-guides/Rate-Limits"
+      },
+      {
+          "source": "/docs/reference/82e937086502a-handling-api-responses",
+          "destination": "/api-reference/api-reference/development-guides/Handling-API-Responses"
+      },
+      {
+          "source": "/docs/reference/1f80003f67f0d-error-types",
+          "destination": "/api-reference/api-reference/development-guides/errors/Error-Types"
+      },
+      {
+          "source": "/docs/reference/7e03b7d6dec4a-error-handling",
+          "destination": "/api-reference/api-reference/development-guides/errors/Error-Handling"
       }
     ]
   }
