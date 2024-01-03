@@ -215,8 +215,14 @@
     "footerSocials":
       {
           "twitter": "https://twitter.com/tryfinch?lang=en",
-          "linkedin": "https://www.linkedin.com/company/finchapi/"
+          "linkedin": "https://www.linkedin.com/company/finchapi/",
+          "website": "https://tryfinch.com/"
       },
+    "analytics": {
+      "amplitude": {
+        "apiKey": "684ff58ac8711b102376cfd6ded7f199"
+      }
+    },
     "redirects": [
       {
         "source": "/docs/documentation/cmlh3anpgti5n-quickstart",
