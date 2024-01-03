@@ -32,7 +32,7 @@ servers:
 tags:
   - name: 1. Organization
   - name: 2. Payroll
-  - name: 3. Benefits
+  - name: 3. Deductions
 paths:
   /employer/company:
     get:
@@ -998,9 +998,9 @@ paths:
         - $ref: '#/components/parameters/Content-Type'
   /employer/benefits:
     get:
-      summary: Get All Benefits
+      summary: Get All Deductions
       tags:
-        - 3. Benefits
+        - 3. Deductions
       responses:
         '200':
           description: OK
@@ -1028,7 +1028,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/API-Version'
     post:
-      summary: Create Benefit
+      summary: Create Deduction
       operationId: post-company-benefits
       responses:
         '201':
@@ -1088,16 +1088,16 @@ paths:
                 frequency:
                   $ref: '#/components/schemas/BenefitFrequency'
       tags:
-        - 3. Benefits
+        - 3. Deductions
       parameters:
         - $ref: '#/components/parameters/API-Version'
         - $ref: '#/components/parameters/Content-Type'
     parameters: []
   /employer/benefits/meta:
     get:
-      summary: '[Deprecated] Get Benefits Metadata'
+      summary: '[Deprecated] Get Deductions Metadata'
       tags:
-        - 3. Benefits
+        - 3. Deductions
       responses:
         '200':
           description: OK
@@ -1175,9 +1175,9 @@ paths:
     parameters: []
   '/employer/benefits/{benefit_id}':
     get:
-      summary: Get Benefit
+      summary: Get Deduction
       tags:
-        - 3. Benefits
+        - 3. Deductions
       responses:
         '200':
           description: OK
@@ -1207,7 +1207,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/API-Version'
     post:
-      summary: Update Benefit
+      summary: Update Deduction
       operationId: update-company-benefits
       responses:
         '200':
@@ -1244,7 +1244,7 @@ paths:
                   type: string
                   description: Updated name or description.
       tags:
-        - 3. Benefits
+        - 3. Deductions
       parameters:
         - $ref: '#/components/parameters/API-Version'
         - $ref: '#/components/parameters/Content-Type'
@@ -1258,7 +1258,7 @@ paths:
     get:
       summary: Get Enrolled Individuals
       tags:
-        - 3. Benefits
+        - 3. Deductions
       responses:
         '200':
           description: OK
@@ -1301,9 +1301,9 @@ paths:
         required: true
   '/employer/benefits/{benefit_id}/individuals':
     get:
-      summary: Get Benefits for Individuals
+      summary: Get Deductions for Individuals
       tags:
-        - 3. Benefits
+        - 3. Deductions
       responses:
         '207':
           description: Multi-Status. Some individuals may not have succeeded. See body for details.
@@ -1353,7 +1353,7 @@ paths:
           name: individual_ids
           description: 'comma-delimited list of stable Finch uuids for each individual. If empty, defaults to all individuals'
     post:
-      summary: Enroll Individuals in Benefits
+      summary: Enroll Individuals in Deductions
       operationId: post-employer-individual-benefits-benefit_id
       responses:
         '200':
@@ -1462,7 +1462,7 @@ paths:
           $ref: '#/components/responses/NotImplemented'
       description: Enroll an individual into a deduction or contribution. This is an overwrite operation. If the employee is already enrolled, the enrollment amounts will be adjusted. Making the same request multiple times will not create new enrollments, but will continue to set the state of the existing enrollment.
       tags:
-        - 3. Benefits
+        - 3. Deductions
       requestBody:
         content:
           application/json:
@@ -1515,7 +1515,7 @@ paths:
         - $ref: '#/components/parameters/API-Version'
         - $ref: '#/components/parameters/Content-Type'
     delete:
-      summary: Unenroll Individuals from Benefits
+      summary: Unenroll Individuals from Deductions
       operationId: delete-individual-benefits
       responses:
         '200':
@@ -1584,7 +1584,7 @@ paths:
                   items:
                     type: string
       tags:
-        - 3. Benefits
+        - 3. Deductions
       parameters:
         - $ref: '#/components/parameters/API-Version'
         - $ref: '#/components/parameters/Content-Type'
