@@ -76,14 +76,14 @@ Finch looks at two broad categories when defining data quality:
       - We parsed the wrong field and the data we parsed does not fit the expected format — error
       - We parsed information, but we did not know how to classify it — error
 
-- The goal is to decrease the rate of `NULL` over time; if the data is available in the provider’s system, Finch should be returning that data. Keep in mind that the status of an employee (full-time vs contractor) can also affect which fields return NULL.
-- Finch defines the “rate of incorrect data” as data that does not match what is reported in the provider’s system. This could either mean the field returns blank indicating a potential bug in our code (e.g.: a pay statement array returns empty), or the field returns a value that does not reflect what is reported in the system. We have an internal dashboard where we track data field coverage and correctness in real-time. We have alerts defined to notify us of any anomalies detected which we proactively investigate and fix.
+- The goal is to decrease the rate of `NULL` over time; if the data is available in the provider'ssystem, Finch should be returning that data. Keep in mind that the status of an employee (full-time vs contractor) can also affect which fields return NULL.
+- Finch defines the “rate of incorrect data” as data that does not match what is reported in the provider'ssystem. This could either mean the field returns blank indicating a potential bug in our code (e.g.: a pay statement array returns empty), or the field returns a value that does not reflect what is reported in the system. We have an internal dashboard where we track data field coverage and correctness in real-time. We have alerts defined to notify us of any anomalies detected which we proactively investigate and fix.
 - There are several ways developers can validate data coming from Finch:
     1. Implementing “quality checks” on all pay statements to make sure financial data is not missing, duplicated, or inaccurate.
     2. Running a series of “blind” audits on a semi-regular schedule. The audits should focus on the two categories mentioned above: rate of nulls and the rate of incorrect data. Employee employment status, currency amounts, and field type categorizations are important data points to watch.
 - There are two ways to conduct an audit of Finch data:
     1. The data returned from Finch is compared with previous Finch-connected employer data that have similar providers, use cases, and sizes. Any discrepancies are alerted to Finch. This method is beneficial if you have thorough historical data to pull from. 
-    2. If you do not have enough historical data to use, the data returned from Finch can be compared directly with the data in the provider’s system. This method requires contacting the employer and asking either pointed questions about possible data discrepancies or exchanging data extensively.
+    2. If you do not have enough historical data to use, the data returned from Finch can be compared directly with the data in the provider'ssystem. This method requires contacting the employer and asking either pointed questions about possible data discrepancies or exchanging data extensively.
 - Similarly, if a customer notices a potential data discrepancy, building and including a way for customers to report errors to you is also beneficial. Any errors reported to you can be directly forwarded to Finch for internal investigation.
 - While we don’t ever want inaccurate data returned by our API, we are committed to fixing any errors rapidly and continue to proactively invest in automated tests, checks, and audits internally to catch any data quality errors proactively.
 - If there are any audits or data fields that are important to your business, we want to hear from you so that we can better support you.
@@ -98,7 +98,7 @@ Finch looks at two broad categories when defining data quality:
 
 ### How long is the access token lifetime?
 
-- A Finch `access_token` lifetime is infinite; it does not expire⁠, unless you [disconnect](/implementation-guide/Secure/Disconnect-Tokens) it. If a `401 Re-authentication` error is received (either by a user changing their security setting or an employment system makes an infrastructure change), Finch’s connection can get disconnected, which requires a user to [reauthenticate](/implementation-guide/Optimize/Mitigate-Errors) and a new Finch access_token will be created and sent back to your app. 
+- A Finch `access_token` lifetime is infinite; it does not expire⁠, unless you [disconnect](/implementation-guide/Secure/Disconnect-Tokens) it. If a `401 Re-authentication` error is received (either by a user changing their security setting or an employment system makes an infrastructure change), Finch'sconnection can get disconnected, which requires a user to [reauthenticate](/implementation-guide/Optimize/Mitigate-Errors) and a new Finch access_token will be created and sent back to your app. 
 
 ---
 

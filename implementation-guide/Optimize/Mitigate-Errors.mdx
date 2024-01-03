@@ -41,7 +41,7 @@ Finch will return a rate limit error with the HTTP status code `429 To Many Requ
 
 Finch's rate limits work on a per-endpoint basis for applications, and we refer to each distinct endpoint as a unique product. Rate limits are summed on a rolling 60-second basis for each unique product. This is commonly referred to as a Sliding or Rolling Window rate limit.
 
-You can think of a product rate limit like a "bucket". Therefore, when a request is made to a product (which corresponds directly to an API endpoint), a single gallon of water is added to that endpoint’s bucket, thus starting that bucket's 60-second time-to-live (TTL) timer. After the product's rate limit is reset after 60 seconds, the first request to that product starts the 60-second TTL again.
+You can think of a product rate limit like a "bucket". Therefore, when a request is made to a product (which corresponds directly to an API endpoint), a single gallon of water is added to that endpoint'sbucket, thus starting that bucket's 60-second time-to-live (TTL) timer. After the product's rate limit is reset after 60 seconds, the first request to that product starts the 60-second TTL again.
 
 Ensure that you stay within these limits to avoid API request failures due to exceeding the rate limits. In case you encounter rate limit errors, implement a “back-off and retry” strategy in your application. For example, you could wait for 60 seconds (since Finch's rate limit buckets reset after this period) and then retry the request. You could also exponentially increase the wait time between retries or use a random delay if you prefer. This will allow your application to wait for the rate limit to reset and then resume making API requests.
 
@@ -67,7 +67,7 @@ Let's study a hypothetical scenario of how your application would encounter appl
         `employment` | 0/20
         `payment` | 2/12
         `pay-statement` | 0/12
-1. Token B makes 5 requests to the [/company](/api-reference/1-organization/company) endpoint, 3 requests to the [/directory](/api-reference/1-organization/directory) endpoint, and 2 requests to the [/payment](/api-reference/2-payroll/payment) endpoint within the same minute. Token B’s first 4 requests to the [/company](/api-reference/1-organization/company) endpoint will succeed, but the 5th will fail and return a 429 rate limit error. Note: Only succeeded requests count towards the application level rate limits.
+1. Token B makes 5 requests to the [/company](/api-reference/1-organization/company) endpoint, 3 requests to the [/directory](/api-reference/1-organization/directory) endpoint, and 2 requests to the [/payment](/api-reference/2-payroll/payment) endpoint within the same minute. Token B'sfirst 4 requests to the [/company](/api-reference/1-organization/company) endpoint will succeed, but the 5th will fail and return a 429 rate limit error. Note: Only succeeded requests count towards the application level rate limits.
     - Application-level rate limits
         Bucket | Capacity
         -------|-------------
@@ -87,7 +87,7 @@ Let's study a hypothetical scenario of how your application would encounter appl
         `employment` | 0/20
         `payment` | 12/12 (FULL)
         `pay-statement` | 0/12
-1. If Token F makes 1 request to the [/company](/api-reference/1-organization/company) endpoint and 1 request to the [/directory](/api-reference/1-organization/directory) endpoint. The `company` request will fail and return a 429 rate limit error because the application-level bucket is now full. No requests from any token will succeed calling the [/company](/api-reference/1-organization/company) endpoint until the `company` bucket’s 60-second Time-To-Live (TTL) timer resets. However, Token F’s request to the [/directory](/api-reference/1-organization/directory) endpoint will succeed because the application-level `directory` bucket is not full either.
+1. If Token F makes 1 request to the [/company](/api-reference/1-organization/company) endpoint and 1 request to the [/directory](/api-reference/1-organization/directory) endpoint. The `company` request will fail and return a 429 rate limit error because the application-level bucket is now full. No requests from any token will succeed calling the [/company](/api-reference/1-organization/company) endpoint until the `company` bucket's60-second Time-To-Live (TTL) timer resets. However, Token F'srequest to the [/directory](/api-reference/1-organization/directory) endpoint will succeed because the application-level `directory` bucket is not full either.
     - Application-level rate limits
         Bucket | Capacity
         -------|-------------

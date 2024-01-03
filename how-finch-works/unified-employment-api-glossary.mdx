@@ -6,7 +6,7 @@ sidebarTitle: "Glossary"
 Use this glossary to familiarize yourself with employment terminology used throughout our documentation and APIs.
 
 ### Provider
-A *provider* is an employer’s HRIS, Payroll, or other employment system. The provider is the system of record for the data connected to the Finch APIs. Providers can be referenced within the Finch APIs by their `payroll_provider_id`. 
+A *provider* is an employer'sHRIS, Payroll, or other employment system. The provider is the system of record for the data connected to the Finch APIs. Providers can be referenced within the Finch APIs by their `payroll_provider_id`. 
 
 ### Employer
 An *employer* is an organization, company, or entity that hires and pays employees. An employer may consist of [one or many sub-entities](/implementation-guide/Connect/Manage-Connections) and use one or many systems of record (i.e. [payroll providers](/integrations/providers)) to manage and pay employees. Employers (or any sub-entities) can be referenced within the Finch APIs by their finch-issued `company_id`.
@@ -30,7 +30,7 @@ An employer *account* is used to connect their company's data to Finch. Employer
 An *access token* represents a single *connection* with an employer entity and allows the developer to query data from the associated employment system of the employer entity. You should treat access tokens with the same [level of security](/implementation-guide/Secure/Store-Tokens) as you would passwords.
 
 ### Product scope
-A *product scope* determines the specific data your *application* can access from the employer's provider. Each product scope refers directly to a Finch API endpoint. If a connection’s access token does not have the product included, the request will be blocked with a 401 Unauthorized error.
+A *product scope* determines the specific data your *application* can access from the employer's provider. Each product scope refers directly to a Finch API endpoint. If a connection'saccess token does not have the product included, the request will be blocked with a 401 Unauthorized error.
 
 ### Application
 An *application* is a unique set of `client_id` and `client_secret` credentials that enable you to launch [Finch Connect](/implementation-guide/Connect/Set-Up-Finch-Connect) and [receive access tokens](/implementation-guide/Connect/Retrieve-Access-Token). An application essentially groups your *connections* with your Finch "environment". Finch has three environments: sandbox, testing, and production. The sandbox application connects only mock providers. The testing application connects live providers, but in a limited capacity. The production application connects live providers without any limitations. 

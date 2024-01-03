@@ -59,7 +59,7 @@ Before launching the Finch Connect module, explain to the user that they will be
 
 ### Emphasize data security
 
-Let users know that Finch is secure, and all data is encrypted in transit and at rest. Explain that your app does not have access to their credentials, and that they can choose to disconnect at any time. Feel free to share a link to [Finch’s Trust Center](https://finch.secureframetrust.com/#resources) for more information.
+Let users know that Finch is secure, and all data is encrypted in transit and at rest. Explain that your app does not have access to their credentials, and that they can choose to disconnect at any time. Feel free to share a link to [Finch'sTrust Center](https://finch.secureframetrust.com/#resources) for more information.
 
 ## 3. Create multiple opportunities to connect
 
@@ -67,12 +67,12 @@ If a user does not connect their employment system during the onboarding process
 
 ## 4. Deploy Finch early in the onboarding process
 
-While the employer authorization process takes only 30 seconds, a full syncing of the provider’s data can take some time. That’s why we recommend embedding Finch Connect as early as possible in the onboarding process. While data cannot be retrieved until the synchronization is complete, you can take advantage of this time to continue your core onboarding process, collecting additional information or showing your product tutorial.
+While the employer authorization process takes only 30 seconds, a full syncing of the provider'sdata can take some time. That'swhy we recommend embedding Finch Connect as early as possible in the onboarding process. While data cannot be retrieved until the synchronization is complete, you can take advantage of this time to continue your core onboarding process, collecting additional information or showing your product tutorial.
 
 
 ![Finch Connect Best Practices 2.jpg](/images/increase-employer-adoption/finch-connect-best-practices-02.jpg)
 
-You can programmatically add visual cues to show when the data import is complete. Finch provides a [List All Automated Jobs](/api-reference/4-management/list-automated-jobs) endpoint to monitor the status. Once the job’s `status` moves to `complete`, you can now call Finch’s various endpoints to read the data. A new job is created to sync the employer’s data 24 hours from the previous sync.
+You can programmatically add visual cues to show when the data import is complete. Finch provides a [List All Automated Jobs](/api-reference/4-management/list-automated-jobs) endpoint to monitor the status. Once the job's`status` moves to `complete`, you can now call Finch'svarious endpoints to read the data. A new job is created to sync the employer'sdata 24 hours from the previous sync.
 
 ```Pending
 {

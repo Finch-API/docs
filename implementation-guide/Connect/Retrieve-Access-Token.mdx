@@ -2,7 +2,7 @@
 title: "Retrieve Access Token"
 ---
 
-Now that you have successfully [integrated Finch Connect](/implementation-guide/Connect/Set-Up-Finch-Connect) into your application’s frontend and obtained an authorization code, you will need to exchange it for an access token. Access tokens are required for making API requests to Finch's various endpoints. In this step, you'll set up a secure server-side process to exchange the authorization code for an access token.
+Now that you have successfully [integrated Finch Connect](/implementation-guide/Connect/Set-Up-Finch-Connect) into your application'sfrontend and obtained an authorization code, you will need to exchange it for an access token. Access tokens are required for making API requests to Finch's various endpoints. In this step, you'll set up a secure server-side process to exchange the authorization code for an access token.
 
 1. **Create a server-side “callback” endpoint**: Set up a secure server-side endpoint in your application to handle the exchange of authorization codes for access tokens. This endpoint should be accessible only by your application's backend to ensure the security of the process. This endpoint will receive the authorization code as a query parameter from your frontend and communicate with Finch's API to obtain the access token. Example: `https://example.com/api/finch/callback`. 
     > You can reuse this same endpoint to support a Redirect Finch Connect flow as well. Just make sure to add the `redirect_uri` to the whitelist in your Finch Developer Dashboard.

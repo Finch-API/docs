@@ -4,7 +4,7 @@ title: "Batch Requests"
 
 It is important to learn how to monitor your application's usage of Finch APIs, optimize your requests, and handle rate limits and errors effectively. Consequently, this will help you maintain a smooth user (and developer) experience by productively managing your application's API requests.
 
-Several of Finch’s endpoints are “batch” endpoints ([`/individual`](/api-reference/1-organization/individual), [`/employment`](/api-reference/1-organization/employment), [`/pay-statement`](/api-reference/2-payroll/pay-statement)). This means that several IDs can be sent in a single request. Finch will correspondingly return a single response with an array of objects equal to the IDs sent.
+Several of Finch'sendpoints are “batch” endpoints ([`/individual`](/api-reference/1-organization/individual), [`/employment`](/api-reference/1-organization/employment), [`/pay-statement`](/api-reference/2-payroll/pay-statement)). This means that several IDs can be sent in a single request. Finch will correspondingly return a single response with an array of objects equal to the IDs sent.
 
 Determine your optimal batch size for your use case when making batch requests to Finch APIs. If you send 1000 IDs in the request, you will receive a single response containing an array of 1000 responses for each ID sent. Pass all the required IDs in a single batch request to optimize API usage and minimize the risk of hitting [rate limits](/api-reference/development-guides/Rate-Limits).
 
