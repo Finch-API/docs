@@ -63,7 +63,7 @@ If you are not approved for production access for security reasons, Gusto will w
 
 > **Optional:** If you do not require Finch to maintain the same Finch IDs when migrating to the new integration, this step can be skipped and Finch can make your new Gusto integration available to end users immediately.
 
-Please note that with this migration, there will be some changes to the underlying data that Finch uses for generating [Finch IDs (UUIDs)](https://developer.tryfinch.com/docs/reference/82e937086502a-handling-api-responses) for employees, payments, and benefits. As such, your integration may experience a change in the Finch IDs that represent the aforementioned entities. If you currently rely on Finch IDs remaining stable, please follow the steps below to ensure their stability while migrating to the new integration:
+Please note that with this migration, there will be some changes to the underlying data that Finch uses for generating [Finch IDs (UUIDs)](/api-reference/development-guides/Handling-API-Responses) for employees, payments, and benefits. As such, your integration may experience a change in the Finch IDs that represent the aforementioned entities. If you currently rely on Finch IDs remaining stable, please follow the steps below to ensure their stability while migrating to the new integration:
 
 1. Let your Developer Success representative know you wish to preserve the existing Finch IDs. Once we receive your Gusto OAuth credentials, we will temporarily pause new connections by removing Gusto from Finch Connect and discontinue any recurring data syncs.
 1. We will work with Gusto to map your old IDs to new IDs, so that existing references are compatible with the API integration.

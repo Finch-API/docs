@@ -251,7 +251,7 @@ public class Main {
 
 3. **Verify the webhook timestamp** If the signature is valid, ensure the timestamp is not greater than five minutes in the past or future. Using outdated webhooks increases susceptibility to [replay attacks](https://en.wikipedia.org/wiki/Replay_attack).
 
-The [Finch Backend SDKs](https://developer.tryfinch.com/docs/documentation/p3il3pn6otgjt-sd-ks) encapsulate all of this logic to simplify the webhook verification process.
+The [Finch Backend SDKs](/developer-resources/SDKs) encapsulate all of this logic to simplify the webhook verification process.
 <CodeGroup>
 ```javascript Javascript (express.js)
 import Finch from '@tryfinch/finch-api';

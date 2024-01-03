@@ -141,7 +141,7 @@ In this step, you will learn how to make API requests, handle responses, and man
     }
     ```
     
-1. **Handle errors and edge cases**: Be prepared to [handle errors and edge cases](/implementation-guide/Optimize/Mitigate-Errors) in the API response. For example, Finch may return `4XX` or `5XX` [error types](https://developer.tryfinch.com/docs/reference/1f80003f67f0d-error-types) due to unsupported responses from the underlying employment system. Retrying immediately may not resolve the issue, so consider implementing a retry strategy with a delay. If the error persists, submit a support ticket with the `Finch-Request-ID` present in the headers of the response.
+1. **Handle errors and edge cases**: Be prepared to [handle errors and edge cases](/implementation-guide/Optimize/Mitigate-Errors) in the API response. For example, Finch may return `4XX` or `5XX` [error types](/api-reference/development-guides/errors/Error-Types) due to unsupported responses from the underlying employment system. Retrying immediately may not resolve the issue, so consider implementing a retry strategy with a delay. If the error persists, submit a support ticket with the `Finch-Request-ID` present in the headers of the response.
     ```jsx Error handling example
     function fetchDataWithRetry(url, options, retries = 3, delay = 2000) {
       return fetch(url, options)

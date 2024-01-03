@@ -2,7 +2,7 @@
 title: "Disconnect Tokens"
 ---
 
-A connection exists once an access token is obtained and [stored securely](/implementation-guide/Secure/Store-Tokens). Once a connection is no longer needed or requested to be deleted by the customer, calling the [/disconnect](https://developer.tryfinch.com/docs/reference/c65ecbd512332-disconnect) endpoint will disconnect all associated access tokens for that particular connection. It is important to know how Finch defines a connection to understand what happens when a connection is disconnected. 
+A connection exists once an access token is obtained and [stored securely](/implementation-guide/Secure/Store-Tokens). Once a connection is no longer needed or requested to be deleted by the customer, calling the [/disconnect](/api-reference/4-management/disconnect) endpoint will disconnect all associated access tokens for that particular connection. It is important to know how Finch defines a connection to understand what happens when a connection is disconnected. 
 
 ## Disconnect scenarios
 
@@ -18,7 +18,7 @@ Let's evalute three different scenarios...
 | <span style={{ color: "darkgreen" }}>Provider</span>         | <span style={{ color: "darkgreen" }}>Same</span>      |
 | <span style={{ color: "goldenrod" }}>User Credentials</span> | <span style={{ color: "goldenrod" }}>Different</span> |
 
-In this case, even though different user credentials might be used to login (i.e. different accounts), as long as the same employer is using the same provider to login, it only counts as one connection because the `company_id` and `provider_id` are the same. Thus, [disconnecting](https://developer.tryfinch.com/docs/reference/c65ecbd512332-disconnect) one access token will disconnect all the others for that same connection.
+In this case, even though different user credentials might be used to login (i.e. different accounts), as long as the same employer is using the same provider to login, it only counts as one connection because the `company_id` and `provider_id` are the same. Thus, [disconnecting](/api-reference/4-management/disconnect) one access token will disconnect all the others for that same connection.
 
 
 ### 2. Different companies
@@ -29,7 +29,7 @@ In this case, even though different user credentials might be used to login (i.e
 | <span style={{ color: "darkgreen" }}>Provider</span>         | <span style={{ color: "darkgreen" }}>Same</span>      |
 | <span style={{ color: "darkgreen" }}>User Credentials</span> | <span style={{ color: "darkgreen" }}>Same</span>      |
 
-Alternatively, if a customer had two different companies using the same provider, it would count as two different connections since the `company_id`s are different. Thus, [disconnecting](https://developer.tryfinch.com/docs/reference/c65ecbd512332-disconnect) one won’t disconnect the other.
+Alternatively, if a customer had two different companies using the same provider, it would count as two different connections since the `company_id`s are different. Thus, [disconnecting](/api-reference/4-management/disconnect) one won’t disconnect the other.
 
 ### 3. Different providers 
 
@@ -39,7 +39,7 @@ Alternatively, if a customer had two different companies using the same provider
 | <span style={{ color: "goldenrod" }}>Provider</span>         | <span style={{ color: "goldenrod" }}>Different</span> |
 | <span style={{ color: "darkgreen" }}>User Credentials</span> | <span style={{ color: "darkgreen" }}>Same</span>      |
 
-Finally, if a customer had the same company using different providers, it would also count as two different connections since the `provider_id`s are different. Thus, [disconnecting](https://developer.tryfinch.com/docs/reference/c65ecbd512332-disconnect) one won’t disconnect the other.
+Finally, if a customer had the same company using different providers, it would also count as two different connections since the `provider_id`s are different. Thus, [disconnecting](/api-reference/4-management/disconnect) one won’t disconnect the other.
 
 ### Example
 
@@ -63,5 +63,5 @@ However, even though the access token issued in step 4 was still set up by User 
 </Check>
 
 ## Learn more
-- [Disconnect Endpoint](https://developer.tryfinch.com/docs/reference/c65ecbd512332-disconnect)
+- [Disconnect Endpoint](/api-reference/4-management/disconnect)
 - [Manage Connections](/implementation-guide/Connect/Manage-Connections)

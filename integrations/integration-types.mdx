@@ -4,12 +4,12 @@ title: "Integration Types"
 
 ## Automated Integrations
 
-Automated integrations are the primary integration type offered by Finch. With automated integrations, your user can simply authenticate via Finch Connect using either credentials or an API token, and Finch will begin automatically syncing data with their system according to our [data syncs](https://developer.tryfinch.com/docs/reference/f7af2039f9a7b-data-syncs) cadences. 
+Automated integrations are the primary integration type offered by Finch. With automated integrations, your user can simply authenticate via Finch Connect using either credentials or an API token, and Finch will begin automatically syncing data with their system according to our [data syncs](/developer-resources/Data-Syncs) cadences. 
 
 We're continuously building out new automated integrations — view the full list in our [Providers Overview](/integrations/providers).
 
 ### Data Syncs
-Automated integrations continuously sync with providers to provide you with updated data. After your user authenticates through Finch Connect, Finch kicks off an initial data sync, which populates data for all requested products. After that, Finch will sync data with the provider on a 24 hour refresh cadence. If you need data more frequently, you can use our [refresh endpoint](https://developer.tryfinch.com/docs/reference/8f0f469d5aab2-enqueue-a-new-automated-job) to kick off a new ad-hoc data sync.
+Automated integrations continuously sync with providers to provide you with updated data. After your user authenticates through Finch Connect, Finch kicks off an initial data sync, which populates data for all requested products. After that, Finch will sync data with the provider on a 24 hour refresh cadence. If you need data more frequently, you can use our [refresh endpoint](/api-reference/4-management/refresh-job) to kick off a new ad-hoc data sync.
 
 
 ## Assisted Integrations
@@ -83,7 +83,7 @@ Until the **`access_token`** is ready for use, Finch will return an empty respon
 
 **Finch Data Retrieved Header**
 
-Since the data is retrieved and refreshed on a periodic cadence, you may want to know the freshness of the data returned by an API call. You can use the **`Finch-Data-Retrieved`** [header](https://developer.tryfinch.com/docs/reference/8182e8be8dd31-headers) to get the date and time in ISO-8601 format the data was retrieved.
+Since the data is retrieved and refreshed on a periodic cadence, you may want to know the freshness of the data returned by an API call. You can use the **`Finch-Data-Retrieved`** [header](/api-reference/development-guides/Headers) to get the date and time in ISO-8601 format the data was retrieved.
 
 #### 3. Monitor the status of your assisted connections
 
@@ -98,7 +98,7 @@ To view the status of your connected employers, you can use the [Finch Developer
 | Connected | The connection is set up and Finch is able to access the required data. |
 | Disconnected | All accounts for this employer have been disconnected. |
 
-You can also use the `connection_status` on the [`/introspect`](https://developer.tryfinch.com/reference/introspect) endpoint to see the connection status of the assisted account.
+You can also use the `connection_status` on the [`/introspect`](/api-reference/4-management/introspect) endpoint to see the connection status of the assisted account.
 ```json
 {
   ...

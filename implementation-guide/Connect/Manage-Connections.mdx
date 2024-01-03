@@ -42,7 +42,7 @@ Since Finch defines a connection based on a unique `provider_id` and `company_id
 
 ### Introspect endpoint
 
-The best way to retrieve the `provider_id` and `company_id` (or `account_id`) of an access token is by calling the [Introspect](https://developer.tryfinch.com/docs/reference/eee6e798b0f93-introspect) endpoint. It will return a JSON body containing account information associated with the `access_token`.  
+The best way to retrieve the `provider_id` and `company_id` (or `account_id`) of an access token is by calling the [Introspect](/api-reference/4-management/introspect) endpoint. It will return a JSON body containing account information associated with the `access_token`.  
 
 ```json Example /introspect response
 {
@@ -75,7 +75,7 @@ In this realistic example:
 - A "composite unique constraint" can be set on `provider_id` and `company_id` values which means that while each of these connections can contain the same values individually, the combination of these values must be unique (hence a unique connection).
 - (optional) You could add `account_id` to the composite unique constraint as well to handle Multi-Account scenarios.
 
-Now, when you insert data into the *Connections* table, you'll need to ensure that the combination of `provider_id` and `company_id` is unique for each row, while the `access_token` inherently remains unique for each row as well. The `company_id` (when combined with data from the Finch [/company](https://developer.tryfinch.com/docs/reference/33162be1eed72-company) endpoint) is going to be able to tell you which employers are attached to each customer.
+Now, when you insert data into the *Connections* table, you'll need to ensure that the combination of `provider_id` and `company_id` is unique for each row, while the `access_token` inherently remains unique for each row as well. The `company_id` (when combined with data from the Finch [/company](/api-reference/1-organization/company) endpoint) is going to be able to tell you which employers are attached to each customer.
 
 ## Enabling multiple connections with Finch Connect
 

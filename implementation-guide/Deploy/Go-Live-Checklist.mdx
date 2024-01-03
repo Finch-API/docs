@@ -34,7 +34,7 @@ Given the nature of the underlying systems the Finch APIs are built on top of, t
 
 **Send API requests**
 
-- [ ] Integrate an [external rate limiter](/implementation-guide/Optimize/Mitigate-Errors#rate-limit-errors) into your application that respects the Finch API [rate limits](https://developer.tryfinch.com/docs/reference/64f780582a5a2-rate-limits).
+- [ ] Integrate an [external rate limiter](/implementation-guide/Optimize/Mitigate-Errors#rate-limit-errors) into your application that respects the Finch API [rate limits](/api-reference/development-guides/Rate-Limits).
 
 **Handle API responses**
 
@@ -46,12 +46,12 @@ Given the nature of the underlying systems the Finch APIs are built on top of, t
 
 **Handle error responses**
 
-Your application should [expect](https://developer.tryfinch.com/docs/reference/1f80003f67f0d-error-types) and [handle errors](/implementation-guide/Optimize/Mitigate-Errors) from the Finch API.
+Your application should [expect](/api-reference/development-guides/errors/Error-Types) and [handle errors](/implementation-guide/Optimize/Mitigate-Errors) from the Finch API.
 
 There are three important errors your application should be aware of.
 
 - [ ]  Ensure there are user flows built to support [reauthentication](/developer-resources/Reauthentication), i.e. when your user needs to go through Finch Connect again to reconnect their employment system if their initial connection has stopped working.
-- [ ]  Implement the troubleshooting tips to gracefully [handle `server_error`s](https://developer.tryfinch.com/docs/reference/7e03b7d6dec4a-error-handling) from Finch.
+- [ ]  Implement the troubleshooting tips to gracefully [handle `server_error`s](/api-reference/development-guides/errors/Error-Handling) from Finch.
 - [ ]  If you use our [batch endpoints](/implementation-guide/Optimize/Batch-Requests), ensure your application handles errors returned in the batch format.
 
 **Support users with custom setups**
@@ -70,7 +70,7 @@ The data stored within your customers' systems are sensitive and should be handl
 
 Storing and logging key identifiers will ensure a faster turnaround time when contacting Support about issues.
 
-- [ ]  Each Finch `access_token` is associated with a static Finch `company_id`. You can find the id using the [`/introspect`](https://developer.tryfinch.com/docs/reference/9d248a993cb53-introspect) endpoint. Save this in your data store alongside the access token and use it when contacting Finch Support about an issue.
+- [ ]  Each Finch `access_token` is associated with a static Finch `company_id`. You can find the id using the [`/introspect`](/api-reference/4-management/introspect) endpoint. Save this in your data store alongside the access token and use it when contacting Finch Support about an issue.
 - [ ]  Each Finch API response returns a `Finch-Request-ID` in the headers. Reference this ID when contacting Finch Support about an issue.
 
 ## Auth Fallback and Email Forwarding
@@ -101,5 +101,5 @@ The following steps will ensure you and your team is set up for success once you
 
 ## Learn more
 
-- [Product Permissions](https://developer.tryfinch.com/docs/reference/e68b00055f1d8-permissions)
+- [Product Permissions](/api-reference/development-guides/Permissions)
 - [Finch SDKs](/developer-resources/SDKs)

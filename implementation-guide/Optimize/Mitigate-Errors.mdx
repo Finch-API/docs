@@ -10,7 +10,7 @@ While unlikely, any robust application should still plan to encounter server err
 
 - **Friendly error page** - Always display a user-friendly error message instead of raw server errors. This helps in maintaining user trust.
 - **Log the error** - Capture detailed server logs including the error message, stack trace, request details, and any other relevant context. Make sure to specifically log the `finch-request-id` found in the HTTP Request headers. This will help in diagnosing and rectifying the error on Finch's side.
-- **Health checks** - By calling the [/introspect](https://developer.tryfinch.com/docs/reference/eee6e798b0f93-introspect) endpoint on a regular basis, you can implement a health check to provide information about the status and health of your Finch integration and its connections. This can help in identifying the source of `500` errors faster.
+- **Health checks** - By calling the [/introspect](/api-reference/4-management/introspect) endpoint on a regular basis, you can implement a health check to provide information about the status and health of your Finch integration and its connections. This can help in identifying the source of `500` errors faster.
 - **Retry** - Sometimes, simply retrying the request after a specified delay or adjusting the request parameters solves the problem.
 
 <Warning>
@@ -22,14 +22,14 @@ If any server error persists, contact the [Finch Support](mailto:support@tryfinc
 
 ## Reauthentication errors
 
-When connections are set up in Finch, a long-lived session is established between you, Finch, and your users' employment systems. There is no need to refresh the connection on a recurring basis. However, if a user changes security settings on their account or an employment system makes changes to its infrastructure, Finch's connection can get disconnected. This will result in an error with the HTTP status code of `401 Unauthorized` and `finch_code` of `reauthenticate_user` (see [Finch API errors](https://developer.tryfinch.com/docs/reference/Errors/Error-Types)). When an access token returns this, your user will need to re-authenticate by going through the Finch Connect flow again.
+When connections are set up in Finch, a long-lived session is established between you, Finch, and your users' employment systems. There is no need to refresh the connection on a recurring basis. However, if a user changes security settings on their account or an employment system makes changes to its infrastructure, Finch's connection can get disconnected. This will result in an error with the HTTP status code of `401 Unauthorized` and `finch_code` of `reauthenticate_user` (see [Finch API errors](/api-reference/development-guides/errors/Error-Types)). When an access token returns this, your user will need to re-authenticate by going through the Finch Connect flow again.
 
 Since a reauthentication error means that a connection is disconnected and the access token is no longer working, your customer must be reengaged to have them reconnect their provider through [Finch Connect](/how-finch-works/finch-connect) again to get a new access token. We recommend using automatic in-app or email notifications to alert your customer that there is an issue with their connection, why reconnecting is beneficial, and the steps they need to follow to reconnect.
 
 Finch recommends the following steps to handle reauthentication errors:
 
 1. Catch `401` HTTP status code error responses with the `finch_code` of `reauthenticate_user`  in your application while handling Finch API responses.
-2. Construct the correct [Finch Connect](/implementation-guide/Connect/Set-Up-Finch-Connect) authorization URL again for your customer to reauthenticate. To create a more seamless experience, you can [bypass the employment system selection page](/implementation-guide/Connect/Set-Up-Finch-Connect#selector-screen-bypass-flow) by using the `payroll_provider` parameter. You can find the `payroll_provider` of your customer by calling the [/introspect](https://developer.tryfinch.com/docs/reference/eee6e798b0f93-introspect) endpoint with their `access_token`.
+2. Construct the correct [Finch Connect](/implementation-guide/Connect/Set-Up-Finch-Connect) authorization URL again for your customer to reauthenticate. To create a more seamless experience, you can [bypass the employment system selection page](/implementation-guide/Connect/Set-Up-Finch-Connect#selector-screen-bypass-flow) by using the `payroll_provider` parameter. You can find the `payroll_provider` of your customer by calling the [/introspect](/api-reference/4-management/introspect) endpoint with their `access_token`.
 3. Notify the customer that their connection is broken, and they can resolve it by reconnecting their account. To increase conversion, we recommend letting your customer know why reconnecting is beneficial to them and the services they will miss out in the interim. You can prompt your user to log on to their application dashboard where they can reconnect through [Finch Connect embedded](/implementation-guide/Connect/Set-Up-Finch-Connect#embedded-finch-connect) in your app or send them an email with the [Finch Connect redirect](/implementation-guide/Connect/Set-Up-Finch-Connect#redirect-to-finch-connect) link. 
 4. Once your customer goes through Finch Connect successfully, an authorization `code` is generated which you will need to exchange for a new `access_token` that you can use to send requests to the Finch API again. Make sure to save this new token in your database.
 
@@ -37,7 +37,7 @@ Finch recommends the following steps to handle reauthentication errors:
 
 ## Rate limit errors
 
-Finch will return a rate limit error with the HTTP status code `429 To Many Requests` when the request rate limit for an application or an individual IP address has been exceeded. Familiarize yourself with the API [rate limits](https://developer.tryfinch.com/docs/reference/64f780582a5a2-rate-limits) set before continuing.
+Finch will return a rate limit error with the HTTP status code `429 To Many Requests` when the request rate limit for an application or an individual IP address has been exceeded. Familiarize yourself with the API [rate limits](/api-reference/development-guides/Rate-Limits) set before continuing.
 
 Finch's rate limits work on a per-endpoint basis for applications, and we refer to each distinct endpoint as a unique product. Rate limits are summed on a rolling 60-second basis for each unique product. This is commonly referred to as a Sliding or Rolling Window rate limit.
 
@@ -51,13 +51,13 @@ Below are a few ways to fix rate limit errors.
 
 A quick fix if you are hitting rate limit errors is to implement [batched requests](/implementation-guide/Optimize/Batch-Requests). 
 
-If you are try to retrieve individual details for a 1000-person company, calling the [/individual](https://developer.tryfinch.com/docs/reference/9d6c83b09e205-individual) endpoint 1000 times will quickly hit the API's rate limits. Since there is no limit to the amount of IDs that you can send in a single request, you can batch the 1000 `individual_ids` and send as a single request. You will receive back a single response from Finch with an array of 1000 objects containing each individual's details. 
+If you are try to retrieve individual details for a 1000-person company, calling the [/individual](/api-reference/1-organization/individual) endpoint 1000 times will quickly hit the API's rate limits. Since there is no limit to the amount of IDs that you can send in a single request, you can batch the 1000 `individual_ids` and send as a single request. You will receive back a single response from Finch with an array of 1000 objects containing each individual's details. 
 
 ### Rate Limit Scenario
 
 Let's study a hypothetical scenario of how your application would encounter application level rate limits. Assume your application has six access tokens (Token A, Token B, Token C, Token D, Token E, Token F) and you are making API requests to any of the the `company`, `directory`, `individual`, `employment`, `payment`, and `pay-statement` endpoints. When a request is sent to an endpoint, a single gallon of water is added to the application-level product endpoint "bucket" each time. The bucket counts all requests across all the application's access tokens (Token A, Token B, Token C, Token D, Token E, Token F).
 
-1. Token A makes 4 requests to the [/company](https://developer.tryfinch.com/docs/reference/33162be1eed72-company) endpoint, 3 requests to the [/directory](https://developer.tryfinch.com/docs/reference/12419c085fc0e-directory) endpoint, and 2 requests to the [/payment](https://developer.tryfinch.com/docs/reference/b811fdc2542ca-payment) endpoint within a minute.
+1. Token A makes 4 requests to the [/company](/api-reference/1-organization/company) endpoint, 3 requests to the [/directory](/api-reference/1-organization/directory) endpoint, and 2 requests to the [/payment](/api-reference/2-payroll/payment) endpoint within a minute.
     - Application-level rate limits
         Bucket | Capacity
         -------|-------------
@@ -67,7 +67,7 @@ Let's study a hypothetical scenario of how your application would encounter appl
         `employment` | 0/20
         `payment` | 2/12
         `pay-statement` | 0/12
-1. Token B makes 5 requests to the [/company](https://developer.tryfinch.com/docs/reference/33162be1eed72-company) endpoint, 3 requests to the [/directory](https://developer.tryfinch.com/docs/reference/12419c085fc0e-directory) endpoint, and 2 requests to the [/payment](https://developer.tryfinch.com/docs/reference/b811fdc2542ca-payment) endpoint within the same minute. Token B’s first 4 requests to the [/company](https://developer.tryfinch.com/docs/reference/33162be1eed72-company) endpoint will succeed, but the 5th will fail and return a 429 rate limit error. Note: Only succeeded requests count towards the application level rate limits.
+1. Token B makes 5 requests to the [/company](/api-reference/1-organization/company) endpoint, 3 requests to the [/directory](/api-reference/1-organization/directory) endpoint, and 2 requests to the [/payment](/api-reference/2-payroll/payment) endpoint within the same minute. Token B’s first 4 requests to the [/company](/api-reference/1-organization/company) endpoint will succeed, but the 5th will fail and return a 429 rate limit error. Note: Only succeeded requests count towards the application level rate limits.
     - Application-level rate limits
         Bucket | Capacity
         -------|-------------
@@ -77,7 +77,7 @@ Let's study a hypothetical scenario of how your application would encounter appl
         `employment` | 0/20
         `payment` | 4/12
         `pay-statement` | 0/12
-1. Token C, D, and E repeats the same process as Token B making 5 requests to the [/company](https://developer.tryfinch.com/docs/reference/33162be1eed72-company) endpoint, 3 requests to the [/directory](https://developer.tryfinch.com/docs/reference/12419c085fc0e-directory) endpoint, and 2 requests to the [/payment](https://developer.tryfinch.com/docs/reference/b811fdc2542ca-payment) endpoint all within the same minute. Similarly, every 5th request to the [/company](https://developer.tryfinch.com/docs/reference/33162be1eed72-company) endpoint for each token fails and returns a 429 rate limit error.
+1. Token C, D, and E repeats the same process as Token B making 5 requests to the [/company](/api-reference/1-organization/company) endpoint, 3 requests to the [/directory](/api-reference/1-organization/directory) endpoint, and 2 requests to the [/payment](/api-reference/2-payroll/payment) endpoint all within the same minute. Similarly, every 5th request to the [/company](/api-reference/1-organization/company) endpoint for each token fails and returns a 429 rate limit error.
     - Application-level rate limits
         Bucket | Capacity
         -------|-------------
@@ -87,7 +87,7 @@ Let's study a hypothetical scenario of how your application would encounter appl
         `employment` | 0/20
         `payment` | 12/12 (FULL)
         `pay-statement` | 0/12
-1. If Token F makes 1 request to the [/company](https://developer.tryfinch.com/docs/reference/33162be1eed72-company) endpoint and 1 request to the [/directory](https://developer.tryfinch.com/docs/reference/12419c085fc0e-directory) endpoint. The `company` request will fail and return a 429 rate limit error because the application-level bucket is now full. No requests from any token will succeed calling the [/company](https://developer.tryfinch.com/docs/reference/33162be1eed72-company) endpoint until the `company` bucket’s 60-second Time-To-Live (TTL) timer resets. However, Token F’s request to the [/directory](https://developer.tryfinch.com/docs/reference/12419c085fc0e-directory) endpoint will succeed because the application-level `directory` bucket is not full either.
+1. If Token F makes 1 request to the [/company](/api-reference/1-organization/company) endpoint and 1 request to the [/directory](/api-reference/1-organization/directory) endpoint. The `company` request will fail and return a 429 rate limit error because the application-level bucket is now full. No requests from any token will succeed calling the [/company](/api-reference/1-organization/company) endpoint until the `company` bucket’s 60-second Time-To-Live (TTL) timer resets. However, Token F’s request to the [/directory](/api-reference/1-organization/directory) endpoint will succeed because the application-level `directory` bucket is not full either.
     - Application-level rate limits
         Bucket | Capacity
         -------|-------------
@@ -155,5 +155,5 @@ directoryRateLimiter
 
 ## Learn more
 - [Set Up Finch Connect](/implementation-guide/Connect/Set-Up-Finch-Connect)
-- [Rate Limits](https://developer.tryfinch.com/docs/reference/64f780582a5a2-rate-limits)
-- [Error Types](https://developer.tryfinch.com/docs/reference/Errors/Error-Types)
+- [Rate Limits](/api-reference/development-guides/Rate-Limits)
+- [Error Types](/api-reference/development-guides/errors/Error-Types)

@@ -72,7 +72,7 @@ While the employer authorization process takes only 30 seconds, a full syncing o
 
 ![Finch Connect Best Practices 2.jpg](/images/increase-employer-adoption/finch-connect-best-practices-02.jpg)
 
-You can programmatically add visual cues to show when the data import is complete. Finch provides a [List All Automated Jobs](https://developer.tryfinch.com/docs/reference/77c908ca898ba-list-all-automated-jobs) endpoint that provides a real-time status of the data syncing process. While the job’s `status` is still `pending`, the Finch endpoints will **return a HTTP 202 response** until the sync is complete. Continue to call the [List All Automated Jobs](https://developer.tryfinch.com/docs/reference/77c908ca898ba-list-all-automated-jobs) endpoint to monitor the status. Once the job’s `status` moves to `complete`, you can now call Finch’s various endpoints to read the data. A new job is created to sync the employer’s data 24 hours from the previous sync.
+You can programmatically add visual cues to show when the data import is complete. Finch provides a [List All Automated Jobs](/api-reference/4-management/list-automated-jobs) endpoint to monitor the status. Once the job’s `status` moves to `complete`, you can now call Finch’s various endpoints to read the data. A new job is created to sync the employer’s data 24 hours from the previous sync.
 
 ```Pending
 {
@@ -214,7 +214,7 @@ Learn more about how to set up authentication fallback [here](/implementation-gu
 
 Finch aims to ensure your application maintains long-lived access to your users' employment systems. However, when a user changes security settings on their account or an employment system makes changes to its infrastructure, Finch's connection can get disconnected. This will result in an error with the HTTP status code of `401` and `finch_code` of `reauthenticate_user`. When an access token returns this, your user will need to reauthenticate by going through the [Automated Connect Flow](/implementation-guide/Connect/Set-Up-Finch-Connect) again.
 
-To increase conversion, we recommend either using in-app or email notifications to notify your user there is an issue with their connection, why re-connecting is beneficial, and the steps they need to follow to re-connect. To create a more seamless experience, you can bypass the employment system selection page by using the `payroll_provider` parameter. You can find the `payroll_provider` of your user by calling the [`/introspect`](https://developer.tryfinch.com/docs/reference/9d248a993cb53-introspect) endpoint with their `access_token`.
+To increase conversion, we recommend either using in-app or email notifications to notify your user there is an issue with their connection, why re-connecting is beneficial, and the steps they need to follow to re-connect. To create a more seamless experience, you can bypass the employment system selection page by using the `payroll_provider` parameter. You can find the `payroll_provider` of your user by calling the [`/introspect`](/api-reference/4-management/introspect) endpoint with their `access_token`.
 
 Below are a couple of options to present the re-connection flow to your users—
 

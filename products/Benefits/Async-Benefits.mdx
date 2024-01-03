@@ -2,7 +2,7 @@
 title: "Write Benefits Data Using Async APIs"
 ---
 
-The [Benefits](https://developer.tryfinch.com/docs/documentation/sk5k4fx5x9c7m-benefits) API allows developers to write [contributions](/how-finch-works/unified-employment-api-glossary#contribution) and [deductions](/how-finch-works/unified-employment-api-glossary#deduction) across payroll providers for retirement, medical, and fringe benefits using our unified API.
+The [Benefits](/products/benefits/Overview) API allows developers to write [contributions](/how-finch-works/unified-employment-api-glossary#contribution) and [deductions](/how-finch-works/unified-employment-api-glossary#deduction) across payroll providers for retirement, medical, and fringe benefits using our unified API.
 
 The API allows you to:
 
@@ -17,7 +17,7 @@ There are several steps you should take to ensure a smooth Benefits onboarding e
 
 ### Using benefits metadata
 
-The types and features of each benefit can vary between payroll systems. For this reason, we provide a `benefits_support` field on the  [`/providers`](https://developer.tryfinch.com/docs/reference/1e18fe9cc1c67-providers) endpoint, which will return the available benefit types and features for each payroll provider. If you try to make a request using an access token that does not allow a certain configuration or benefit type, our API will respond with a 400 or 422 status code (see [Errors](https://developer.tryfinch.com/docs/reference/1f80003f67f0d-error-types)), depending on the specific error. This endpoint can help you avoid those errors by understanding beforehand what types of requests you can make.
+The types and features of each benefit can vary between payroll systems. For this reason, we provide a `benefits_support` field on the  [`/providers`](/integrations/providers) endpoint, which will return the available benefit types and features for each payroll provider. If you try to make a request using an access token that does not allow a certain configuration or benefit type, our API will respond with a 400 or 422 status code (see [Errors](/api-reference/development-guides/errors/Error-Types)), depending on the specific error. This endpoint can help you avoid those errors by understanding beforehand what types of requests you can make.
 
 This information is also available in [our provider documentation](/integrations/providers).
 
@@ -32,7 +32,7 @@ If you try to enroll an employee in a benefit that is not set up, you may receiv
 
 ## Getting and Creating Company Benefits
 
-Our API allows you to both [create new benefits](https://developer.tryfinch.com/docs/reference/07gjv57sxbqh7-create-benefit) in a payroll system and [get existing benefits](https://developer.tryfinch.com/docs/reference/b3A6MTg4Mzc2MTg-get-all-benefits) from the system. Both of these requests will respond with a `benefit_id` in the response body. For example, a creation request will respond with:
+Our API allows you to both [create new benefits](/api-reference/3-deductions/create-benefit) in a payroll system and [get existing benefits](/api-reference/3-deductions/get-all-benefits) from the system. Both of these requests will respond with a `benefit_id` in the response body. For example, a creation request will respond with:
 
 ```json
 {
@@ -49,7 +49,7 @@ You can use this `benefit_id` to perform enrollment, un-enrollment, and benefi
 
 ### Creating new enrollments
 
-Enrolling a new individual is as simple as using the `benefit_id` returned from the company benefits endpoints above, and using it in a [`POST /benefits/{benefit_id}/individuals`](https://developer.tryfinch.com/docs/reference/s8q3gsrobqklj-enroll-individuals-in-benefits) request. In the body, you should provide a list of objects which specify the enrollment, one per individual. Each object should contain a flexible `configuration` object which specifies the enrollment configuration to apply to that individual. The schema of the configuration varies depending on the type of benefit you are enrolling, so please refer to the docs to ensure you are using the right schema.
+Enrolling a new individual is as simple as using the `benefit_id` returned from the company benefits endpoints above, and using it in a [`POST /benefits/{benefit_id}/individuals`](/api-reference/3-deductions/enroll-individuals-in-benefits) request. In the body, you should provide a list of objects which specify the enrollment, one per individual. Each object should contain a flexible `configuration` object which specifies the enrollment configuration to apply to that individual. The schema of the configuration varies depending on the type of benefit you are enrolling, so please refer to the docs to ensure you are using the right schema.
 
 ### Updating existing enrollments
 
@@ -57,7 +57,7 @@ To update enrollment configurations for currently enrolled individuals, you can 
 
 ### Un-enrolling individuals
 
-You can unenroll individuals by using the [`DELETE /benefits/{benefit_id}/individuals`](https://developer.tryfinch.com/docs/reference/2bw7fbt8fztyx-unenroll-individuals-from-benefits) endpoint. This will remove the enrollment configuration for an individual.
+You can unenroll individuals by using the [`DELETE /benefits/{benefit_id}/individuals`](/api-reference/3-deductions/unenroll-individuals-from-benefits) endpoint. This will remove the enrollment configuration for an individual.
 
 
 ## Read and Write Behavior
