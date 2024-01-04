@@ -1,5 +1,8 @@
 {
     "name": "Finch",
+    "api": {
+      "maintainOrder": true
+   },
     "logo": {
       "light": "/logo/light.png",
       "dark": "/logo/dark.png"
