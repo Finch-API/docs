@@ -3,6 +3,9 @@
     "api": {
       "maintainOrder": true
    },
+   "metadata": {
+    "og:image": "/images/og-image.png"
+   },
     "logo": {
       "light": "/logo/light.png",
       "dark": "/logo/dark.png"
