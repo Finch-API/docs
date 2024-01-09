@@ -85,8 +85,8 @@
           "group": "Products",
           "pages": [
             "products/organization/Overview",
-            "products/pay/Overview",
-            "products/benefits/Overview"
+            "products/payroll/Overview",
+            "products/deductions/Overview"
           ]
         },
         {
@@ -516,15 +516,15 @@
       },
       {
         "source": "/docs/documentation/ofhl402q2tq8n-payroll",
-        "destination": "/products/pay/Overview"
+        "destination": "/products/payroll/Overview"
       },
       {
         "source": "/docs/documentation/sk5k4fx5x9c7m-deductions",
-        "destination": "/products/benefits/Overview"
+        "destination": "/products/deductions/Overview"
       },
       {
           "source": "/docs/documentation/z9ssyh7davpgw-write-benefits-data-using-async-apis",
-          "destination": "/products/benefits/Async-Benefits"
+          "destination": "/products/deductions/Async-Benefits"
       },
       {
           "source": "/docs/reference/0c7c919255262-hris-api-reference",
